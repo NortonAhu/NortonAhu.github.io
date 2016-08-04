@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android 备忘录 | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android 备忘录 
+&amp;emsp;Android 开发已经有一段时间了，每天遇到坑也蛮多的，每天也能学习到很多新的知识，每天进步一点点，希望自己能坚持写下去博客。
+JAVA 位运算&amp;emsp;经常在代码中看到位运算操作，这里对位运算做下。这里的位运算主要是指 JAVA。位运算基础概念这里需要注意的是位运算支持的类型和 java 中类型的位数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 备忘录">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Android备忘录/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="Android 备忘录 
+&amp;emsp;Android 开发已经有一段时间了，每天遇到坑也蛮多的，每天也能学习到很多新的知识，每天进步一点点，希望自己能坚持写下去博客。
+JAVA 位运算&amp;emsp;经常在代码中看到位运算操作，这里对位运算做下。这里的位运算主要是指 JAVA。位运算基础概念这里需要注意的是位运算支持的类型和 java 中类型的位数">
+<meta property="og:image" content="http://nortonahu.github.io/thumbnails/note.png">
+<meta property="og:image" content="http://nortonahu.github.io/image/git_learn.png">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 备忘录">
+<meta name="twitter:description" content="Android 备忘录 
+&amp;emsp;Android 开发已经有一段时间了，每天遇到坑也蛮多的，每天也能学习到很多新的知识，每天进步一点点，希望自己能坚持写下去博客。
+JAVA 位运算&amp;emsp;经常在代码中看到位运算操作，这里对位运算做下。这里的位运算主要是指 JAVA。位运算基础概念这里需要注意的是位运算支持的类型和 java 中类型的位数">
+<meta name="twitter:image" content="http://nortonahu.github.io/thumbnails/note.png">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android备忘录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android备忘录/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 备忘录
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘/">备忘</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-备忘录"><a href="#Android-备忘录" class="headerlink" title="Android 备忘录 "></a>Android 备忘录 </h1><p><img src="/thumbnails/note.png" alt=""></p>
+<p>&emsp;Android 开发已经有一段时间了，每天遇到坑也蛮多的，每天也能学习到很多新的知识，每天进步一点点，希望自己能坚持写下去博客。</p>
+<h2 id="JAVA-位运算"><a href="#JAVA-位运算" class="headerlink" title="JAVA 位运算"></a>JAVA 位运算</h2><p>&emsp;经常在代码中看到位运算操作，这里对位运算做下。这里的位运算主要是指 JAVA。位运算<a href="http://blog.csdn.net/xiaochunyong/article/details/7748713" target="_blank" rel="external">基础概念</a>这里需要注意的是位运算支持的类型和 java 中类型的<a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html" target="_blank" rel="external">位数</a><br><a id="more"></a></p>
+<ul>
+<li><p><strong>位运算的基本作用</strong></p>
+<p>  <strong>计算</strong><br>  &emsp;位运算左移一位乘以2，右移一位除以2，但是这个好像只能是正数；</p>
+<p>  <strong>Flag</strong></p>
+<p>  &emsp;由于位运算符都是对二进制数进行运算，可以用来做为区分各不同情况的flag。</p>
+<p>  &emsp;下列代码就是一个简单的示例应用。对于一个java文件来说，它有以下几种modifier：[public, package, protected, private, static, abstract, final]等等。这些modifier中，有些是可以同时存在的（如：public和static），有些则是互斥的，也就是说只能出现一种（如：public和private）。</p>
+<p>  &emsp;那么我们就可以对这些modifier进行分类，分类的方法就是让它们每一个都占据一个二进制位。下列代码中，public占据了低位第一个二进制位，而private则占据了低位第4个二进制位。使用这种分类方法，我们就可以很轻松的判断是否包含某一个modifier，也可以判断是否包含一系列modifier。如下列代码中的isPublic(int)和hasModifier(int)。</p>
+<p>  &emsp;这种用法还可以用在权限管理系统，因为权限系统也会有这种类似的部分可以同时具有，部分必须是互斥的需求。</p>
+  <figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> bit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> ModifierBase &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">PUBLIC</span> = <span class="number">0</span>x0001;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">PACKAGE</span> = <span class="number">0</span>x0002;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">PROTECTED</span> = <span class="number">0</span>x0004;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">PRIVATE</span> = <span class="number">0</span>x0008;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">STATIC</span> = <span class="number">0</span>x0010;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">ABSTRACT</span> = <span class="number">0</span>x0020;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">FINAL</span> = <span class="number">0</span>x0040;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> modifier = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> ModifierBase(<span class="keyword">int</span> modifier) &#123;</div><div class="line">        <span class="keyword">this</span>.modifier = modifier;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> isPublic() &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">this</span>.modifier &amp; <span class="keyword">PUBLIC</span>) != <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> isPackage() &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">this</span>.modifier &amp; <span class="keyword">PACKAGE</span>) != <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> isProtected() &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">this</span>.modifier &amp; <span class="keyword">PROTECTED</span>) != <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> isPrivate() &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">this</span>.modifier &amp; <span class="keyword">PRIVATE</span>) != <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> hasModifier(<span class="keyword">int</span> modifier) &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">this</span>.modifier &amp; modifier) == modifier;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> hasnotModifier(<span class="keyword">int</span> modifier) &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">this</span>.modifier &amp; modifier) == <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</div><div class="line">        <span class="keyword">int</span> modifiers1 = <span class="keyword">PUBLIC</span> | <span class="keyword">PROTECTED</span>;</div><div class="line">        <span class="keyword">int</span> modifiers2 = <span class="keyword">PUBLIC</span> | <span class="keyword">PROTECTED</span> | <span class="keyword">PRIVATE</span>;</div><div class="line">        ModifierBase base = <span class="keyword">new</span> ModifierBase(modifiers2); <span class="comment">// base is [PUBLIC | PROTECTED | PRIVATE]</span></div><div class="line">        System.out.<span class="keyword">println</span>(base.hasModifier(modifiers1)); <span class="comment">// true because base includes [PUBLIC | PROTECTED]</span></div><div class="line">        ModifierBase base2 = <span class="keyword">new</span> ModifierBase(modifiers1); <span class="comment">// base is [PUBLIC | PROTECTED]</span></div><div class="line">        System.out.<span class="keyword">println</span>(base2.hasModifier(modifiers2)); <span class="comment">// fasle because base2 donot includes [PRIVATE] </span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Android-滑动截屏的代码实现"><a href="#Android-滑动截屏的代码实现" class="headerlink" title="Android 滑动截屏的代码实现"></a>Android 滑动截屏的代码实现</h2><p>&emsp;今天产品经理提出了一个需求将手机当前的显示内容截屏，但是当前的屏幕的内容是容器组件是 ScrollView 也就是说需要使用滑动截屏，这里参考了别人的思路计算 ScrollView 里面每个子控件的高度，然后通过画布绘画出来<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">    * scrollView 组件截屏</div><div class="line">    * @param view          截屏的容器scrollView</div><div class="line">    * @param saveFilePath      保存截屏图片的路径</div><div class="line">    */</div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> screenShotScrollView(Context ctx, ScrollView scrollView, <span class="keyword">String</span> saveFilePath) &#123;</div><div class="line">       <span class="built_in">int</span> <span class="built_in">height</span> = <span class="number">0</span>;</div><div class="line">       Bitmap screenShotBitmap = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; scrollView.getChildCount(); i++) &#123;</div><div class="line">           <span class="built_in">height</span> += scrollView.getChildAt(i).getHeight();</div><div class="line">           scrollView.getChildAt(i).setBackgroundColor(ctx.getResources().getColor(R.<span class="built_in">color</span>.helper_main_bg));</div><div class="line">       &#125;</div><div class="line">       Log.e(<span class="string">"yhtest"</span>,<span class="keyword">String</span>.format(<span class="string">"ScreenView realeHeight = %d;height = %d."</span>, <span class="built_in">height</span>, scrollView.getHeight()));</div><div class="line">       <span class="comment">// 创建大小相应的bitmap</span></div><div class="line">       screenShotBitmap = Bitmap.createBitmap(scrollView.getWidth(), <span class="built_in">height</span>, Bitmap.Config.ARGB_8888);</div><div class="line"></div><div class="line">       <span class="keyword">final</span> Canvas canvas = <span class="keyword">new</span> Canvas(screenShotBitmap);</div><div class="line">       scrollView.<span class="title">draw</span>(canvas);</div><div class="line">       FileOutputStream fos = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">String</span> screenshotName = <span class="string">"screenshot_"</span> + StringUtils.getDataTime(<span class="string">"HH_mm_ss"</span>);</div><div class="line">       <span class="keyword">String</span> screenShotFilePath = saveFilePath + screenshotName + <span class="string">".png"</span>;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           saveImageToSD(ctx, screenShotFilePath, screenShotBitmap, <span class="number">100</span>);</div><div class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   <span class="comment">/**</span></div><div class="line">    * 写图片文件到SD卡</div><div class="line">    * </div><div class="line">    * @throws IOException</div><div class="line">    */</div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> saveImageToSD(Context ctx, <span class="keyword">String</span> filePath,</div><div class="line">           Bitmap bitmap, <span class="built_in">int</span> quality) <span class="keyword">throws</span> IOException &#123;</div><div class="line">       <span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</div><div class="line">           File file = <span class="keyword">new</span> File(filePath.substring(<span class="number">0</span>,</div><div class="line">                   filePath.lastIndexOf(File.separator)));</div><div class="line">           <span class="keyword">if</span> (!file.exists()) &#123;</div><div class="line">               file.mkdirs();</div><div class="line">           &#125;</div><div class="line">           BufferedOutputStream bos = <span class="keyword">new</span> BufferedOutputStream(</div><div class="line">                   <span class="keyword">new</span> FileOutputStream(filePath));</div><div class="line">           bitmap.compress(CompressFormat.JPEG, quality, bos);</div><div class="line">           bos.flush();</div><div class="line">           bos.close();</div><div class="line">           <span class="keyword">if</span> (ctx != <span class="keyword">null</span>) &#123;</div><div class="line">               scanPhoto(ctx, filePath);</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="如何正确快速的学习git-操作"><a href="#如何正确快速的学习git-操作" class="headerlink" title="如何正确快速的学习git  操作"></a><a href="http://pcottle.github.io/learnGitBranching/" target="_blank" rel="external">如何正确快速的学习git  操作</a></h2><p><img src="/image/git_learn.png" alt=""><br>感觉是最简单易懂的 git 教程了<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="external">廖雪峰老师</a></p>
+<h2 id="JAVA-常用的一些东西"><a href="#JAVA-常用的一些东西" class="headerlink" title="JAVA 常用的一些东西"></a>JAVA 常用的一些东西</h2><p><strong>JAVA 字段循环拼接去除尾部符号</strong><br>之前经常遇到一些需要将很多字段拼接起来用特殊字符分隔，但是通常麻烦的是最后都会有一个多余的分隔字符，一直没有找到合适的去除多余字符的方式，这里就记录下一个字符段长度截取的方式：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">String</span> appendParams(<span class="keyword">String</span> url, Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; params)</div><div class="line">&#123;</div><div class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">    sb.<span class="built_in">append</span>(url + <span class="string">"?"</span>);</div><div class="line">    <span class="keyword">if</span> (params != <span class="keyword">null</span> &amp;&amp; !params.isEmpty())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">String</span> <span class="built_in">key</span> : params.keySet())</div><div class="line">        &#123;</div><div class="line">            sb.<span class="built_in">append</span>(<span class="built_in">key</span>).<span class="built_in">append</span>(<span class="string">"="</span>).<span class="built_in">append</span>(params.<span class="built_in">get</span>(<span class="built_in">key</span>)).<span class="built_in">append</span>(<span class="string">"&amp;"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    sb = sb.deleteCharAt(sb.length() - <span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> sb.toString();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="老师们的-Blog"><a href="#老师们的-Blog" class="headerlink" title="老师们的 Blog"></a>老师们的 Blog</h2><p><strong>张兴业老师</strong><br><em>会设计的程序员和会编程的设计师,专注移动互联网。</em><br><a href="http://blog.csdn.net/xyz_lmn/article/list/1" target="_blank" rel="external">Blog</a></p>
+<p><a href="https://github.com/android" target="_blank" rel="external">https://github.com/android</a></p>
+<p><strong>Keegan小钢</strong><br><a href="http://keeganlee.me/" target="_blank" rel="external">Blog</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Android基础(一)Activity/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android 基础（一）Activity
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/Android_NDK_编译总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android Studio NDK 编译总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android备忘录" data-title="Android 备忘录" data-url="http://nortonahu.github.io/2016/08/05/Android备忘录/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

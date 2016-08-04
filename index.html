@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自己的强大才可以给家人带来幸福！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WinterFell">
+<meta property="og:url" content="http://nortonahu.github.io/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="自己的强大才可以给家人带来幸福！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WinterFell">
+<meta name="twitter:description" content="自己的强大才可以给家人带来幸福！">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+  
+    <article id="post-Java 静态类、静态方法和静态变量" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Java 静态类、静态方法和静态变量/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Java 静态类、静态方法和静态变量/">Java 静态类、静态方法和静态变量</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java-静态类、静态方法和静态变量"><a href="#Java-静态类、静态方法和静态变量" class="headerlink" title="Java 静态类、静态方法和静态变量"></a>Java 静态类、静态方法和静态变量</h2><p><strong>static</strong> 是Java中的一个关键字，我们不能声明普通外层类或者包为静态的。static用于下面四种情况。</p>
+<ol>
+<li><p>静态变量：我们可以将类级别的变量声明为static。静态变量是属于类的，而不是属于类创建的对象或实例。因为静态变量被类的所有实例共用，所以非线程安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可以通过ClassName.variableName来访问它.</p>
+ <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//静态变量的例子</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> count;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> <span class="built_in">str</span>;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> DB_USER = <span class="string">"myuser"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>静态方法，类似于静态变量，静态方法也属于类，不属于实例的。静态类只能访问类的静态变量，或调用类的静态方法。通常静态方法作为工具方法，被其它类使用，而不需要创建类的实例。譬如集合类、Wrapper类(String, Integer等)和工具类(java.util中的类)都有很多静态方法。通常java程序的开始就是一个main()方法，它就是个静态方法。</p>
+ <figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//静态方法的例子</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> setCount(<span class="keyword">int</span> <span class="keyword">count</span>) &#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">count</span> &gt; <span class="number">0</span>)</div><div class="line">    StaticExample.<span class="keyword">count</span> = <span class="keyword">count</span>;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//静态工具方法</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> addInts(<span class="keyword">int</span> i, <span class="keyword">int</span>...js)&#123;</div><div class="line">    <span class="keyword">int</span> <span class="keyword">sum</span>=i;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> x : js) <span class="keyword">sum</span>+=x;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">sum</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>静态块就是类加载器加载对象时，要执行的一组语句。它用于初始化静态变量。通常用于类加载的时候创建静态资源。我们在静态块中不能访问非静态变量。我们可以在一个类中有多个静态块，尽管这么做没什么意义。静态块只会在类加载到内存中的时候执行一次。</p>
+</li>
+</ol>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/Java 静态类、静态方法和静态变量/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2015年总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/2015年总结/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/2015年总结/">2015年总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2015年总结<br>2016年元旦已经过去了好几天，这是我第一次开始写年度总结第一次总是有那么一点羞涩，多多少少写的会有点无厘头，但是为了给自己留下一个成长的记录就写吧。回顾下过去一年的印象比较深刻的大事吧！<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/心情/">心情</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/记录/">记录</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/2015年总结/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android UI 基本知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android UI 基本知识/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Android UI 基本知识/">Android UI基本知识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-UI"><a href="#Android-UI" class="headerlink" title="Android UI "></a>Android UI </h1><p><img src="/thumbnails/android_ui_title.png" alt=""></p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>  &emsp;由于 Android 的碎片化问题， Android 设备适配一直是个难题，特别是在将设计喵们的切图完美转化集成到真机上的时候，很容易出现各种错误导致效果不好。在前几个项目也查阅了很多关于这方面的资料，很多东西当时明白，但是过了一段时间就忘了，所以今天就开了一篇 Blog 记录下。有些地方可能不对还请指正，后期什么新的知识点会不断更新到该blog中。</p>
+<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><ul>
+<li>Android UI 基本概念和获取方法</li>
+<li>常用 UI 转换公式</li>
+<li>屏幕兼容适配方案</li>
+<li>Tips</li>
+</ul>
+<h2 id="Android-UI-基本概念"><a href="#Android-UI-基本概念" class="headerlink" title="Android UI 基本概念"></a>Android UI 基本概念</h2><p>  介绍 Andorid 开发过程中遇到的术语和易混淆的概念</p>
+<ul>
+<li><p>分辨率 (Resolution)<br>&emsp;和电脑的分辨率意思一样就是手机纵、横方向的像素个数，例如 480 × 800 的分辨率表示的就是宽高比的意思，横向 480 个像素点纵向 800 个像素点，再简单点解释就是 480 列、 800 行。<br>1280 × 720 和 720 × 1280 的区别是啥？这里网上解释是没有区别前者表示纵向宽、后者表示横向宽。<br>基本上所有的关于屏幕的参数都是从 view.Display 中获取的</p>
+<p>这里需要注意的是两个方法的区别（之前 getWidth() 和 getHeight() 现在已经不用了）:</p>
+<p>getSize(Point)<br>getRealSize(Point)</p>
+</li>
+</ul>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">getSize</span><span class="params">(Point outSize)</span> </span>&#123;  </div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;  </div><div class="line">        updateDisplayInfoLocked();  </div><div class="line">        mDisplayInfo.getAppMetrics(mTempMetrics, mDisplayAdjustments);  </div><div class="line">        outSize.x = mTempMetrics.widthPixels;  </div><div class="line">        outSize.y = mTempMetrics.heightPixels;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">getRealSize</span><span class="params">(Point outSize)</span> </span>&#123;  </div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;  </div><div class="line">        updateDisplayInfoLocked();  </div><div class="line">        outSize.x = mDisplayInfo.logicalWidth;  </div><div class="line">        outSize.y = mDisplayInfo.logicalHeight;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这两个的区别主要是前者在加上 ActionBarActivity 之后计算就不准备了，所以为了保险起见还是使用后面的 getRealSize 。</p>
+<ul>
+<li>手机的物理尺寸 (Screen Size)<br>&emsp;手机的物理尺寸，指的是屏幕对角线的长度，单位是英寸。1 英寸(in) = 2.54 厘米 (cm) 目前手机基本上都超过了 5 寸，但是个人觉得手机厂商这样人为的加大手机尺寸很无聊，人的手就那么大。没事尽在这些方面瞎琢磨。下面是 Android 官方提供的物理尺寸的介绍，主要是为了说明 Andoroid 按照物理尺寸将手机分为 small normal large extra-large 这个跟后面也有关系，后面再说。<blockquote>
+<p>Screen size<br>Actual physical size, measured as the screen’s diagonal.<br>For simplicity, Android groups all actual screen sizes into four generalized sizes: small, normal, large, and extra-large.</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>这里需要说明的是手机的物理尺寸和手机的分辨率不是成比例的关系，也许两个手机的屏幕的尺寸一样但是分辨率不一样</strong></p>
+<ul>
+<li><p>宽高比<br>&emsp;这里的宽高比其实为了梳理概念用的，手机很少用到宽高比，主要是电视、电脑经常用到宽高比，比如说我们常说的 4 : 3 、 16 : 9 都是这个意思。前面的 1280 × 720 就是 16 : 9 。就是这么简单。这里既然讲到了宽高比顺便解释下 720 P 和 1280 P 表示是一秒中扫描多少行。这个后面在梳理。</p>
+<ul>
+<li>DPI(dots per inch)<br>&emsp;屏幕密度(density)与 DPI 关系比较密切，从字面上理解就是每英寸的点数(打印机单位打印机采样率)。这里千万记得不是像素点的个数。后面会解释跟PPI的关系。下面列举下常见的参数参考谷歌官方文档：<br><img src="/image/android_dpi.png" alt=""><br>&emsp;android.util包下有个DisplayMetrics类可以获得密度相关的信息。它有如下几个常用值：</li>
+</ul>
+</li>
+</ul>
+<pre><code><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">DENSITY_LOW</span> = <span class="number">120</span></div><div class="line"><span class="attr">DENSITY_MEDIUM</span> = <span class="number">160</span>  //默认值</div><div class="line"><span class="attr">DENSITY_TV</span> = <span class="number">213</span>      //TV专用</div><div class="line"><span class="attr">DENSITY_HIGH</span> = <span class="number">240</span></div><div class="line"><span class="attr">DENSITY_XHIGH</span> = <span class="number">320</span></div><div class="line"><span class="attr">DENSITY_400</span> = <span class="number">400</span></div><div class="line"><span class="attr">DENSITY_XXHIGH</span> = <span class="number">480</span></div><div class="line"><span class="attr">DENSITY_XXXHIGH</span> = <span class="number">640</span></div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>PPI(Pixels per inch)<br>&emsp;很简单每英寸上的像素数（也叫图像采样率）。可以根据这个参数可以求得屏幕的物理尺寸。<br>这里要介绍一个很关键的类 DisplayMetrics<br>这个类中有个两个成员变量 xdpi 和 ydpi 关于这两个变量的描述如下：</p>
+<blockquote>
+<p>//The exact physical pixels per inch of the screen in the X/Y dimension.</p>
+</blockquote>
+</li>
+</ul>
+<p>  这两个表示在 X/Y 轴上实际的像素点数,根据前面计算屏幕尺寸的方法</p>
+  <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> getScreenSizeOfDevice2() &#123;</div><div class="line">      Point <span class="built_in">point</span> = <span class="keyword">new</span> Point();</div><div class="line">      getWindowManager().getDefaultDisplay().getRealSize(<span class="built_in">point</span>);</div><div class="line">      DisplayMetrics dm = getResources().getDisplayMetrics();</div><div class="line">      <span class="keyword">double</span> x = Math.<span class="built_in">pow</span>(<span class="built_in">point</span>.x/ dm.xdpi, <span class="number">2</span>);</div><div class="line">      <span class="keyword">double</span> y = Math.<span class="built_in">pow</span>(<span class="built_in">point</span>.y / dm.ydpi, <span class="number">2</span>);</div><div class="line">      <span class="keyword">double</span> screenInches = Math.<span class="built_in">sqrt</span>(x + y);</div><div class="line">      Log.d(TAG, <span class="string">"Screen inches : "</span> + screenInches);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>Point这里返回的是像素值 dm.xdpi 和 dm.ydpi 表示是真正一英寸像素的个数。所以得出上面的方法。</p>
+<ul>
+<li>DIP<br>&emsp;这个需要跟上面的 DPI 区别，简单说就是密度无关的像素</li>
+</ul>
+<p>我们在布局中用到的 dp/dip 就是它。这里主要是记住怎么和像素转化公式</p>
+<blockquote>
+<p>pixel = dip*density</p>
+</blockquote>
+<p>这里一般 UI 给的切图都是按照像素来给的 所以我们集成的时候注意转换。主要是在 Android 组件中使用到动态计算的时候需要注意。Android 中获取到的是像素这里需要转换</p>
+<p>dp to px</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">convertDpToPixel</span><span class="params">(<span class="keyword">int</span> dp)</span> </span>&#123;  </div><div class="line">    DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();  </div><div class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(dp*displayMetrics.density);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>px to dp</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">convertPixelToDp</span><span class="params">(<span class="keyword">int</span> pixel)</span> </span>&#123;  </div><div class="line">    DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();  </div><div class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(pixel/displayMetrics.density);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>倍率<br>&emsp;倍率跟屏幕的密度是一样的意思，destiny 上面已经详细解释了，倍率的主要作用是上面说的计算。<br>下面是倍率表：</li>
+</ul>
+<blockquote>
+<p>ldpi = 0.75<br>mdpi = 1<br>hdpi = 1.5<br>xhdpi = 2<br>xxhdpi = 3<br>xxxdpi = 4</p>
+</blockquote>
+<ul>
+<li>什么 720P 啊、 1080P<br>&emsp;720P 这些经常出现于电视上这个跟手机的对应关系需要理解下，主要是适配平板。</li>
+</ul>
+<blockquote>
+<p>720P 有效显示格式为1280 * 720（逐行扫描的意思）</p>
+</blockquote>
+<p>1280 <em> 720 不一定是 720P,但 720P一定是 1280 </em> 720</p>
+<ul>
+<li>Andorid 分辨率另外一种方式(VGA\HVGA\QVGA\WQVGA\WVGA\FWVGA)</li>
+</ul>
+<blockquote>
+<p>VGA:Video Graphics Array，即：显示绘图矩阵，相当于640×480 像素；<br>HVGA:Half-size VGA，即：VGA的一半，分辨率为480×320，像三星盖世Ace S5830就是使用这分辨率；<br>QVGA：Quarter VGA，即：VGA的四分之一，分辨率为320×240，一般用于小屏手机 像三星盖世Mini S5570就是使用这分辨率；<br>WQVGA：Wide Quarter VGA，即：扩大的QVGA，分辨率比QVGA高，比VGA低，一般是：400×240，480×272；<br>WVGA：Wide Video Graphics Array，即：扩大的VGA，分辨率为800×480像素，像三星i9000就是使用这分辨率；<br>FWVGA：Full Wide VGA ，数码产品屏幕材质的一种，VGA的另一种形式，比WVGA分辨率高，别名 ： Full Wide VGA, ，其分辨 率为854×480象素(16:9)。</p>
+</blockquote>
+<h1 id="一个简单适配例子"><a href="#一个简单适配例子" class="headerlink" title="一个简单适配例子"></a>一个简单适配例子</h1><p>从网上找的例子</p>
+<blockquote>
+<p>.为什么一个720P的设备，取mdpi里的图片，但是720P的切图要放在xhdpi里？</p>
+</blockquote>
+<p>A: 这完全是根据主流手机来决定的，比如现在主流的是480P/hdpi的手机，那么，在做UI时，就会取720P作为xhdpi，取320P作为mdpi，取240P作为ldpi，这样一套套图就切出来了。</p>
+<p>如果，主流的手机分辨率变成了720P/hdpi的手机，那么，在做UI时，就会取480P作为mdpi，取1080P作为xhdpi，以此类推。</p>
+<p>至于Google是这样推荐的：取你手边最大的分辨率作为基准，做出最清晰的图（xhdpi），然后，按比例缩放，做出hdpi、mdpi和ldpi。所以从原理上，720P的切图放在哪里是可以根据设备来变换的。</p>
+<p>2.如果720P的切图在xhdpi里，但我手头有一个mdpi/720P的设备，那怎么办呢？</p>
+<p>（假设你的应用要支持所有奇葩的分辨率，而且你已经切好了4套图（ldpi~xhdpi)  并在layout里写了一套布局）</p>
+<p>A: 如果你自己思考了dpi和分辨率的关系的话，你会发现，他们的关系就是没有关系…所以这个问题，我的解决办法（大家的）是，让多套dimens来帮我们解决这个问题。<br>  480p  600p  720p  1080p<br>mdpi  values-sw480dp-mdpi values-sw600dp-mdpi values-sw720dp-mdpi values-sw1080dp-mdpi<br>hdpi  values-sw480dp-hdpi … … …<br>xhdpi values-sw480dp-xhdpi  … … … 在你的res文件夹下，新建这些文件夹，然后再放进一个dimens.xml，用这种方法，就可以应对所有的分辨率情况了。<br>举例说明下：如果原图（1280x720）上有一个100x50（像素）大小的控件，那么对于一个正常的hdpi/800x480的设备来说，应该设置它的大小（dp)为:</p>
+<p>长：(100/720 <em> 480/1.5)dp = 45dp (向上取整)<br>宽：(50/720 </em> 480/1.5)dp = 23dp</p>
+<p>将这两个值写在values-sw480dp-hdpi/dimens.xml里，图的比例和原图就一样了。</p>
+<p>那对于一个刚才我列举到的mdpi/1280x720的设备，它的大小应该是：</p>
+<p>长：(100/720 * 720/1) = 100dp;</p>
+<p>宽：(50/720 * 720/1) = 50dp;</p>
+<p>将这两个值写在values-sw720dp-mdpi中，图的比例和原图就一样了。</p>
+<h1 id="最小宽度"><a href="#最小宽度" class="headerlink" title="最小宽度"></a>最小宽度</h1><p>谷歌原文这么写到：</p>
+<blockquote>
+<p>As you design your UI for different screen sizes, you’ll discover that each design requires a minimum amount of space. So, each generalized screen size above has an associated minimum resolution that’s defined by the system. These minimum sizes are in “dp” units—the same units you should use when defining your layouts—which allows the system to avoid worrying about changes in screen density.</p>
+</blockquote>
+<p>设计的时候会发现你需要最小空间值，单位是dp。</p>
+<ul>
+<li><em>xlarge screens are at least 960dp x 720dp</em></li>
+<li><em>large screens are at least 640dp x 480dp</em></li>
+<li><em>normal screens are at least 470dp x 320dp</em></li>
+<li><em>small screens are at least 426dp x 320dp</em></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android 样式开发（一） shape" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android 样式开发（一） shape/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Android 样式开发（一） shape/">Android 样式开发（一） shape</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-样式开发（一）-shape"><a href="#Android-样式开发（一）-shape" class="headerlink" title="Android 样式开发（一） shape"></a>Android 样式开发（一） shape</h1><p><img src="/thumbnails/t1.jpg" alt=""></p>
+<h2 id="转载自"><a href="#转载自" class="headerlink" title="转载自"></a>转载自</h2><p><a href="http://keeganlee.me/post/android/20150830">Keegan小钢 Android样式的开发:shape篇</a>。 对其中一些知识做了扩充，感谢钢哥提供这么详细的总结！</p>
+<p>一个应用，应该保持一套统一的样式，包括 Button、EditText、ProgressBar、Toast、Checkbox 等各种控件的样式，还包括控件间隔、文字大小和颜色、阴影等等。web的样式用css来定义，而 android 的样式主要则是通过 shape、selector、layer-list、level-list、style、theme 等组合实现。我将用一系列文章，循序渐进地讲解样式的每个方面该如何实现。第一个要讲的就是 shape，最基础的形状定义工具。</p>
+<p>一般用shape定义的xml文件存放在drawable目录下，若项目没有该目录则新建一个，而不要将它放到drawable-hdpi等目录中。</p>
+<p>使用shape可以自定义形状，可以定义下面四种类型的形状，通过android:shape属性指定：<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI/">UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘/">备忘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/Android 样式开发（一） shape/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android 动画知识总结篇" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android 动画知识总结篇/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Android 动画知识总结篇/">Android 动画知识总结篇</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>目录</strong></p>
+<ul>
+<li>动画分类</li>
+<li>Drawable 动画</li>
+<li>Tween 动画</li>
+<li>Property 动画</li>
+<li>插值器和估值器原理</li>
+<li>参考文献</li>
+</ul>
+<h2 id="动画分类"><a href="#动画分类" class="headerlink" title="动画分类"></a>动画分类</h2><p>在 Android 体系中提供给我们提供了两种动画框架：View Animation 和 Property Animation 视图动画和属性动画。其中属性动画是在 Android 3.0 之后才引入到 Android 框架中的，所以如果想兼容 3.0 之前的Android版本需要添加第三方lib库。除了这两种动画外还有一种 Drawable 动画或者叫Frame Aniamtion，因为是对图片的切换造成动画的效果所以动画分类一般也可以不说它。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI/">UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动效/">动效</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/Android 动画知识总结篇/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android基础(一)Activity" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android基础(一)Activity/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Android基础(一)Activity/">Android 基础（一）Activity</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-基础（一）Activity"><a href="#Android-基础（一）Activity" class="headerlink" title="Android 基础（一）Activity"></a>Android 基础（一）Activity</h1><p><img src="/image/android_activity_lifecycle.png" alt=""></p>
+<p><strong>原创文章，转载请注明出处</strong></p>
+<h2 id="文章目录："><a href="#文章目录：" class="headerlink" title="文章目录："></a>文章目录：</h2><ul>
+<li>概要</li>
+<li>Activity 基础知识；</li>
+<li>任务和后退栈；</li>
+<li>Activity 启动模式；</li>
+<li>Activity 数据共享</li>
+<li>Activity 、 FragmentActivity 、ActionBarActivity 、AppCompatActivity联系与区别；</li>
+<li>Activity 切换效果；</li>
+<li>总结。
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activity/">Activity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-基础/">Android 基础</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/Android基础(一)Activity/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android备忘录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android备忘录/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Android备忘录/">Android 备忘录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-备忘录"><a href="#Android-备忘录" class="headerlink" title="Android 备忘录 "></a>Android 备忘录 </h1><p><img src="/thumbnails/note.png" alt=""></p>
+<p>&emsp;Android 开发已经有一段时间了，每天遇到坑也蛮多的，每天也能学习到很多新的知识，每天进步一点点，希望自己能坚持写下去博客。</p>
+<h2 id="JAVA-位运算"><a href="#JAVA-位运算" class="headerlink" title="JAVA 位运算"></a>JAVA 位运算</h2><p>&emsp;经常在代码中看到位运算操作，这里对位运算做下。这里的位运算主要是指 JAVA。位运算<a href="http://blog.csdn.net/xiaochunyong/article/details/7748713">基础概念</a>这里需要注意的是位运算支持的类型和 java 中类型的<a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">位数</a><br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘/">备忘</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/Android备忘录/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android_NDK_编译总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android_NDK_编译总结/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Android_NDK_编译总结/">Android Studio NDK 编译总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&emsp;最近想做一个高斯模糊的效果，像这种图像处理是比较耗时的。大多开发者都是编译so库来实现性能上的优化。昨天花了小半天时间调试安装Android Studio的NDK的编译环境，踩了好几个雷这里做下总结。</p>
+<p><strong>目录:</strong></p>
+<ol>
+<li>NDK Android Studio环境的配置</li>
+<li>Android Studio 编译JNI文件</li>
+<li>手动编译JNI文件
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NDK/">NDK</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/Android_NDK_编译总结/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android样式开发（二） selector" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android样式开发（二） selector/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Android样式开发（二） selector/">Android 样式开发（二） selector</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-样式开发（二）-selector"><a href="#Android-样式开发（二）-selector" class="headerlink" title="Android 样式开发（二） selector"></a>Android 样式开发（二） selector</h1><p><img src="/thumbnails/Planet-Space-Art.jpg" alt=""><br>转载：<a href="http://keeganlee.me/post/android/20150905"><em>Keegan小钢<br>Android样式的开发:selector篇</em></a></p>
+<p>跟上一篇一样这是钢哥的blog的文章这里做了转载并加上自己的一些理解。</p>
+<p>上一篇详细讲了shape的用法，讲解了怎么用shape自定义矩形、圆形、线形和环形，以及有哪些需要注意的地方。不过，shape只能定义单一的形状，而实际应用中，很多地方比如按钮、Tab、ListItem等都是不同状态有不同的展示形状。举个例子，一个按钮的背景，默认时是一个形状，按下时是一个形状，不可操作时又是另一个形状。有时候，不同状态下改变的不只是背景、图片等，文字颜色也会相应改变。而要处理这些不同状态下展示什么的问题，就要用selector来实现了。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI/">UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘/">备忘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/Android样式开发（二） selector/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Hexo_Tutorial" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Hexo_Tutorial/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Hexo_Tutorial/">Hexo_Tutorial</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Hexo操作指南"><a href="#Hexo操作指南" class="headerlink" title="Hexo操作指南"></a>Hexo操作指南</h1><p><img src="/thumbnails/t1.jpg" alt=""><br>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/Hexo_Tutorial/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

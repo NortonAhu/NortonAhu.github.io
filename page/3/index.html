@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自己的强大才可以给家人带来幸福！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WinterFell">
+<meta property="og:url" content="http://nortonahu.github.io/page/3/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="自己的强大才可以给家人带来幸福！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WinterFell">
+<meta name="twitter:description" content="自己的强大才可以给家人带来幸福！">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+  
+    <article id="post-Sqlite_ContentProvider" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Sqlite_ContentProvider/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/Sqlite_ContentProvider/">Android SQlite</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Andorid-数据库相关知识总结"><a href="#Andorid-数据库相关知识总结" class="headerlink" title="Andorid 数据库相关知识总结"></a>Andorid 数据库相关知识总结</h1><p><img src="/thumbnails/SQLite_Logo.svg.png" alt=""></p>
+<p>&emsp;昨天在学习 Android 几个新的组件的时候，这个组件 <a href="https://github.com/Frank-Zhu/AndroidRecyclerViewDemo">demo</a> 数据库的模块设计感觉很不错的样子。之前用的数据库都是别人的框架，打算自己好好学习下。</p>
+<ul>
+<li>SQLiteDatabase</li>
+<li>SQLiteOpenHelper</li>
+<li>ContentProvider</li>
+<li>Cursor</li>
+<li>ContentResolver</li>
+<li>URI的说明</li>
+<li>LoadManager
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DB/">DB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQlite/">SQlite</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/Sqlite_ContentProvider/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-okhttp使用指南(一)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/okhttp使用指南(一)/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/okhttp使用指南(一)/">OkHttp 使用指南(一)--Calls</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OkHttp-使用指南-一-–Calls"><a href="#OkHttp-使用指南-一-–Calls" class="headerlink" title="OkHttp 使用指南(一)–Calls"></a>OkHttp 使用指南(一)–Calls</h1><p><img src="/thumbnails/okhttp_call.jpg" alt=""></p>
+<p>手打翻译<a href="https://github.com/square/okio">原文</a>，若转载本文请注明出处</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">&amp;emsp</span>;英语比较差翻译的不好，主要是没从网上找到合适中文版，各种 OkHttp 的中文介绍也觉得完全是站在一个使用者的角度立场上阐述。该文完全是按照官方的原文翻译，对刚了解 OkHttp 的人来说应该是一个很不错的借鉴。</div></pre></td></tr></table></figure>
+<h2 id="Calls-调用"><a href="#Calls-调用" class="headerlink" title="Calls(调用)"></a>Calls(调用)</h2><p>&emsp;Http 客户端的作用就是接受你的发送请求并且获得响应，这个在理论上是很简单但是实际上是很复杂的。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OkHttp/">OkHttp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Square/">Square</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/okhttp使用指南(一)/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-okhttp使用指南(四)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/okhttp使用指南(四)/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OkHttp-使用指南-五-–Https"><a href="#OkHttp-使用指南-五-–Https" class="headerlink" title="OkHttp 使用指南(五)–Https"></a>OkHttp 使用指南(五)–Https</h1><p><img src="/thumbnails/okhttp_https.jpg" alt=""><br>手打翻译<a href="https://github.com/square/okhttp/wiki/HTTPS">原文</a>，若转载本文请注明出处<br>&emsp;OkHttp 努力尝试将以下两个相互矛盾的问题达到平衡</p>
+<ul>
+<li>尽可能连接更多的 host，这里包括了使用最新版本的 <a href="https://boringssl.googlesource.com/boringssl/">boringssl</a> 的高级 host 也包括了那些还在使用过时旧版本的 <a href="https://www.openssl.org/">OpenSSL</a> host。</li>
+<li>安全性连接，这里包括了使用需要证书验证远程服务器和通过强加密算法加密的数据交互。
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OkHttp/">OkHttp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Square/">Square</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/okhttp使用指南(四)/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-okhttp使用指南(三)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/okhttp使用指南(三)/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/okhttp使用指南(三)/">OkHttp 使用指南(四)--Recipes</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OkHttp-使用指南-四-–Recipes"><a href="#OkHttp-使用指南-四-–Recipes" class="headerlink" title="OkHttp 使用指南(四)–Recipes"></a>OkHttp 使用指南(四)–Recipes</h1><p><img src="/thumbnails/okhttp_recipes.jpg" alt=""></p>
+<p>手打翻译<a href="https://github.com/square/okhttp/wiki/Recipes">原文</a>，若转载本文请注明出处</p>
+<p>&emsp;我们使用 OkHttp 写了很多方法例子来说明解决使用过程中遇到的常见的问题。通过阅读这些例子这些组件是怎么在一起工作的。粘贴复制这些例子是自由免费的，因为这就是这些例子的用途。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OkHttp/">OkHttp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Square/">Square</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/okhttp使用指南(三)/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-okhttp使用指南(五)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/okhttp使用指南(五)/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OkHttp-使用指南-二-–Connections"><a href="#OkHttp-使用指南-二-–Connections" class="headerlink" title="OkHttp 使用指南(二)–Connections"></a>OkHttp 使用指南(二)–Connections</h1><p><img src="/thumbnails/okhttp_connection.jpg" alt=""><br>手打翻译<a href="https://github.com/square/okhttp/wiki/Connections">原文</a>，若转载本文请注明出处<br>&emsp;尽管你使用 OkHttp 可能只需要提供的是一个 Url，但是在连接服务器的时候他用到了三个组件：URL、ADDRESS、ROUTE。</p>
+<p><strong>URLS</strong><br>&emsp;URLs (类似于 <a href="https://github.com/square/okhttp">https://github.com/square/okhttp</a>) 是对 HTTPS 和 Internet 访问的基本样式，除了是网络上普遍、分散命名访问网络外，他还可以指定怎么访问网络资源。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OkHttp/">OkHttp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Square/">Square</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/okhttp使用指南(五)/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-okhttp使用指南(二)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/okhttp使用指南(二)/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/okhttp使用指南(二)/">OkHttp 使用指南(三)--Interceptors</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OkHttp-使用指南-三-–Interceptors"><a href="#OkHttp-使用指南-三-–Interceptors" class="headerlink" title="OkHttp 使用指南(三)–Interceptors"></a>OkHttp 使用指南(三)–Interceptors</h1><p><img src="/thumbnails/okhttp_Interceptors.jpg" alt=""></p>
+<p>手打翻译<a href="https://github.com/square/okio">原文</a>，若转载本文请注明出处</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">前面是第一节，这里直接从第三节开始翻译，第二节对我们实际应用感觉不是很大，留着后面有时间再补上。</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OkHttp/">OkHttp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Square/">Square</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/05/okhttp使用指南(二)/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/04/hello-world/" class="article-date">
+  	<time datetime="2016-08-04T15:37:18.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/04/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-紫蓬山骑行" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/14/紫蓬山骑行/" class="article-date">
+  	<time datetime="2015-09-14T10:12:42.000Z" itemprop="datePublished">2015-09-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/14/紫蓬山骑行/">紫蓬山骑行</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/thumbnails/bicycletitle.jpg" alt=""></p>
+<h1 id="2015-09-13"><a href="#2015-09-13" class="headerlink" title="2015.09.13"></a>2015.09.13</h1><hr>
+<p>快乐骑行群紫蓬山绕山骑行</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/游山玩水/">游山玩水</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/我的世界/">我的世界</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

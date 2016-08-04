@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="OkHttp 使用指南(二)–Connections手打翻译原文，若转载本文请注明出处&amp;emsp;尽管你使用 OkHttp 可能只需要提供的是一个 Url，但是在连接服务器的时候他用到了三个组件：URL、ADDRESS、ROUTE。
+URLS&amp;emsp;URLs (类似于 https://github.com/square/okhttp) 是对 HTTPS 和 Internet 访问的基本样式，除">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WinterFell">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/okhttp使用指南(五)/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="OkHttp 使用指南(二)–Connections手打翻译原文，若转载本文请注明出处&amp;emsp;尽管你使用 OkHttp 可能只需要提供的是一个 Url，但是在连接服务器的时候他用到了三个组件：URL、ADDRESS、ROUTE。
+URLS&amp;emsp;URLs (类似于 https://github.com/square/okhttp) 是对 HTTPS 和 Internet 访问的基本样式，除">
+<meta property="og:image" content="http://nortonahu.github.io/thumbnails/okhttp_connection.jpg">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WinterFell">
+<meta name="twitter:description" content="OkHttp 使用指南(二)–Connections手打翻译原文，若转载本文请注明出处&amp;emsp;尽管你使用 OkHttp 可能只需要提供的是一个 Url，但是在连接服务器的时候他用到了三个组件：URL、ADDRESS、ROUTE。
+URLS&amp;emsp;URLs (类似于 https://github.com/square/okhttp) 是对 HTTPS 和 Internet 访问的基本样式，除">
+<meta name="twitter:image" content="http://nortonahu.github.io/thumbnails/okhttp_connection.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-okhttp使用指南(五)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/okhttp使用指南(五)/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OkHttp-使用指南-二-–Connections"><a href="#OkHttp-使用指南-二-–Connections" class="headerlink" title="OkHttp 使用指南(二)–Connections"></a>OkHttp 使用指南(二)–Connections</h1><p><img src="/thumbnails/okhttp_connection.jpg" alt=""><br>手打翻译<a href="https://github.com/square/okhttp/wiki/Connections" target="_blank" rel="external">原文</a>，若转载本文请注明出处<br>&emsp;尽管你使用 OkHttp 可能只需要提供的是一个 Url，但是在连接服务器的时候他用到了三个组件：URL、ADDRESS、ROUTE。</p>
+<p><strong>URLS</strong><br>&emsp;URLs (类似于 <a href="https://github.com/square/okhttp" target="_blank" rel="external">https://github.com/square/okhttp</a>) 是对 HTTPS 和 Internet 访问的基本样式，除了是网络上普遍、分散命名访问网络外，他还可以指定怎么访问网络资源。<br><a id="more"></a><br>URLs 是抽象的：</p>
+<ul>
+<li>他们指定的请求可能是纯文本的 (http://) 或者是加密的 (https://) 但不指定那一个加密算法被使用。也不指定怎么对host的认证(<a href="http://developer.android.com/reference/javax/net/ssl/HostnameVerifier.html" target="_blank" rel="external">HostnameVerifier</a>) 也不能指定哪一个授权证书被信任(<a href="http://developer.android.com/intl/zh-cn/reference/javax/net/ssl/HostnameVerifier.html" target="_blank" rel="external">SSLSocketFactory</a>)</li>
+<li>也不会指定那个代理服务器被使用以及怎么验证代理服务器。</li>
+</ul>
+<p>他们也是具体的：每一个url都会有一个指定路径(/square/okhttp)和查询(?q=sharks&amp;lang=en)。每一个 host 都会有很多 urls。</p>
+<p><strong>Address</strong><br>&emsp;address 指定与连服务端和服务器所有的静态配置信息（例如 github.com）:端口号、HTTPS 设置、首选的网络协议(SPDY 还是 HTTP/2)。<br>&emsp;URLs 共享地址也许潜在的共享 TCP 端口，共享连接有一个很明显的性能优势：低延迟、高吞吐、节约电源。OkHttp 使用<br><em>ConnectionPool</em> 来实现 HTTP/1.x 和多个 HTTP/2 、SPDY 连接的复用。<br>&emsp;在 OkHttp 中大部分地址的属性是来自 URL (端口、模式、主机名)，其他都是来自 OkHttpClient 本身。</p>
+<p><strong>Routes（路由）</strong><br>&emsp;路由在实际的连接中支持必要的动态信息，这是一个根据 DNS 查询获得特定的 IP 地址、代理服务器的选择 (<a href="http://developer.android.com/reference/java/net/ProxySelector.html" target="_blank" rel="external">ProxySelector</a>) 和确定 TLS 的版本。<br>&emsp;也许一个 IP 地址对应的是多个路由选择，例如 一个服务器被多个数据中心管理 这样在 DNS 响应中会获得多个 IP 地址。</p>
+<p><strong>Connections</strong><br>&emsp;当你通过 OkHttp 来访问一个连接的时候，下面是其主要流程：</p>
+<ul>
+<li>通过 URL 和 OkHttpClient 的配置信息创建出一个 address，这个 address 指定了我们该怎么来访问服务器；</li>
+<li>使用这个 address OkHttp 尝试从 Connection Pool 找到一个 address 连接；</li>
+<li>如果没有在 Connnection Pool 找到一个连接话，尝试选择一个 Route，这意味需要使用进行一个 DNS 请求来获得一个 服务器 IP 地址，然后选择 TLS 版本，如果有必要的话会选择代理服务器；</li>
+<li>如果是一个新的路线，这个连接或者是直接的 socket 连接一个 TLS 通道（ HTTP 或者 HTTPS），或者直接一个 TLS 连接。这个会进行必要的 TLS 握手操作。</li>
+<li>最后会发送请求和接受响应。</li>
+</ul>
+<p>&emsp;如果在连接的过程中遇到了错误，他会选择另外一个路线进行重试访问。这在服务器的其中一个 IP 不可达的状态下 OkHttp 可以恢复过来。这对于连接池满了或者尝试使用的 TLS 版本不支持的情况。<br>&emsp;一旦请求得到了响应，这个连接就会回到连接池中所以这个在未来的连接中可以被重复使用。连接池也会定期清理那些长时间不使用的连接。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/okhttp使用指南(三)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          OkHttp 使用指南(四)--Recipes
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/okhttp使用指南(二)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OkHttp 使用指南(三)--Interceptors</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="okhttp使用指南(五)" data-title="" data-url="http://nortonahu.github.io/2016/08/05/okhttp使用指南(五)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

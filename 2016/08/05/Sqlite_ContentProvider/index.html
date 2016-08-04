@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android SQlite | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Andorid 数据库相关知识总结
+&amp;emsp;昨天在学习 Android 几个新的组件的时候，这个组件 demo 数据库的模块设计感觉很不错的样子。之前用的数据库都是别人的框架，打算自己好好学习下。
+
+SQLiteDatabase
+SQLiteOpenHelper
+ContentProvider
+Cursor
+ContentResolver
+URI的说明
+LoadManager">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android SQlite">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Sqlite_ContentProvider/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="Andorid 数据库相关知识总结
+&amp;emsp;昨天在学习 Android 几个新的组件的时候，这个组件 demo 数据库的模块设计感觉很不错的样子。之前用的数据库都是别人的框架，打算自己好好学习下。
+
+SQLiteDatabase
+SQLiteOpenHelper
+ContentProvider
+Cursor
+ContentResolver
+URI的说明
+LoadManager">
+<meta property="og:image" content="http://nortonahu.github.io/thumbnails/SQLite_Logo.svg.png">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android SQlite">
+<meta name="twitter:description" content="Andorid 数据库相关知识总结
+&amp;emsp;昨天在学习 Android 几个新的组件的时候，这个组件 demo 数据库的模块设计感觉很不错的样子。之前用的数据库都是别人的框架，打算自己好好学习下。
+
+SQLiteDatabase
+SQLiteOpenHelper
+ContentProvider
+Cursor
+ContentResolver
+URI的说明
+LoadManager">
+<meta name="twitter:image" content="http://nortonahu.github.io/thumbnails/SQLite_Logo.svg.png">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Sqlite_ContentProvider" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Sqlite_ContentProvider/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android SQlite
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DB/">DB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQlite/">SQlite</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Andorid-数据库相关知识总结"><a href="#Andorid-数据库相关知识总结" class="headerlink" title="Andorid 数据库相关知识总结"></a>Andorid 数据库相关知识总结</h1><p><img src="/thumbnails/SQLite_Logo.svg.png" alt=""></p>
+<p>&emsp;昨天在学习 Android 几个新的组件的时候，这个组件 <a href="https://github.com/Frank-Zhu/AndroidRecyclerViewDemo" target="_blank" rel="external">demo</a> 数据库的模块设计感觉很不错的样子。之前用的数据库都是别人的框架，打算自己好好学习下。</p>
+<ul>
+<li>SQLiteDatabase</li>
+<li>SQLiteOpenHelper</li>
+<li>ContentProvider</li>
+<li>Cursor</li>
+<li>ContentResolver</li>
+<li>URI的说明</li>
+<li>LoadManager<a id="more"></a>
+<h2 id="SQLiteDatabase-详解"><a href="#SQLiteDatabase-详解" class="headerlink" title="SQLiteDatabase 详解"></a>SQLiteDatabase 详解</h2></li>
+</ul>
+<p>&emsp;本来想从顶级组件 ContentProvider 讲起但是自己数据库知识忘得差不多了，所以这里从基本的数据库来讲。如果对 SQLiteDatabase 数据库知识有一定了解的可以跳过直接阅读下面的章节。</p>
+<p>SQLiteDatabase 数据库的要点：</p>
+<ul>
+<li>C 语言编写的嵌入式数据</li>
+<li>轻量级，袖珍型数据库，但最高可达 2TB。</li>
+<li>每个数据库都是以文件的形式存在的</li>
+<li>数据类型：</li>
+</ul>
+<blockquote>
+<p>SQLite支持NULL、INTEGER、REAL、TEXT 和 BLOB 数据类型，分别代表空值、整型值、浮点值、字符串文本、二进制对象。SQLite采用动态数据类型，当某个值插入到数据库时，SQLite将会检查它的类型，如果该类型与关联的列不匹配，SQLite 则会尝试将该值转换成该列的类型，如果不能转换，则该值将作为本身的类型存储，SQLite 称这为“弱类型”。但有一个特例，<strong>如果是INTEGER PRIMARY KEY，则其他类型不会被转换，会报一个“datatype missmatch”的错误</strong>。</p>
+</blockquote>
+<ul>
+<li>事务处理方面</li>
+</ul>
+<blockquote>
+<p>SQLite通过数据库级上的独占性和共享锁来实现独立事务处理。这意味着多个进程可以在同一时间从同一数据库读取数据，但只有一个可以写入数据。在某个进程或线程想数据库执行写操作之前，必须获得独占锁。在获得独占锁之后，其他的读或写操作将不会再发生。</p>
+</blockquote>
+<p>详细信息可看这位大牛 blog：<a href="http://blog.csdn.net/liuhe688/article/details/6712782" target="_blank" rel="external">SQLite数据库简介</a></p>
+<h2 id="Android使用SQLiteDatabase"><a href="#Android使用SQLiteDatabase" class="headerlink" title="Android使用SQLiteDatabase"></a>Android使用SQLiteDatabase</h2><p>代码示例：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    @Bind(R.id.info)</div><div class="line">    TextView mTextView;</div><div class="line">    SQLiteDatabase db;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> TAB_NAME = <span class="string">"test.db"</span>;</div><div class="line">    @Override</div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        ButterKnife.bind(<span class="keyword">this</span>);</div><div class="line">        setTitle(AppContext.string(R.string.app_name_ch));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> onResume() &#123;</div><div class="line">        <span class="keyword">super</span>.onResume();</div><div class="line">        dataBaseOperation();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    <span class="keyword">public</span> <span class="built_in">boolean</span> onCreateOptionsMenu(Menu menu) &#123;</div><div class="line">        <span class="comment">// Inflate the menu; this adds items to the action bar if it is present.</span></div><div class="line">        getMenuInflater().inflate(R.menu.menu_main, menu);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">void</span> dataBaseOperation() &#123;</div><div class="line">        db = openOrCreateDatabase(TAB_NAME, Context.MODE_PRIVATE, <span class="keyword">null</span>);</div><div class="line">        db.execSQL(<span class="string">"DROP TABLE IF EXISTS person"</span>);</div><div class="line">        <span class="comment">// 创建 person 表</span></div><div class="line">        db.execSQL(<span class="string">"CREATE TABLE person (_id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, age SMALLINT)"</span>);</div><div class="line"></div><div class="line">        Person person = <span class="keyword">new</span> Person();</div><div class="line">        person.name = <span class="string">"LiLei"</span>;</div><div class="line">        person.age = <span class="number">12</span>;</div><div class="line">        <span class="comment">// 插入数据</span></div><div class="line">        db.execSQL(<span class="string">"INSERT INTO person VALUES (NULL, ?, ?)"</span>,<span class="keyword">new</span> <span class="keyword">Object</span>[]&#123;person.getName(), person.getAge()&#125;);</div><div class="line">        Cursor <span class="built_in">cursor</span> = db.rawQuery(<span class="string">"SELECT * FROM PERSON "</span>, <span class="keyword">new</span> <span class="keyword">String</span>[]&#123;&#125;);</div><div class="line">        showDBInfo(<span class="built_in">cursor</span>);</div><div class="line"></div><div class="line">        person.name = <span class="string">"David"</span>;</div><div class="line">        person.age = <span class="number">45</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 使用 ContentValue (本身是一个 map) 采用键值对的方式插入数据库</span></div><div class="line"></div><div class="line">        ContentValues contentValues = <span class="keyword">new</span> ContentValues();</div><div class="line">        contentValues.put(<span class="string">"name"</span>, person.name);</div><div class="line">        contentValues.put(<span class="string">"age"</span>, person.age);</div><div class="line">        <span class="comment">// 插入数据库</span></div><div class="line">        db.insert(<span class="string">"person"</span>, <span class="keyword">null</span>, contentValues);</div><div class="line">        <span class="built_in">cursor</span> = db.rawQuery(<span class="string">"SELECT * FROM PERSON "</span>, <span class="keyword">new</span> <span class="keyword">String</span>[]&#123;&#125;);</div><div class="line">        showDBInfo(<span class="built_in">cursor</span>);</div><div class="line"></div><div class="line">        contentValues = <span class="keyword">new</span> ContentValues();</div><div class="line">        contentValues.put(<span class="string">"age"</span>, <span class="number">58</span>);</div><div class="line">        <span class="comment">// 更新数据</span></div><div class="line">        db.update(<span class="string">"person"</span>, contentValues, <span class="string">"name = ?"</span>, <span class="keyword">new</span> <span class="keyword">String</span>[]&#123;<span class="string">"LiLei"</span>&#125;);</div><div class="line">        <span class="built_in">cursor</span> = db.rawQuery(<span class="string">"SELECT * FROM PERSON "</span>, <span class="keyword">new</span> <span class="keyword">String</span>[]&#123;&#125;);</div><div class="line">        showDBInfo(<span class="built_in">cursor</span>);</div><div class="line">        <span class="comment">// 按条件查找</span></div><div class="line">        <span class="built_in">cursor</span> = db.rawQuery(<span class="string">"SELECT * FROM PERSON WHERE AGE &gt;= ?"</span>,<span class="keyword">new</span> <span class="keyword">String</span>[]&#123;<span class="string">"46"</span>&#125;);</div><div class="line">        showDBInfo(<span class="built_in">cursor</span>);</div><div class="line"></div><div class="line">        <span class="comment">// 删除数据</span></div><div class="line">        db.delete(<span class="string">"person"</span>,<span class="string">"name = ?"</span>, <span class="keyword">new</span> <span class="keyword">String</span>[]&#123;<span class="string">"LiLei"</span>&#125;);</div><div class="line">        <span class="built_in">cursor</span> = db.rawQuery(<span class="string">"SELECT * FROM PERSON "</span>, <span class="keyword">new</span> <span class="keyword">String</span>[]&#123;&#125;);</div><div class="line">        showDBInfo(<span class="built_in">cursor</span>);</div><div class="line">        </div><div class="line">        <span class="built_in">cursor</span>.close();</div><div class="line"></div><div class="line">        <span class="comment">// 删除数据</span></div><div class="line">        deleteDatabase(TAB_NAME);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    <span class="keyword">public</span> <span class="built_in">boolean</span> onOptionsItemSelected(MenuItem item) &#123;</div><div class="line">        <span class="comment">// Handle action bar item clicks here. The action bar will</span></div><div class="line">        <span class="comment">// automatically handle clicks on the Home/Up button, so long</span></div><div class="line">        <span class="comment">// as you specify a parent activity in AndroidManifest.xml.</span></div><div class="line">        <span class="built_in">int</span> id = item.getItemId();</div><div class="line"></div><div class="line">        <span class="comment">//noinspection SimplifiableIfStatement</span></div><div class="line">        <span class="keyword">if</span> (id == R.id.action_settings) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> onDestroy() &#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        ButterKnife.unbind(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">void</span> showDBInfo(Cursor <span class="built_in">cursor</span>) &#123;</div><div class="line">        <span class="comment">// TODO 以前记得这里是要注意的</span></div><div class="line">        <span class="keyword">while</span>(<span class="built_in">cursor</span>.moveToNext())&#123;</div><div class="line">            <span class="built_in">int</span> _id = <span class="built_in">cursor</span>.getInt(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"_id"</span>));</div><div class="line">            <span class="keyword">String</span> name = <span class="built_in">cursor</span>.getString(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"name"</span>));</div><div class="line">            <span class="built_in">int</span> age = <span class="built_in">cursor</span>.getInt(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"age"</span>));</div><div class="line">            Log.e(<span class="string">"yhtest"</span>, <span class="string">"_id = "</span> + _id + <span class="string">", name = "</span> + name + <span class="string">", age="</span> + age);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="SQLiteOpenHelper"><a href="#SQLiteOpenHelper" class="headerlink" title="SQLiteOpenHelper"></a>SQLiteOpenHelper</h2><p>&emsp;创建数据库的抽象类，属于数据库的辅助类，主要作用是创建数据库，创建数据表和删除数据库表;<br>&emsp;在构造函数中中实现对数据库的创建，oncreate中实现表的创建，onUpgrade实现数据库表的更新和删除。</p>
+<ul>
+<li>void onCreate(SQLiteDatabase db) 数据库第一次生成的时候会调用这个方法，一般我们在这个方法里边生成 <strong>数据库表</strong></li>
+<li>void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) 当数据库需要升级的时候，Android系统会主动的调用这个方法。一般会在这里调用删除数据表建立新的数据表，同时这里也可以做其他的方法</li>
+<li>其他的可以暂时不考虑</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBHelper</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"DBHelper"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TABLE_NAME = <span class="string">"person"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DATABASE_NAME = Environment.getExternalStorageDirectory() + File.separator + <span class="string">"db"</span> +</div><div class="line">            File.separator + <span class="string">"test.db"</span>;</div><div class="line"><span class="comment">//        public static final String DATABASE_NAME = "test.db";</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DB_BASE_VERSION = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DBHelper</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO CursorFactory 使用默认值 设置为null 需要了解下</span></div><div class="line">        <span class="keyword">super</span>(context, DATABASE_NAME, <span class="keyword">null</span>, DB_BASE_VERSION);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 第一次创建数据库的时候会调用，之后就不会调用了</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>&#123;</div><div class="line">        Log.e(TAG, <span class="string">"onCreate"</span>);</div><div class="line">        db.execSQL(<span class="string">"CREATE TABLE IF NOT EXISTS "</span> + TABLE_NAME + <span class="string">" (_id INTEGER PRIMARY KEY , name VARCHAR, age INTEGER, info TEXT)"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// DATABASE_VERSION 值被改为2时，系统发现数据库版本不同的时候 会调用更新方法</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>&#123;</div><div class="line">        Log.e(TAG, <span class="string">"onUpgrade"</span>);</div><div class="line">        db.execSQL(<span class="string">"ALERT TABLE "</span> + TABLE_NAME + <span class="string">" ADD COLUMN other STRING"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOpen</span><span class="params">(SQLiteDatabase db)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onOpen(db);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDowngrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDowngrade(db, oldVersion, newVersion);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><p>&emsp;这是 Android 的顶级组件之一完全可以单独开一篇重新开讲。简单的说就是给外面提供数据的。不光可以给自身应用提供数据也可以暴露给外部让外部组件知道数据的提供。详细内容以后再讲吧</p>
+<h2 id="ContentResolver"><a href="#ContentResolver" class="headerlink" title="ContentResolver"></a>ContentResolver</h2><p>&emsp;外界的程序通过ContentResolver接口可以访问ContentProvider提供的数据，在Activity当中通过getContentResolver()可以得到当前应用的 ContentResolver实例。ContentResolver实例。ContentResolver提供的接口和ContentProvider中需要实现的接口对应，具体可以查看API Doc，不过可以发现ContentResolver里面的方法很多都是final或者static的。在实际应用中，我们很少实现ContentResolver抽象类，更多时候通过getContentResolver()从一个Activity或其它应用程序组件的实现里获取一个ContentResolver：<br><figure class="highlight fix"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">ContentResolver cr </span>=<span class="string"> getContentResolver();</span></div></pre></td></tr></table></figure></p>
+<p><strong> 当初始化一个查询时，Android系统识别查询目标的内容提供器并确保它正在运行。系统实例化所有的ContentProvider对象；你从来不需要自己做。事实上，你从来不会直接处理ContentProvider对象。通常，对于每个类型的ContentProvider只有一个简单的实例。但它能够和不同应用程序和进程中的多个ContentProvider对象通讯。进程间的交互通过ContentResolver和ContentProvider类处理。</strong></p>
+<h2 id="URI-说明"><a href="#URI-说明" class="headerlink" title="URI 说明"></a>URI 说明</h2><p>&emsp;每个Content Provider都需要公开一个URI来标识它的数据集。一个控制多个数据集（多个表）的Content Provider为每一个数据集暴露一个单独的URI。而URIs都以字符串”content://“开始。这个content:形式表明了这个数据正被一个Content Provider控制着。<br>A：标准前缀，用来说明一个Content Provider控制这些数据，无法改变的；<br>B：URI的权限部分，它定义了是哪个Content Provider提供这些数据。对于第三方应用程序，为了保证URI标识的唯一性，它必须是一个完整的、小写的 类名。这个标识在<provider> 元素的 authorities属性中说明：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;provider <span class="built_in">name</span>=<span class="string">".TransportationProvider"</span></div><div class="line">          authorities=<span class="string">"com.example.transportationprovider"</span></div><div class="line">          . . .  &gt;</div></pre></td></tr></table></figure></provider></p>
+<p>C：用来判断请求数据类型的路径。Content Provider使用这些路径来确定当前需要生什么类型的数据。这可以是0或多个段长。如果内容提供器只暴露了一种数据类型（比如，只有火车），这个分段可以没有。如果提供器暴露若干类型，包括子类型，那它可以是多个分段长-例如，提供”land/bus”, “land/train”, “sea/ship”, 和”sea/submarine”这4个可能的值。<br>D：被请求的特定记录的ID。如果URI中包含，表示需要获取的记录的ID；如果没有ID，就表示返回全部，这个分段和尾部的斜线会被忽略；<br>现在应该明白ContentResolver是通过URI来查询ContentProvider中提供的数据。除了URI以外，还必须知道需要获取的数据段的名称，以及此数据段的数据类型。如果你需要获取一个特定的记录，你就必须知道当前记录的ID，也就是URI中D部分。</p>
+<p>创建一个好的 ContentProvider :<br>现在我们来创建一个ContentProvider。按照官方的说法，“要创建一个内容提供器，你必须：<br>· 建立一个保存数据的系统。大多数Content Provider使用Android的文件储存方法或SQLite数据库来存放它们的数据，但是你可以用任何你想要的方式来存放数据。实现SQLiteOpenHelper类来帮助你创建一个数据库以及SQLiteDatabase类来管理它。<br>· 扩展ContentProvider类来提供数据访问接口。<br>· 在清单manifest文件中为你的应用程序声明这个Content Provider（AndroidManifest.xml）。”<br>1.设计好一个实体类，定义好需要公开的变量，column，URI等<br>2.创建内部类实现SQLiteOpenHelper，用于创建更新数据表，以及后面的获取SQLiteDatabase引用<br>3.编写ContentProvider子类或者其他封装数据库操作的自定义类，包含上面的内部类<br>4.在AndroidManifest.xml的application element里面添加子element provider (和element activity同一层)，声明这个Content Provider</p>
+<h2 id="CursorLoader"><a href="#CursorLoader" class="headerlink" title="CursorLoader"></a>CursorLoader</h2><p>&emsp;LoaderManager.LoaderCallbacks是一个让客户与LoadManager进行交互的回调接口。<br>装载器，尤其是CursorLoader装载器，被期望用来保存被终止后的数据，这样就允许应用程序在Activity之间或Fragment的 onStop()和onStart()方法之间进行切换时保存数据，以便在用户返回应用程序时，它们不需要因数据重载而等待<br><strong> 这句话告诉了我们Loader被设计出来的作用是异步保存数据，app要使用某个数据源，不直接去调这个数据源，而是先用一个Loader去装载这个数据源，而且Loader自身由强大的功能可以监视这个数据源。不管数据源如何变化，Loader总能得到最新的数据；不管app如何变化，Loader中装载的数据不会销毁，因此app stop再start的时候不需要重新装载数据 </strong></p>
+<p>LoaderManager.LoaderCallbacks接口包含以下方法：</p>
+<ol>
+<li>onCreateLoader()—用给定的ID实例化并返回一个新的Loader对象；</li>
+<li>onLoaderFinished()—当之前创建的装载器已经完成它的装载时，调用这个方法；</li>
+<li>onLoaderReset()—当之前创建的装载器被重置时，调用这个方法，这样会使这个装载器的数据变的无效.</li>
+</ol>
+<p><strong> onCreateLoader </strong><br>当你想要访问一个装载器是时(例如，通过initLoader()方法（initLoader(int ID, Bundle args, LoaderCallbacks<d> callbacks)）)，它会检查指定ID的装载器是否存在，如果不存在，它会触发 LoaderManager.LoaderCallbacks的onCreateLoader()回调方法。这是创建一个新的装载器的地方，典型的是创建 一个CursorLoader装载器，但是你能够实现你自己的Loader类的子类 </d></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">CursorLoader</span>(Context context, Uri uri, <span class="keyword">String[] </span>projection, <span class="keyword">String </span><span class="keyword">selection, </span><span class="keyword">String[] </span><span class="keyword">selectionArgs, </span><span class="keyword">String </span>sortOrder)</div></pre></td></tr></table></figure>
+<p>Context：上下文所在的Activity<br>Uri：需要装载的数据的Uri<br>Projection：需要装载的数据的Column(列)的名称。如果为null的话，则装载所有，但效率不高<br>Selection：一个过滤器只装载的Row(行)的名称。如果为null的话，则装载所有。formatted as an SQL WHERE clause (excluding the WHERE itself)<br>SelectionArgs：You may include ?s in selection, which will be replaced by the values from selectionArgs, in the order that they appear in the selection. The values will be bound as Strings.<br>SortOrder：如何排列这些行， formatted as an SQL ORDER BY clause (excluding the ORDER BY itself)。为空的话则不指定排序</p>
+<p><a href="http://www.eoeandroid.com/blog-659748-8973.html" target="_blank" rel="external">详情</a></p>
+<h2 id="问题1-CursorLoader-和-ContentProvider-有什么关系两个是必须组合使用吗？"><a href="#问题1-CursorLoader-和-ContentProvider-有什么关系两个是必须组合使用吗？" class="headerlink" title="问题1 CursorLoader 和 ContentProvider 有什么关系两个是必须组合使用吗？"></a>问题1 CursorLoader 和 ContentProvider 有什么关系两个是必须组合使用吗？</h2><p>一个CursorLoader从ContentProvider中装载数据。我们也可以继承Loader或AsyncTaskLoader实现自己的子类从其它数据源装载数据；一般来说就用 ContentProvider 来加载吧</p>
+<h2 id="问题2-URI是啥"><a href="#问题2-URI是啥" class="headerlink" title="问题2 URI是啥"></a>问题2 URI是啥</h2><p><a href="http://blog.csdn.net/feng88724/article/details/6331396" target="_blank" rel="external">URI详细解答</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Gradle Of Android Studio/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Gradle Of Android Studio
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/okhttp使用指南(一)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OkHttp 使用指南(一)--Calls</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Sqlite_ContentProvider" data-title="Android SQlite" data-url="http://nortonahu.github.io/2016/08/05/Sqlite_ContentProvider/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

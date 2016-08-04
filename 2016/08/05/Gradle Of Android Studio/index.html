@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Gradle Of Android Studio | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="gradle
+gradle 是什么？
+  gradle 和 ant／maven 类似是一种依赖管理和自动构建的工具，区别于 ant／maven 使用的 xml 文件配置，他是使用 groovy 语言编写配置的。
+
+gradle 优点是什么？
+
+更容易重用资源和代码;
+可以更容易创建不同的版本的程序，多个类型的apk包；
+更容易配置，扩展;
+更好的IDE集成;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle Of Android Studio">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Gradle Of Android Studio/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="gradle
+gradle 是什么？
+  gradle 和 ant／maven 类似是一种依赖管理和自动构建的工具，区别于 ant／maven 使用的 xml 文件配置，他是使用 groovy 语言编写配置的。
+
+gradle 优点是什么？
+
+更容易重用资源和代码;
+可以更容易创建不同的版本的程序，多个类型的apk包；
+更容易配置，扩展;
+更好的IDE集成;">
+<meta property="og:image" content="http://nortonahu.github.io/\image/gradle_task_pane.png">
+<meta property="og:image" content="http://nortonahu.github.io/\image/gradle_sync_project_with_gradle_files.png">
+<meta property="og:image" content="http://nortonahu.github.io/\image/gradle _generate_resurce.png">
+<meta property="og:image" content="http://nortonahu.github.io/\image/gradle_combine_falvors.png">
+<meta property="og:image" content="http://nortonahu.github.io/\image/gradle_sign_info.png">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradle Of Android Studio">
+<meta name="twitter:description" content="gradle
+gradle 是什么？
+  gradle 和 ant／maven 类似是一种依赖管理和自动构建的工具，区别于 ant／maven 使用的 xml 文件配置，他是使用 groovy 语言编写配置的。
+
+gradle 优点是什么？
+
+更容易重用资源和代码;
+可以更容易创建不同的版本的程序，多个类型的apk包；
+更容易配置，扩展;
+更好的IDE集成;">
+<meta name="twitter:image" content="http://nortonahu.github.io/\image/gradle_task_pane.png">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Gradle Of Android Studio" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Gradle Of Android Studio/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Gradle Of Android Studio
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h1><ul>
+<li><p>gradle 是什么？</p>
+<p>  gradle 和 ant／maven 类似是一种依赖管理和自动构建的工具，区别于 ant／maven 使用的 xml 文件配置，他是使用 groovy 语言编写配置的。</p>
+</li>
+<li><p>gradle 优点是什么？</p>
+<ul>
+<li>更容易重用资源和代码;</li>
+<li>可以更容易创建不同的版本的程序，多个类型的apk包；</li>
+<li>更容易配置，扩展;</li>
+<li>更好的IDE集成;<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>gradle project 和 Android Studio 是有区别的，gradle 的 Project 对应是 Android Studio的 project 或者 module，Android Studio 每个 Project 都有一个 build 文件每个 module 也有一个 buid 文件。</li>
+<li>gradle project 和 task 的关系主要是一个 project 至少有一个 task，一个tasks包含了一系列动作，然后它们将会按照顺序执行，一个动作就是一段被执行的代码，很像Java中的方法。Tasks 在build.gradle 中定义。当初始化构建进程gradle会基于build文件，集合所有的project和tasks,</li>
+<li><p>gradle 有三个过程</p>
+<ul>
+<li>初始化阶段：project实例在这儿创建，如果有多个模块，即有多个build.gradle文件，多个project将会被创建。</li>
+<li>配置阶段：在该阶段，build.gradle脚本将会执行，为每个project创建和配置所有的tasks。</li>
+<li>执行阶段：这一阶段，gradle会决定哪一个tasks会被执行，哪一个tasks会被执行完全依赖开始构建时传入的参数和当前所在的文件夹位置有关。</li>
+</ul>
+</li>
+<li><p>android studio gradle 文件分为两类一种是模块内部的 build.gradle 和 project 的 build.gradle。</p>
+<ul>
+<li>build.gradle of Porject，如果创建一个基本的 Android Studio 工程生成的文件如下：</li>
+</ul>
+</li>
+</ol>
+<pre><code><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">	<span class="comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></div><div class="line"></div><div class="line"><span class="keyword">buildscript</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">dependencies</span> &#123;</div><div class="line">        <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:2.0.0-alpha5'</span></div><div class="line"></div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">        <span class="comment">// in the individual module build.gradle files</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">allprojects</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">task</span> clean(type: <span class="keyword">Delete</span>) &#123;</div><div class="line">    <span class="keyword">delete</span> rootProject.buildDir</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
+这是我新建一个工程自动生成的 top-project ，主要自动生成两个闭包（闭包的概念可以从前面的 groovy 语法基础中了解） buildscript 和 allprojects。
+
+* buildscript，定义全局的相关属性，从上面的代码中主要分为两块 repositories 和 dependencies。
+    * repositories，定义了使用的依赖库的来源，这里使用的 jcenter 库类似于 Maven 仓库，工程中各模块依赖包都是从这个仓库获取；
+    * dependencies，定义编译过程中依赖包，*classpath &apos;com.android.tools.build:gradle:2.0.0-alpha5&apos;* 这个是 Android 定义的 gradle 插件，现在发布的版本是 1.5.0，因为我使用的 AS 版本是预览版本所以这里是 2.0.0 - alpha5。这个 gradle plugin 的主要作用是指定 gradle 的版本和 Build Tools 的版本。当你更新 AS 的时候会自动帮你升级这个插件，有时侯我们下载别人的工程的时工程使用的 gradle 插件比我们当前使用的低很多，编译的时可能会出错一个很好解决办法就是在后面增加 “＋” 号来解决这个问题。例如 _classpath &apos;com.android.tools.build:gradle:2.0.0-alpha5+&apos;_ 。&lt;br&gt;
+</code></pre><ul>
+<li>allprojects，配置整个工程使用的依赖库，在这里配置了其他 module 就不在需要重新配置了。<blockquote>
+<p>大家可能很奇怪，为什么仓库repositories需要声明两次，这其实是由于它们作用不同，buildscript中的仓库是gradle脚本自身需要的资源，而allprojects下的仓库是项目所有模块需要的资源。所以大家千万不要配错了。</p>
+</blockquote>
+</li>
+</ul>
+<p>PPPS:</p>
+<blockquote>
+<p>注意：这里的配置只影响控制构建过程的代码，不影响项目源代码。项目本身需要声明自己的仓库和依赖关系。</p>
+</blockquote>
+<ul>
+<li>task clean ，整个 gradle 可以看成是一个大的容器，容器里面是由 task 组成的组件 plugin，我们前面配置的 <em>com.android.tools.build:gradle:2.0.0-alpha5</em> 的就是task 的插件的组合。</li>
+</ul>
+<ul>
+<li><p>gradle wrapper</p>
+<p>  这是 Android Studio 控制 gradle 版本的一个关键文件目录，打开 <em>gradle-wrapper.properties</em> 文件主要内容如下所示：</p>
+  <figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Sun Jan 31 14:34:18 CST 2016</span></div><div class="line"><span class="attr">distributionBase</span>=GRADLE_USER_HOME</div><div class="line"><span class="attr">distributionPath</span>=wrapper/dists</div><div class="line"><span class="attr">zipStoreBase</span>=GRADLE_USER_HOME</div><div class="line"><span class="attr">zipStorePath</span>=wrapper/dists</div><div class="line"><span class="attr">distributionUrl</span>=https\://services.gradle.org/distributions/gradle-<span class="number">2.10</span>-all.zip</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面的内容主要是设置编译 gradle 版本如果没有的话就会去下载相应版本的 gradle zip 文件包并解压到用户目录 .gradle/wrapper/dists 的文件夹中。明白这个东西有个好处就是因为每个人的 gradle 编译版本可能是不同，但是可以修改这个设置文件达到兼容当前工程的编译版本。设置好了之后在命令行运行 ./gradlew -v 就可以查看当前编译版本，如果没有的话的会下载对应的文件。<br>在这里值得一提的 gradle 版本和整个工程的 build.gradle 文件中 buildscript 闭包中定义 Android Studio 使用 构建 Android(其他亦可) 插件版本不一样。在整个工程的buildscript 中定义的这个插件决定工程模块使用 gradle 版本范围和 build tools 的版本。这个插件是有 Android Studio 版本决定的，具体的可以看下 Android Studio的官方网站<a href="http://tools.android.com/" target="_blank" rel="external">对应表</a>。</p>
+<ul>
+<li><p>gradle 和 gradlew 命令的区别</p>
+<p>  两者其实是一样的区别是后者是前者的包装，前者使用需要设置环境变量，需要下载 gradle 解压到电脑然后设置好才可以使用。gradlew 命令的执行需要在命令行中 cd 到对应的项目文件夹中（或者直接在 AS 中终端命令栏中）然后通过 执行 ./gradlew 命令执行，gradlew 是 gradle wrapper 的缩写它可以自动下载安装 gradle 文件。./gradlew 可以执行的命令有一下<br>  常用的几个命令执行：</p>
+<ul>
+<li><p>./gradlew assembleDebug</p>
+<p>  表示编译一个 debug 版本的 app 出来。整个工程编译；</p>
+</li>
+<li><p>./gradlew check </p>
+<p>  连接设备或者模拟器的情况下，运行所有的 test 的任务</p>
+</li>
+<li><p>./gradlew build</p>
+<p>  就是将 check 和 assemble 合起来执行 </p>
+</li>
+</ul>
+</li>
+<li><p>build.gradle of module</p>
+  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">apply</span> plugin: <span class="string">'com.android.application'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    <span class="attribute">compileSdkVersion</span> <span class="number">23</span></div><div class="line">    buildToolsVersion <span class="string">"23.0.2"</span></div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        <span class="attribute">applicationId</span> <span class="string">"com.bluecup.hongyu.gradlelearn"</span></div><div class="line">        minSdkVersion <span class="number">15</span></div><div class="line">        targetSdkVersion <span class="number">23</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        <span class="section">release</span> &#123;</div><div class="line">            <span class="attribute">minifyEnabled</span> <span class="literal">false</span></div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    <span class="attribute">compile</span> fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</div><div class="line">    testCompile <span class="string">'junit:junit:4.12'</span></div><div class="line">    compile <span class="string">'com.android.support:appcompat-v7:23.1.1'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>第一行 _apply plugin: &apos;com.android.application&apos;_ 正如前面说那样 Android Studio Gradle 的是 task 的插件化，从字面上可以看出来这是 Android 应用的插件。同样 gradle of Android module 提供两种插件一种就是上面的 Application 插件还有一种就是 Library 插件 _apply plugin: &apos;com.android.library&apos;_，加上插件的声明之后就可以在构建脚本中使用插件的属性和 tasks。
+
+**android闭包**
+
+* compileSdkVersion: 编译 SDK 版本；
+* buildToolsVersion: 编译工具版本,一般来说工具的版本号要调整为大于或者等于当前编译的SDK版本号和目标SDK版本号；
+
+
+**defaultConfig**
+配置对应 AndroidMainifest.xml 的选项，基本上大概都能看得懂要注意应该就两点：
+
+    1. 这里定义的属性对应所有版本都是生效的包括 debug 和 release 版本；
+    2. 其中 applicationId 和 packagename 属于两个不同的东西，应该来说在构建打包的时候 applicationId 会替换掉 AndroidManifest 文件中的 packagename 但是工程引入和packagename 有关的文件都是以前的 packagename 生成的，比如说 R 文件，这样做的好处多于同一个工程打出不同的包来，比如说测试版包和正式包二者可以同时安装在同一部设备上。
+</code></pre><p>小结一下，以上主要介绍 gradle 的一些基本原理知识，整个工程以及模块文件的作用和它们之间的相互作用，最后介绍一个容易迷糊的知识 Android Studio 插件版本的作用以及它和 gradle 的区别，简单的说就是前者定义了项目所要使用的版本和 buildTools 的版本范围。下面主要介绍依赖关系和自动构建知识。</p>
+<h2 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h2><p>task 是 AS gradle 插件的基本单元，Android 插件依赖的是 JAVA 插件，而 JAVA 插件依赖于 BASE 插件，BASE 插件定义了 tasks 和一些基本通用的属性， BASE 插件定义了 clean 和 assemble task, JAVA 插件定义了 build 和 check task。</p>
+<blockquote>
+<p>assemble: 集合所有的output<br><br>clean: 清除所有的output<br><br>check: 执行所有的checks检查，通常是unit测试和instrumentation测试<br><br>build: 执行所有的assemble和check<br></p>
+</blockquote>
+<p><strong>Android Task</strong></p>
+<p>Android task 继承基本上述基本的 task 内容针对 Android 做了一些定制具体的可以点击查看 <a href="http://segmentfault.com/a/1190000004234712?_ea=538654" target="_blank" rel="external">Gradle for Android 第二篇( Build.gradle入门 )</a>。<br>这里有个概念做下调研—— SourceSet 查看 gradle 源码解释这个是 Java代码资源和资源文件的逻辑集合，给了一个例子：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">apply</span> plugin: <span class="string">'java'</span></div><div class="line"></div><div class="line">sourceSets &#123;</div><div class="line">  <span class="section">main</span> &#123;</div><div class="line">    <span class="section">java</span> &#123;</div><div class="line">      <span class="attribute">exclude</span> <span class="string">'some/unwanted/package/**'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>See the example below how SourceSet ‘main’ is accessed and how the SourceDirectorySet ‘java’ is configured to exclude some package from compilation.</p>
+</blockquote>
+<p>从上面的解释上说支持排除某些资源文件，感觉类似于混淆的概念，但是混淆文件只是选择文件混淆还不混淆这个可以直接设置那些文件资源不参与 build 具体的 <a href="https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/SourceSet.html" target="_blank" rel="external">API</a>。</p>
+<p>第二要提出的是哪里可以看到这些 task 在 AS 界面有个 gradle 菜单栏点击打开界面如下<br><img src="\image/gradle_task_pane.png" alt=""><br>这下基本上就一目了然了，而且我们还可以不用在命令行敲这些代码，双击 task 就可以做到运行命令了。</p>
+<h2 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h2><p><strong>仓库</strong></p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class">repositories </span>&#123;</div><div class="line">    jcenter()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码中就是gradle 仓库的一种示例，repositories 表示的就是仓库的意思。gradle 支持三种不同的仓库，分别是：Maven和Ivy以及文件夹。依赖包会在你执行build构建的时候从这些远程仓库下载，当然Gradle会为你在本地保留缓存，所以一个特定版本的依赖包只需要下载一次。</p>
+<p>依赖需要三个要素，group, name, version,group意味着创建该library的组织名，通常这会是包名，name是该library的唯一标示。version是该library的版本号。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">       <span class="keyword">compile</span> <span class="string">'com.google.code.gson:gson:2.3'</span></div><div class="line">       <span class="keyword">compile</span> <span class="string">'com.squareup.retrofit:retrofit:1.9.0'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>远程仓库，有些组织，创建了一些有意思的插件或者library,他们更愿意把这些放在自己的maven库，而不是maven中心库或jcenter。那么当你需要是要这些仓库的时候，你只需要在maven方法中加入url地址就好：</p>
+</blockquote>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="section">repositories</span> &#123;</div><div class="line">       <span class="section">maven</span> &#123;</div><div class="line">           <span class="attribute">url</span> <span class="string">"http://repo.acmecorp.com/maven2"</span></div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>jar 和 aar</strong></p>
+<p>主要还是讲 aar 之前在 eclipse 中我们可以使用 jar 作为依赖包导入到工程中使用， AS 主要是以依赖模块的形式较多，编译完依赖模块生成的文件不是 .jar 文件而是 .aar 文件者表示这两个文件是可以作为 AS 的依赖包使用。区别主要是 jar 文件只包括了 class 文件工程中的 res 等资源是没办法包括的，反而 .aar 文件是包括这些文件如果你的工程库是 UI 库的话就需要你使用 aar 文件来引用。</p>
+<p>如果是使用 aar 文件而不是使用依赖工程的话，可以使用下面的方式建立一个 aar 的文件夹，然后把这个 aar 文件作为一个依赖库使用：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="section">repositories</span> &#123;</div><div class="line">    <span class="section">flatDir</span> &#123;</div><div class="line">        <span class="attribute">dirs</span> <span class="string">'aars'</span> </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>模块中引用的方式是</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">dependencies</span> &#123;</div><div class="line">       <span class="keyword">compile</span>(name:<span class="string">'libraryname'</span>, ext:<span class="string">'aar'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的意思是依赖在 aars 文件夹中有一个 libraryname 后缀名为 aar 文件。值得注意的是这些设置不是在工程级目录下，而是在模块级的目录下操作的，可以重新建文件夹也可以直接放在 libs 文件夹中执行。</p>
+<p>值得注意的是动态版本，使用动态版本依赖是为了解决依赖包更新的问题，缺点就是更新了可能出现最新版本的依赖包不稳定或者数据不同步的问题（可能来源不相同）所以链接中说的是慎重。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">       <span class="keyword">compile</span> <span class="string">'com.android.support:support-v4:22.2.+'</span></div><div class="line">       <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:22.2+'</span></div><div class="line">       <span class="keyword">compile</span> <span class="string">'com.android.support:recyclerview-v7:+'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第一行，我们告诉 gradle ,得到最新的生产版本。第二行，我们告诉 gradle ，我们想得到最新的 minor 版本，并且其最小的版本号是2. 第三行，我们告诉 gradle ，得到最新的library。注意的是第一行和第二行的区别在于第二行最后少了一个点 minor 次一级版本关于软件的版本号知识可以查看<a href="http://baike.baidu.com/link?url=19T4gpX7KHaXo2BwCc0zdPssMkfbX0N2N2tpBmRQ8wU-Kn2w4adKQ-oeZs1kasLDyt5eNCmf20KAYLGo6awSdK" target="_blank" rel="external">链接</a>。</p>
+<p><strong>native 包引入</strong></p>
+<p>so 动态库的导入，Android 插件在默认情况下支持自动导入 so 动态库。</p>
+<p>文件的目录结构</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">app</div><div class="line">   ├── AndroidManifest<span class="selector-class">.xml</span></div><div class="line">   └── jniLibs</div><div class="line">       ├── armeabi</div><div class="line">       │   └── nativelib<span class="selector-class">.so</span></div><div class="line">       ├── armeabi-v7a</div><div class="line">       │   └── nativelib<span class="selector-class">.so</span></div><div class="line">       ├── mips</div><div class="line">       │   └── nativelib<span class="selector-class">.so</span></div><div class="line">       └── x86</div><div class="line">           └── nativelib.so</div></pre></td></tr></table></figure>
+<p><strong>配置</strong></p>
+<p>依赖管理的配置主要针对各种依赖是否需要在打包的时候编译到 APK 包里，意思很简单就是 Android SDK 是编译所必需的但是在打 SDK 包的时候不会将这块代码打到包里因为你的设备上已经有了这个环境了。在 AS 中主要有以下几类的依赖配置：</p>
+<ul>
+<li>compile: 见的最多这种配置会讲依赖的资源编译在打包的时候打到 APK 中；</li>
+<li>apk: 没见过，参考文献上说这种资源不会编译会打到 apk 中；</li>
+<li>provide: 会参与编译但是不会将资源打入 apk 包里；</li>
+<li>testCompile:</li>
+<li>androidTestCompile:</li>
+</ul>
+<p>后两种都是测试依赖包配置，这些配置将会被用在测试相关的tasks中，这会对添加测试框架例如JUnit或者Espresso非常有用，因为你只是想让这些框架们能够出现在测试apk中，而不是生产apk中。</p>
+<h2 id="自定义构建"><a href="#自定义构建" class="headerlink" title="自定义构建"></a>自定义构建</h2><p><strong>构建版本</strong></p>
+<p> 定义一个 app 或者依赖库该如何被构建。</p>
+<p>这里把这个拎出来是因为我在这块有一个疑问我经常遇到 AS 问题不停的 MAKE 或者点击一个按钮：<br><img src="\image/gradle_sync_project_with_gradle_files.png" alt=""></p>
+<p>点击这个按钮会提示你 <em>sync project with gradle files</em> 以前以为这个是 gradle 的编译按钮可见当时是如此的马虎，从字面上解释通过 gradle 文件来完成工程的同步，这个按钮执行的操作是 generateDebugSources tasks 生成工程所需要的 class 文件<br><img src="\image/gradle _generate_resurce.png" alt=""></p>
+<p>能生成的资源还是蛮多，这个就能解释一个常见的 gradle 操作 BuidlConfig 定义参数设置<br>使用上面链接的例子</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="section">buildTypes</span> &#123;</div><div class="line">        <span class="section">debug</span> &#123;</div><div class="line">            <span class="attribute">buildConfigField</span> <span class="string">"String"</span>, <span class="string">"API_URL"</span>, <span class="string">"\"http://test.example.com/api\""</span></div><div class="line">            buildConfigField <span class="string">"boolean"</span>, <span class="string">"LOG_HTTP_CALLS"</span>, <span class="string">"true"</span></div><div class="line">        &#125;</div><div class="line">        release &#123;</div><div class="line">            <span class="attribute">buildConfigField</span> <span class="string">"String"</span>, <span class="string">"API_URL"</span>, <span class="string">"\"http://example.com/api\""</span></div><div class="line">            buildConfigField <span class="string">"boolean"</span>, <span class="string">"LOG_HTTP_CALLS"</span>,<span class="string">"false"</span></div><div class="line">            minifyEnabled <span class="literal">false</span></div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>点击上面的按钮完成之后就可以直接在代码中引用这个变量的而这个变量值会根据相应的构建版本进行区别。这里就比较像 ant ＋ shell 脚本执行替换相应的单位的操作了。在代码中引用的例子如下：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        Log.d(TAG, <span class="string">"onCreate: "</span> + BuildConfig.API_URL);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>initWith()</em> 是构建版本的继承使用，可以继承已经定义好的构建版本的属性设置的信息，并且还可以做相应的覆盖操作：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">staging.initWith(buildTypes.debug)</div><div class="line">staging &#123;</div><div class="line">    applicationIdSuffix <span class="string">".staging"</span></div><div class="line">    versionNameSuffix <span class="string">"-staging"</span></div><div class="line">    buildConfigField(<span class="string">"String"</span>, <span class="string">"API"</span>, <span class="string">"<span class="subst">\"</span>staging<span class="subst">\"</span>"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Source Sets</strong></p>
+<p>Source Sets 表示的是资源管理，不同的构建版本会有用到不同的资源，AS 默认是多少个构建版本就会有多少个 Source Sets 版本，这其中除了 main 是自动生成的外其他的构建版本是不会自动生成的需要我们手动去建立。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">app</div><div class="line">└── src</div><div class="line">├── debug</div><div class="line">│ ├── java</div><div class="line">       │   │   └── com<span class="selector-class">.package</span></div><div class="line"> │ │</div><div class="line">│ ├── res</div><div class="line">│ │ └── layout</div><div class="line">│   │       └── activity_main<span class="selector-class">.xml</span></div><div class="line">│   └── AndroidManifest<span class="selector-class">.xml</span></div><div class="line">├── main</div><div class="line">│ ├── java</div><div class="line">│   │   └── com<span class="selector-class">.package</span></div><div class="line">│ │</div><div class="line">│ ├── res</div><div class="line">└── MainActivity<span class="selector-class">.java</span></div><div class="line">└── Constants<span class="selector-class">.java</span></div><div class="line">│ │</div><div class="line">│ │</div><div class="line">│ │</div><div class="line">│   └── AndroidManifest<span class="selector-class">.xml</span></div><div class="line">├── staging</div><div class="line">│ ├── java</div><div class="line">│   │   └── com<span class="selector-class">.package</span></div><div class="line">├── drawable</div><div class="line">└── layout</div><div class="line">└── activity_main<span class="selector-class">.xml</span></div><div class="line">│ │</div><div class="line">│ ├── res</div><div class="line">│ │ └── layout</div><div class="line">│   │       └── activity_main<span class="selector-class">.xml</span></div><div class="line">│   └── AndroidManifest<span class="selector-class">.xml</span></div><div class="line">└── release</div><div class="line">    ├── java</div><div class="line">    │   └── com<span class="selector-class">.package</span></div><div class="line">    │       └── Constants<span class="selector-class">.java</span></div><div class="line">    └── AndroidManifest.xml</div></pre></td></tr></table></figure>
+<p>当使用不同的 SourceSets 的时候，资源文件的处理需要特殊的方式。Drawables和layout文件将会复写在main中的重名文件，但是values文件下的资源不会。gradle将会把这些资源连同main里面的资源一起合并。</p>
+<p>这里举个例子就是修改 app name 上面定义了一个新的构建版本 staging 版本文件目录树如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">── androidTest</div><div class="line">│   └── java</div><div class="line">│       └── com</div><div class="line">│           └── bluecup</div><div class="line">│               └── hongyu</div><div class="line">│                   └── gradlelearn</div><div class="line">│                       └── ApplicationTest<span class="selector-class">.java</span></div><div class="line">├── main</div><div class="line">│   ├── AndroidManifest<span class="selector-class">.xml</span></div><div class="line">│   ├── java</div><div class="line">│   │   └── com</div><div class="line">│   │       └── bluecup</div><div class="line">│   │           └── hongyu</div><div class="line">│   │               └── gradlelearn</div><div class="line">│   │                   └── MainActivity<span class="selector-class">.java</span></div><div class="line">│   └── res</div><div class="line">│       ├── drawable</div><div class="line">│       ├── layout</div><div class="line">│       │   └── activity_main<span class="selector-class">.xml</span></div><div class="line">│       ├── mipmap-hdpi</div><div class="line">│       │   └── ic_launcher<span class="selector-class">.png</span></div><div class="line">│       ├── mipmap-mdpi</div><div class="line">│       │   └── ic_launcher<span class="selector-class">.png</span></div><div class="line">│       ├── mipmap-xhdpi</div><div class="line">│       │   └── ic_launcher<span class="selector-class">.png</span></div><div class="line">│       ├── mipmap-xxhdpi</div><div class="line">│       │   └── ic_launcher<span class="selector-class">.png</span></div><div class="line">│       ├── mipmap-xxxhdpi</div><div class="line">│       │   └── ic_launcher<span class="selector-class">.png</span></div><div class="line">│       ├── values</div><div class="line">│       │   ├── colors<span class="selector-class">.xml</span></div><div class="line">│       │   ├── dimens<span class="selector-class">.xml</span></div><div class="line">│       │   ├── strings<span class="selector-class">.xml</span></div><div class="line">│       │   ├── styles<span class="selector-class">.xml</span></div><div class="line">│       │   └── value<span class="selector-class">.xml</span></div><div class="line">│       └── values-w820dp</div><div class="line">│           └── dimens<span class="selector-class">.xml</span></div><div class="line">├── staging</div><div class="line">│   └── res</div><div class="line">│       └── values</div><div class="line">│           └── strings<span class="selector-class">.xml</span></div><div class="line">└── test</div><div class="line">    └── java</div><div class="line">        └── com</div><div class="line">            └── bluecup</div><div class="line">                └── hongyu</div><div class="line">                    └── gradlelearn</div><div class="line">                        └── ExampleUnitTest.java</div></pre></td></tr></table></figure>
+<p>在 src 的下 main 的同级目录下又一个 staging 目录里面定义了一个 strings.xml 的文件该文件的内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"app_name"</span>&gt;</span>sstaging<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在 src 是这样定义如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"app_name"</span>&gt;</span>GradleLearn<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行的时候在左边的 IDE 面板 Build Varient 选择 stagging 构建版本运行就可以看到效果。</p>
+<p><em>注意事项</em></p>
+<ol>
+<li>当你添加一个Java类的时候，你需要知道以下过程，当你添加了CustomLogic.java到staging版本，你可以添加相同的类到debug和release版本，但是不能添加到main版本。如果你添加了，会抛出异常。</li>
+<li>新建这些资源文件的时候不能简单的通过新建 Android 资源文件，最好就是新建文件夹编译完成的时候会转换资源文件，这样主要防止文件名冲突。</li>
+</ol>
+<p><strong>依赖包</strong></p>
+<p>前面已经提过这个概念了就是 dependencies 这个容器定义好了依赖包，但是这个容器依赖的内容也是有区别的，前面介绍就不重复了。主要是针对各个构建版本可以定义依赖包比如说 debug 依赖包或者 release 依赖包。主要如下：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line"></div><div class="line">   <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">   <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:22.2.0'</span></div><div class="line">   debugCompile <span class="string">'de.mindpipe.android:android-logging-log4j:1.0.3'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>见的比较少这里不赘述。</p>
+<h2 id="product-flavors"><a href="#product-flavors" class="headerlink" title="product flavors"></a>product flavors</h2><p>product flavors 主要为 app 创建不同的版本，比如说收费 app 和免费 app 以及各个渠道包。主要是简化基于相同的代码构建不同版本的 app。再举一个例子假设这两个版本的 App，有一个类 DiffBean 需要做大量的逻辑判断，则可以通过在 build.gradle 中配置 product flavor，在代码中添加两个与 main 平齐的文件夹， 把 DiffBean 从 main 中抽出来，分别放在两个文件夹中，只关注对应的逻辑即可。有一个链接可以查到这方面相关知识 <a href="http://google.github.io/android-gradle-dsl/current/" target="_blank" rel="external">gradle pulgin</a>。</p>
+<p>这里有一个要注意的是 sourcesets 构建版本和 product flavors 都可以新建生成如果两者有冲突的情况下就会出现一个情况 比如说上面 构建版本 stagging 和 productor flavors <em>red</em> 如果没有 stagging source sets 设置的时候直接使用 red 资源。但是如果既含有 red 也有 staging 的话会使用 staging 而不是 red 资源（默认构建 redStaging ），这里需要将 source sets 命名为 redStagging 即可。</p>
+<p>小结一下：这里主要是构建版本和 product flavors 怎么选择两者的话可以看下面一句话：</p>
+<blockquote>
+<p>如果你不确定你是否需要一个新的构建版本或者product flavors，你应该问你自己，你是否需要内部使用和外部使用的apk。如果你需要一个完全新的app去发布，和之前的版本完全隔离开，那么你需要product flavors。否则你只是需要构建版本。</p>
+</blockquote>
+<p>多个 productor flavors 合并，接上面的例子需要构建不同颜色不同收费还是免费版本的 app 包。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flavorDimensions</span> <span class="string">"color"</span>,<span class="string">"price"</span></div><div class="line"> productFlavors &#123;</div><div class="line">     <span class="section">red</span> &#123;</div><div class="line">         <span class="attribute">signingConfig</span> signingConfigs.release</div><div class="line">         applicationId <span class="string">'com.bluecup.hongyu.red'</span></div><div class="line">         versionCode <span class="number">3</span></div><div class="line">         dimension <span class="string">"color"</span></div><div class="line">     &#125;</div><div class="line">     blue &#123;</div><div class="line">         <span class="attribute">signingConfig</span> signingConfigs.<span class="literal">debug</span></div><div class="line">         applicationId <span class="string">'com.bluecup.hongyu.blue'</span></div><div class="line">         minSdkVersion <span class="number">14</span></div><div class="line">         versionCode <span class="number">4</span></div><div class="line">         dimension <span class="string">"color"</span></div><div class="line">     &#125;</div><div class="line">     free &#123;</div><div class="line">         <span class="attribute">signingConfig</span> signingConfigs.<span class="literal">debug</span></div><div class="line">         applicationId <span class="string">'com.bluecup.hongyu.blue'</span></div><div class="line">         minSdkVersion <span class="number">14</span></div><div class="line">         versionCode <span class="number">4</span></div><div class="line">         dimension <span class="string">"price"</span></div><div class="line">     &#125;</div><div class="line">     paid &#123;</div><div class="line">         <span class="attribute">signingConfig</span> signingConfigs.release</div><div class="line">         applicationId <span class="string">'com.bluecup.hongyu.red'</span></div><div class="line">         versionCode <span class="number">3</span></div><div class="line">         dimension <span class="string">"price"</span></div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>在左侧的IDE 面板就可以看到对应的版本了<br><img src="\image/gradle_combine_falvors.png" alt=""></p>
+<p><strong>构建变种（Build  Variants）</strong></p>
+<blockquote>
+<p>Build Variants = Build Type x Product Flavor</p>
+</blockquote>
+<p>上面的公式就是最终的构建变种的个数。</p>
+<p>上面一直说的左边 IDE Build Variants 就是最终生成的构建变种的情况，就算什么都不做也会有两个 debug 和 release。</p>
+<p><strong>签名配置</strong></p>
+<p>签名配置的方法示例如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="section">signingConfigs</span> &#123;</div><div class="line">    <span class="section">release</span> &#123;</div><div class="line">        <span class="attribute">storeFile</span> file(RELEASE_STOREFILE)</div><div class="line">        storePassword RELEASE_STORE_PASSWORD</div><div class="line">        keyAlias RELEASE_KEY_ALIAS</div><div class="line">        keyPassword RELEASE_KEY_PASSWORD</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的变量值为已经处理过了，我将签名文件和前面的别名以及一些密码什么东西都放在了<em>gradle.properties</em> 里中处理，签名文件的引用既可以是在构建版本中引用也可以在 productor flavors 中处理。如下所示</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="section">productFlavors</span> &#123;</div><div class="line">    <span class="section">red</span> &#123;</div><div class="line">        <span class="attribute">signingConfig</span> signingConfigs.release</div><div class="line">        applicationId <span class="string">'com.bluecup.hongyu.red'</span></div><div class="line">        versionCode <span class="number">3</span></div><div class="line">        dimension <span class="string">"color"</span></div><div class="line">    &#125;</div><div class="line">    blue &#123;</div><div class="line">        <span class="attribute">signingConfig</span> signingConfigs.<span class="literal">debug</span></div><div class="line">        applicationId <span class="string">'com.bluecup.hongyu.blue'</span></div><div class="line">        minSdkVersion <span class="number">14</span></div><div class="line">        versionCode <span class="number">4</span></div><div class="line">        dimension <span class="string">"color"</span></div><div class="line">    &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p><strong>有个很重要的地方要注意就是签名文件的设置要放在 buildTypes 之前不然会报找不到文件的错误。</strong></p>
+<p>编译完成之后验证下文件的签名</p>
+<blockquote>
+<p>jarsigner -verify -verbose -cert app-red-release.apk</p>
+</blockquote>
+<p>运行后的签名信息截图</p>
+<p><img src="\image/gradle_sign_info.png" alt=""></p>
+<p>从上图可以看出我们的签名生效了。</p>
+<h2 id="ps-小知识"><a href="#ps-小知识" class="headerlink" title="ps 小知识"></a>ps 小知识</h2><p><strong>BuildConfig</strong> 文件内容如下：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> class BuildConfig &#123;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">boolean</span> DEBUG = Boolean.parseBoolean(<span class="string">"true"</span>);</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> APPLICATION_ID = <span class="string">"com.bluecup.hongyu.sample"</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> BUILD_TYPE = <span class="string">"debug"</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> FLAVOR = <span class="string">""</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> VERSION_CODE = <span class="number">1</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> VERSION_NAME = <span class="string">"1.0"</span>;</div><div class="line">  <span class="comment">// Fields from build type: debug</span></div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> API_URL = <span class="string">"http://test.example.com/api"</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">boolean</span> LOG_HTTP_CALLS = <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个文件是自动生成工作区也看不见应该和 R 文件差不多不允许用户进行操作的。编辑完脚本记得 sync 一下才能生效，之前很傻的找了很久为啥写了没有生效。还有一个很好奇的地方就是上面只显示了第一个 debug 信息字段（当然不可能出现两个同样的变量）打出来的包是否根据对应值进行替换－－－－－待验证。当然上面只是用了变量的例子 从上面 gradle task 截图可以得知我们还可以创建 res 的资源公共变量字段上面的链接有。最后一个是上面 BuildConfig 的写法是不唯一现在可以直接用方法的形式进行定义 </p>
+<blockquote>
+<p>buildConfigField(“int”, “initNum”, “100”)</p>
+</blockquote>
+<p>这样也是可以定义的当然还有很多其他的方法可以点击进入 buildConfigFied 中查看到相应的方法。</p>
+<p><strong>全局设置</strong></p>
+<p>这里前面也介绍过在 allprojects 设置全局的变量外还可以通过定义</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">ext </span>&#123;</div><div class="line">       compileSdkVersion = <span class="number">22</span></div><div class="line">       <span class="keyword">buildToolsVersion </span>= <span class="string">"22.0.1"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>定义全局变量然后在子模块进行引用操作：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">       compileSdkVersion rootProject<span class="selector-class">.ext</span><span class="selector-class">.compileSdkVersion</span></div><div class="line">       buildToolsVersion rootProject<span class="selector-class">.ext</span><span class="selector-class">.buildToolsVersion</span></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>详细的可以看链接博文</p>
+<p><strong>依赖管理</strong></p>
+<p>gradle 支持三种依赖库 Jcenter和mavenCentral以及本地maven仓库。通常我们用的是 Jcenter 详细可以看<a href="http://segmentfault.com/a/1190000004237922" target="_blank" rel="external">Gradle for Android 第三篇( 依赖管理 )</a>。比较关注的可能是远程仓库这个点：</p>
+<p><a href="http://segmentfault.com/a/1190000004241503" target="_blank" rel="external"><strong>gradle 构建学习</strong></a></p>
+<p>这章主要讲构建作者应该翻译的不好，但是这章是关键前面基础打了这么多就为了这个构建。这里记录下在原有的构建版本的基础上如何扩展：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">android </span>&#123;</div><div class="line">       <span class="keyword">buildTypes </span>&#123;</div><div class="line">           staging.initWith(<span class="keyword">buildTypes.debug)</span></div><div class="line">           staging &#123;</div><div class="line">               applicationIdSuffix <span class="string">".staging"</span></div><div class="line">               versionNameSuffix <span class="string">"-staging"</span></div><div class="line">               debuggable = false</div><div class="line">           &#125; </div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>initWith 是在 debug 的基础上对 applicationId 和 versionName 进行复写操作。复制所有存在的构建版本，类似继承。我们也可以复写该存在版本的所有属性。</p>
+<p><strong>SourceSet</strong></p>
+<p>上面提到过这个概念 sourceset 是过滤编译文件的操作，这里就是不同版本之间的同步操作，在模块中 src 中有 main 文件，每创建一个版本 gradle 会自动创建一个 sourceset 但是不会自动为你创建文件，如下图：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">app</div><div class="line">└── src</div><div class="line">├── debug</div><div class="line">│ ├── java</div><div class="line">       │   │   └── com<span class="selector-class">.package</span></div><div class="line"> │ │</div><div class="line">│ ├── res</div><div class="line">│ │ └── layout</div><div class="line">│   │       └── activity_main<span class="selector-class">.xml</span></div><div class="line">│   └── AndroidManifest<span class="selector-class">.xml</span></div><div class="line">├── main</div><div class="line">│ ├── java</div><div class="line">│   │   └── com<span class="selector-class">.package</span></div><div class="line">│ │</div><div class="line">│ ├── res</div><div class="line">└── MainActivity<span class="selector-class">.java</span></div><div class="line">└── Constants<span class="selector-class">.java</span></div><div class="line">│ │</div><div class="line">│ │</div><div class="line">│ │</div><div class="line">│   └── AndroidManifest<span class="selector-class">.xml</span></div><div class="line">├── staging</div><div class="line">│ ├── java</div><div class="line">│   │   └── com<span class="selector-class">.package</span></div><div class="line">├── drawable</div><div class="line">└── layout</div><div class="line">└── activity_main<span class="selector-class">.xml</span></div><div class="line">│ │</div><div class="line">│ ├── res</div><div class="line">│ │ └── layout</div><div class="line">│   │       └── activity_main<span class="selector-class">.xml</span></div><div class="line">│   └── AndroidManifest<span class="selector-class">.xml</span></div><div class="line">└── release</div><div class="line">    ├── java</div><div class="line">    │   └── com<span class="selector-class">.package</span></div><div class="line">    │       └── Constants<span class="selector-class">.java</span></div><div class="line">    └── AndroidManifest.xml</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意：当你添加一个Java类的时候，你需要知道以下过程，当你添加了CustomLogic.java到staging版本，你可以添加相同的类到debug和release版本，但是不能添加到main版本。如果你添加了，会抛出异常。</strong>    </p>
+</blockquote>
+<p><strong>构建版本和 product flavors</strong></p>
+<p>product flavors 主要是创建不同版本这个跟前面提到的构建版本很类似，但是前者是相同的代码生成不同的代码，构建版本不是这样的比如说构建版本有三个 debug 、 release 、 stageing。product flavors 有两个 red 和 blue 版本最后版本构建出来是 app-red-debug、app-blue-debug、app-red-release、 app-blue-release 等构建版本。怎么区分使用呢，如果想得到一个和之前版本完全隔离的版本可以使用 product flavors 否则仅仅需要构建版本。</p>
+<blockquote>
+<p>gradle project 和 Android Studio 是有区别的，gradle 的 Project 对应是 Android Studio的 project 或者 module，Android Studio。</p>
+</blockquote>
+<p><strong>签名配置</strong></p>
+<p>gradle 签名方式有两种一种就是在 build 文件中配置这是主要的方式，第二种就是通过 generate apk 时签名，第二种比较简单主要是第一种如何配置。</p>
+<ul>
+<li><p>使用默认的 debug 签名</p>
+<p>  签名设置代码如下所示：</p>
+</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">signingConfigs</span> &#123;</div><div class="line">     staging<span class="selector-class">.initWith</span>(signingConfigs.debug)</div><div class="line"></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>直接在 build 文件中设置 singningConfigs 设置我们前面已经设置构建一个 staging 版本这里直接在 initWith 中复用 signingConfig.debug 的参数设置，其实也可以在 build type 中设置复用如下：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">staging.initWith(buildTypes.debug)</div><div class="line">staging &#123;</div><div class="line">    applicationIdSuffix <span class="string">".staging"</span></div><div class="line">    versionNameSuffix <span class="string">"-staging"</span></div><div class="line">    buildConfigField(<span class="string">"String"</span>, <span class="string">"API"</span>, <span class="string">"<span class="subst">\"</span>staging<span class="subst">\"</span>"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>自定义签名文件设置</p>
+<p>  大多数是我们是使用自己的签名文件进行签名的，生成签名文件这里就不说了。配置后如下</p>
+</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">signingConfigs &#123;</div><div class="line">    staging.initWith(signingConfigs.<span class="keyword">debug</span>)</div><div class="line">    release &#123;</div><div class="line">        storeFile <span class="keyword">file</span>(<span class="string">'stag.jks'</span>)</div><div class="line">        storePassword <span class="string">'xxxx'</span></div><div class="line">        keyAlias <span class="string">'bluecupgradlelearn'</span></div><div class="line">        keyPassword <span class="string">'xxx'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在 buildTypes 文件中调用就行了</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">buildTypes &#123;</div><div class="line">     debug &#123;</div><div class="line">         buildConfigField(<span class="string">"String"</span>, <span class="string">"API"</span>, <span class="string">"\"</span>debug staging\<span class="string">""</span>)</div><div class="line">         minifyEnabled false</div><div class="line">         proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">     &#125;</div><div class="line">     release &#123;</div><div class="line">         buildConfigField(<span class="string">"String"</span>, <span class="string">"API"</span>, <span class="string">"\"</span>release staging\<span class="string">""</span>)</div><div class="line">         minifyEnabled false</div><div class="line">         signingConfig signingConfigs.release</div><div class="line">         proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">     &#125;</div><div class="line">     staging.initWith(buildTypes.debug)</div><div class="line">     staging &#123;</div><div class="line">         applicationIdSuffix <span class="string">".staging"</span></div><div class="line">         versionNameSuffix <span class="string">"-staging"</span></div><div class="line">         buildConfigField(<span class="string">"String"</span>, <span class="string">"API"</span>, <span class="string">"\"</span>staging\<span class="string">""</span>)</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>上面还介绍了在 favors 中设置签名就不细说了。</p>
+<p><strong>容器和闭包的区别</strong></p>
+<p>前面学习的容器基础上知道容器是指哪些 List、 Map 、 Range， 闭包是指代码块可以看成是类的方法。</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">buildTypes &#123;</div><div class="line">        debug &#123;</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">"API"</span>, <span class="string">"\"</span>debug staging\<span class="string">""</span>)</div><div class="line">            minifyEnabled false</div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">        release &#123;</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">"API"</span>, <span class="string">"\"</span>release staging\<span class="string">""</span>)</div><div class="line">            minifyEnabled false</div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">        staging &#123;</div><div class="line">            applicationIdSuffix <span class="string">".staging"</span></div><div class="line">            versionNameSuffix <span class="string">"-staging"</span></div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">"API"</span>, <span class="string">"\"</span>staging\<span class="string">""</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>这里的 buildType 就是容器为什么呢，因为里面的 debug、release、staging 都是地位都是平等类似于 list 中的元素，而深入到里面的每个元素就是闭包了属于方法。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://segmentfault.com/a/1190000004241503" target="_blank" rel="external">neu Gradle for Android </a>;</li>
+<li><a href="http://avatarqing.github.io/Gradle-Plugin-User-Guide-Chinese-Verision/basic_project/configuring_the_structure.html" target="_blank" rel="external">Gradle Android插件用户指南</a></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Styles and Themes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Andorid Styles And Themes
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/Sqlite_ContentProvider/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android SQlite</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Gradle Of Android Studio" data-title="Gradle Of Android Studio" data-url="http://nortonahu.github.io/2016/08/05/Gradle Of Android Studio/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

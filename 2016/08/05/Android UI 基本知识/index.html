@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android UI基本知识 | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android UI 
+说明  &amp;emsp;由于 Android 的碎片化问题， Android 设备适配一直是个难题，特别是在将设计喵们的切图完美转化集成到真机上的时候，很容易出现各种错误导致效果不好。在前几个项目也查阅了很多关于这方面的资料，很多东西当时明白，但是过了一段时间就忘了，所以今天就开了一篇 Blog 记录下。有些地方可能不对还请指正，后期什么新的知识点会不断更新到该blog中。
+重">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android UI基本知识">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Android UI 基本知识/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="Android UI 
+说明  &amp;emsp;由于 Android 的碎片化问题， Android 设备适配一直是个难题，特别是在将设计喵们的切图完美转化集成到真机上的时候，很容易出现各种错误导致效果不好。在前几个项目也查阅了很多关于这方面的资料，很多东西当时明白，但是过了一段时间就忘了，所以今天就开了一篇 Blog 记录下。有些地方可能不对还请指正，后期什么新的知识点会不断更新到该blog中。
+重">
+<meta property="og:image" content="http://nortonahu.github.io/thumbnails/android_ui_title.png">
+<meta property="og:image" content="http://nortonahu.github.io/image/android_dpi.png">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android UI基本知识">
+<meta name="twitter:description" content="Android UI 
+说明  &amp;emsp;由于 Android 的碎片化问题， Android 设备适配一直是个难题，特别是在将设计喵们的切图完美转化集成到真机上的时候，很容易出现各种错误导致效果不好。在前几个项目也查阅了很多关于这方面的资料，很多东西当时明白，但是过了一段时间就忘了，所以今天就开了一篇 Blog 记录下。有些地方可能不对还请指正，后期什么新的知识点会不断更新到该blog中。
+重">
+<meta name="twitter:image" content="http://nortonahu.github.io/thumbnails/android_ui_title.png">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android UI 基本知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android UI 基本知识/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android UI基本知识
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-UI"><a href="#Android-UI" class="headerlink" title="Android UI "></a>Android UI </h1><p><img src="/thumbnails/android_ui_title.png" alt=""></p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>  &emsp;由于 Android 的碎片化问题， Android 设备适配一直是个难题，特别是在将设计喵们的切图完美转化集成到真机上的时候，很容易出现各种错误导致效果不好。在前几个项目也查阅了很多关于这方面的资料，很多东西当时明白，但是过了一段时间就忘了，所以今天就开了一篇 Blog 记录下。有些地方可能不对还请指正，后期什么新的知识点会不断更新到该blog中。</p>
+<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><ul>
+<li>Android UI 基本概念和获取方法</li>
+<li>常用 UI 转换公式</li>
+<li>屏幕兼容适配方案</li>
+<li>Tips</li>
+</ul>
+<h2 id="Android-UI-基本概念"><a href="#Android-UI-基本概念" class="headerlink" title="Android UI 基本概念"></a>Android UI 基本概念</h2><p>  介绍 Andorid 开发过程中遇到的术语和易混淆的概念</p>
+<ul>
+<li><p>分辨率 (Resolution)<br>&emsp;和电脑的分辨率意思一样就是手机纵、横方向的像素个数，例如 480 × 800 的分辨率表示的就是宽高比的意思，横向 480 个像素点纵向 800 个像素点，再简单点解释就是 480 列、 800 行。<br>1280 × 720 和 720 × 1280 的区别是啥？这里网上解释是没有区别前者表示纵向宽、后者表示横向宽。<br>基本上所有的关于屏幕的参数都是从 view.Display 中获取的</p>
+<p>这里需要注意的是两个方法的区别（之前 getWidth() 和 getHeight() 现在已经不用了）:</p>
+<p>getSize(Point)<br>getRealSize(Point)</p>
+</li>
+</ul>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">getSize</span><span class="params">(Point outSize)</span> </span>&#123;  </div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;  </div><div class="line">        updateDisplayInfoLocked();  </div><div class="line">        mDisplayInfo.getAppMetrics(mTempMetrics, mDisplayAdjustments);  </div><div class="line">        outSize.x = mTempMetrics.widthPixels;  </div><div class="line">        outSize.y = mTempMetrics.heightPixels;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">getRealSize</span><span class="params">(Point outSize)</span> </span>&#123;  </div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;  </div><div class="line">        updateDisplayInfoLocked();  </div><div class="line">        outSize.x = mDisplayInfo.logicalWidth;  </div><div class="line">        outSize.y = mDisplayInfo.logicalHeight;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这两个的区别主要是前者在加上 ActionBarActivity 之后计算就不准备了，所以为了保险起见还是使用后面的 getRealSize 。</p>
+<ul>
+<li>手机的物理尺寸 (Screen Size)<br>&emsp;手机的物理尺寸，指的是屏幕对角线的长度，单位是英寸。1 英寸(in) = 2.54 厘米 (cm) 目前手机基本上都超过了 5 寸，但是个人觉得手机厂商这样人为的加大手机尺寸很无聊，人的手就那么大。没事尽在这些方面瞎琢磨。下面是 Android 官方提供的物理尺寸的介绍，主要是为了说明 Andoroid 按照物理尺寸将手机分为 small normal large extra-large 这个跟后面也有关系，后面再说。<blockquote>
+<p>Screen size<br>Actual physical size, measured as the screen’s diagonal.<br>For simplicity, Android groups all actual screen sizes into four generalized sizes: small, normal, large, and extra-large.</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>这里需要说明的是手机的物理尺寸和手机的分辨率不是成比例的关系，也许两个手机的屏幕的尺寸一样但是分辨率不一样</strong></p>
+<ul>
+<li><p>宽高比<br>&emsp;这里的宽高比其实为了梳理概念用的，手机很少用到宽高比，主要是电视、电脑经常用到宽高比，比如说我们常说的 4 : 3 、 16 : 9 都是这个意思。前面的 1280 × 720 就是 16 : 9 。就是这么简单。这里既然讲到了宽高比顺便解释下 720 P 和 1280 P 表示是一秒中扫描多少行。这个后面在梳理。</p>
+<ul>
+<li>DPI(dots per inch)<br>&emsp;屏幕密度(density)与 DPI 关系比较密切，从字面上理解就是每英寸的点数(打印机单位打印机采样率)。这里千万记得不是像素点的个数。后面会解释跟PPI的关系。下面列举下常见的参数参考谷歌官方文档：<br><img src="/image/android_dpi.png" alt=""><br>&emsp;android.util包下有个DisplayMetrics类可以获得密度相关的信息。它有如下几个常用值：</li>
+</ul>
+</li>
+</ul>
+<pre><code><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">DENSITY_LOW</span> = <span class="number">120</span></div><div class="line"><span class="attr">DENSITY_MEDIUM</span> = <span class="number">160</span>  //默认值</div><div class="line"><span class="attr">DENSITY_TV</span> = <span class="number">213</span>      //TV专用</div><div class="line"><span class="attr">DENSITY_HIGH</span> = <span class="number">240</span></div><div class="line"><span class="attr">DENSITY_XHIGH</span> = <span class="number">320</span></div><div class="line"><span class="attr">DENSITY_400</span> = <span class="number">400</span></div><div class="line"><span class="attr">DENSITY_XXHIGH</span> = <span class="number">480</span></div><div class="line"><span class="attr">DENSITY_XXXHIGH</span> = <span class="number">640</span></div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>PPI(Pixels per inch)<br>&emsp;很简单每英寸上的像素数（也叫图像采样率）。可以根据这个参数可以求得屏幕的物理尺寸。<br>这里要介绍一个很关键的类 DisplayMetrics<br>这个类中有个两个成员变量 xdpi 和 ydpi 关于这两个变量的描述如下：</p>
+<blockquote>
+<p>//The exact physical pixels per inch of the screen in the X/Y dimension.</p>
+</blockquote>
+</li>
+</ul>
+<p>  这两个表示在 X/Y 轴上实际的像素点数,根据前面计算屏幕尺寸的方法</p>
+  <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> getScreenSizeOfDevice2() &#123;</div><div class="line">      Point <span class="built_in">point</span> = <span class="keyword">new</span> Point();</div><div class="line">      getWindowManager().getDefaultDisplay().getRealSize(<span class="built_in">point</span>);</div><div class="line">      DisplayMetrics dm = getResources().getDisplayMetrics();</div><div class="line">      <span class="keyword">double</span> x = Math.<span class="built_in">pow</span>(<span class="built_in">point</span>.x/ dm.xdpi, <span class="number">2</span>);</div><div class="line">      <span class="keyword">double</span> y = Math.<span class="built_in">pow</span>(<span class="built_in">point</span>.y / dm.ydpi, <span class="number">2</span>);</div><div class="line">      <span class="keyword">double</span> screenInches = Math.<span class="built_in">sqrt</span>(x + y);</div><div class="line">      Log.d(TAG, <span class="string">"Screen inches : "</span> + screenInches);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>Point这里返回的是像素值 dm.xdpi 和 dm.ydpi 表示是真正一英寸像素的个数。所以得出上面的方法。</p>
+<ul>
+<li>DIP<br>&emsp;这个需要跟上面的 DPI 区别，简单说就是密度无关的像素</li>
+</ul>
+<p>我们在布局中用到的 dp/dip 就是它。这里主要是记住怎么和像素转化公式</p>
+<blockquote>
+<p>pixel = dip*density</p>
+</blockquote>
+<p>这里一般 UI 给的切图都是按照像素来给的 所以我们集成的时候注意转换。主要是在 Android 组件中使用到动态计算的时候需要注意。Android 中获取到的是像素这里需要转换</p>
+<p>dp to px</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">convertDpToPixel</span><span class="params">(<span class="keyword">int</span> dp)</span> </span>&#123;  </div><div class="line">    DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();  </div><div class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(dp*displayMetrics.density);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>px to dp</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">convertPixelToDp</span><span class="params">(<span class="keyword">int</span> pixel)</span> </span>&#123;  </div><div class="line">    DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();  </div><div class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(pixel/displayMetrics.density);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>倍率<br>&emsp;倍率跟屏幕的密度是一样的意思，destiny 上面已经详细解释了，倍率的主要作用是上面说的计算。<br>下面是倍率表：</li>
+</ul>
+<blockquote>
+<p>ldpi = 0.75<br>mdpi = 1<br>hdpi = 1.5<br>xhdpi = 2<br>xxhdpi = 3<br>xxxdpi = 4</p>
+</blockquote>
+<ul>
+<li>什么 720P 啊、 1080P<br>&emsp;720P 这些经常出现于电视上这个跟手机的对应关系需要理解下，主要是适配平板。</li>
+</ul>
+<blockquote>
+<p>720P 有效显示格式为1280 * 720（逐行扫描的意思）</p>
+</blockquote>
+<p>1280 <em> 720 不一定是 720P,但 720P一定是 1280 </em> 720</p>
+<ul>
+<li>Andorid 分辨率另外一种方式(VGA\HVGA\QVGA\WQVGA\WVGA\FWVGA)</li>
+</ul>
+<blockquote>
+<p>VGA:Video Graphics Array，即：显示绘图矩阵，相当于640×480 像素；<br>HVGA:Half-size VGA，即：VGA的一半，分辨率为480×320，像三星盖世Ace S5830就是使用这分辨率；<br>QVGA：Quarter VGA，即：VGA的四分之一，分辨率为320×240，一般用于小屏手机 像三星盖世Mini S5570就是使用这分辨率；<br>WQVGA：Wide Quarter VGA，即：扩大的QVGA，分辨率比QVGA高，比VGA低，一般是：400×240，480×272；<br>WVGA：Wide Video Graphics Array，即：扩大的VGA，分辨率为800×480像素，像三星i9000就是使用这分辨率；<br>FWVGA：Full Wide VGA ，数码产品屏幕材质的一种，VGA的另一种形式，比WVGA分辨率高，别名 ： Full Wide VGA, ，其分辨 率为854×480象素(16:9)。</p>
+</blockquote>
+<h1 id="一个简单适配例子"><a href="#一个简单适配例子" class="headerlink" title="一个简单适配例子"></a>一个简单适配例子</h1><p>从网上找的例子</p>
+<blockquote>
+<p>.为什么一个720P的设备，取mdpi里的图片，但是720P的切图要放在xhdpi里？</p>
+</blockquote>
+<p>A: 这完全是根据主流手机来决定的，比如现在主流的是480P/hdpi的手机，那么，在做UI时，就会取720P作为xhdpi，取320P作为mdpi，取240P作为ldpi，这样一套套图就切出来了。</p>
+<p>如果，主流的手机分辨率变成了720P/hdpi的手机，那么，在做UI时，就会取480P作为mdpi，取1080P作为xhdpi，以此类推。</p>
+<p>至于Google是这样推荐的：取你手边最大的分辨率作为基准，做出最清晰的图（xhdpi），然后，按比例缩放，做出hdpi、mdpi和ldpi。所以从原理上，720P的切图放在哪里是可以根据设备来变换的。</p>
+<p>2.如果720P的切图在xhdpi里，但我手头有一个mdpi/720P的设备，那怎么办呢？</p>
+<p>（假设你的应用要支持所有奇葩的分辨率，而且你已经切好了4套图（ldpi~xhdpi)  并在layout里写了一套布局）</p>
+<p>A: 如果你自己思考了dpi和分辨率的关系的话，你会发现，他们的关系就是没有关系…所以这个问题，我的解决办法（大家的）是，让多套dimens来帮我们解决这个问题。<br>  480p  600p  720p  1080p<br>mdpi  values-sw480dp-mdpi values-sw600dp-mdpi values-sw720dp-mdpi values-sw1080dp-mdpi<br>hdpi  values-sw480dp-hdpi … … …<br>xhdpi values-sw480dp-xhdpi  … … … 在你的res文件夹下，新建这些文件夹，然后再放进一个dimens.xml，用这种方法，就可以应对所有的分辨率情况了。<br>举例说明下：如果原图（1280x720）上有一个100x50（像素）大小的控件，那么对于一个正常的hdpi/800x480的设备来说，应该设置它的大小（dp)为:</p>
+<p>长：(100/720 <em> 480/1.5)dp = 45dp (向上取整)<br>宽：(50/720 </em> 480/1.5)dp = 23dp</p>
+<p>将这两个值写在values-sw480dp-hdpi/dimens.xml里，图的比例和原图就一样了。</p>
+<p>那对于一个刚才我列举到的mdpi/1280x720的设备，它的大小应该是：</p>
+<p>长：(100/720 * 720/1) = 100dp;</p>
+<p>宽：(50/720 * 720/1) = 50dp;</p>
+<p>将这两个值写在values-sw720dp-mdpi中，图的比例和原图就一样了。</p>
+<h1 id="最小宽度"><a href="#最小宽度" class="headerlink" title="最小宽度"></a>最小宽度</h1><p>谷歌原文这么写到：</p>
+<blockquote>
+<p>As you design your UI for different screen sizes, you’ll discover that each design requires a minimum amount of space. So, each generalized screen size above has an associated minimum resolution that’s defined by the system. These minimum sizes are in “dp” units—the same units you should use when defining your layouts—which allows the system to avoid worrying about changes in screen density.</p>
+</blockquote>
+<p>设计的时候会发现你需要最小空间值，单位是dp。</p>
+<ul>
+<li><em>xlarge screens are at least 960dp x 720dp</em></li>
+<li><em>large screens are at least 640dp x 480dp</em></li>
+<li><em>normal screens are at least 470dp x 320dp</em></li>
+<li><em>small screens are at least 426dp x 320dp</em></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/2015年总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          2015年总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/Android 样式开发（一） shape/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 样式开发（一） shape</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android UI 基本知识" data-title="Android UI基本知识" data-url="http://nortonahu.github.io/2016/08/05/Android UI 基本知识/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

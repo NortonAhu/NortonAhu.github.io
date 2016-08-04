@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android 样式开发（二） selector | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android 样式开发（二） selector转载：Keegan小钢Android样式的开发:selector篇
+跟上一篇一样这是钢哥的blog的文章这里做了转载并加上自己的一些理解。
+上一篇详细讲了shape的用法，讲解了怎么用shape自定义矩形、圆形、线形和环形，以及有哪些需要注意的地方。不过，shape只能定义单一的形状，而实际应用中，很多地方比如按钮、Tab、ListItem等都是不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 样式开发（二） selector">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Android样式开发（二） selector/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="Android 样式开发（二） selector转载：Keegan小钢Android样式的开发:selector篇
+跟上一篇一样这是钢哥的blog的文章这里做了转载并加上自己的一些理解。
+上一篇详细讲了shape的用法，讲解了怎么用shape自定义矩形、圆形、线形和环形，以及有哪些需要注意的地方。不过，shape只能定义单一的形状，而实际应用中，很多地方比如按钮、Tab、ListItem等都是不同">
+<meta property="og:image" content="http://nortonahu.github.io/thumbnails/Planet-Space-Art.jpg">
+<meta property="og:image" content="http://nortonahu.github.io/image/android_selector.png">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 样式开发（二） selector">
+<meta name="twitter:description" content="Android 样式开发（二） selector转载：Keegan小钢Android样式的开发:selector篇
+跟上一篇一样这是钢哥的blog的文章这里做了转载并加上自己的一些理解。
+上一篇详细讲了shape的用法，讲解了怎么用shape自定义矩形、圆形、线形和环形，以及有哪些需要注意的地方。不过，shape只能定义单一的形状，而实际应用中，很多地方比如按钮、Tab、ListItem等都是不同">
+<meta name="twitter:image" content="http://nortonahu.github.io/thumbnails/Planet-Space-Art.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android样式开发（二） selector" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android样式开发（二） selector/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 样式开发（二） selector
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI/">UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘/">备忘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-样式开发（二）-selector"><a href="#Android-样式开发（二）-selector" class="headerlink" title="Android 样式开发（二） selector"></a>Android 样式开发（二） selector</h1><p><img src="/thumbnails/Planet-Space-Art.jpg" alt=""><br>转载：<a href="http://keeganlee.me/post/android/20150905" target="_blank" rel="external"><em>Keegan小钢<br>Android样式的开发:selector篇</em></a></p>
+<p>跟上一篇一样这是钢哥的blog的文章这里做了转载并加上自己的一些理解。</p>
+<p>上一篇详细讲了shape的用法，讲解了怎么用shape自定义矩形、圆形、线形和环形，以及有哪些需要注意的地方。不过，shape只能定义单一的形状，而实际应用中，很多地方比如按钮、Tab、ListItem等都是不同状态有不同的展示形状。举个例子，一个按钮的背景，默认时是一个形状，按下时是一个形状，不可操作时又是另一个形状。有时候，不同状态下改变的不只是背景、图片等，文字颜色也会相应改变。而要处理这些不同状态下展示什么的问题，就要用selector来实现了。<br><a id="more"></a><br>selector标签，可以添加一个或多个item子标签，而相应的状态是在item标签中定义的。定义的xml文件可以作为两种资源使用：drawable和color。作为drawable资源使用时，一般和shape一样放于drawable目录下，item必须指定 <strong>android:drawable</strong> 属性；作为color资源使用时，则放于color目录下，item必须指定 <strong>android:color</strong> 属性。<br>那么，看看都有哪些状态可以设置呢：</p>
+<ul>
+<li>android:state_enabled: 设置触摸或点击事件是否可用状态，一般只在false时设置该属性，表示不可用状态</li>
+<li>android:state_pressed: 设置是否按压状态，一般在true时设置该属性，表示已按压状态，默认为false</li>
+<li>android:state_selected: 设置是否选中状态，true表示已选中，false表示未选中</li>
+<li>android:state_checked: 设置是否勾选状态，主要用于CheckBox和RadioButton，true表示已被勾选，false表示未被勾选</li>
+<li>android:state_checkable: 设置勾选是否可用状态，类似state_enabled，只是state_enabled会影响触摸或点击事件，而state_checkable影响勾选事件</li>
+<li>android:state_focused: 设置是否获得焦点状态，true表示获得焦点，默认为false，表示未获得焦点</li>
+<li>android:state_window_focused: 设置当前窗口是否获得焦点状态，true表示获得焦点，false表示未获得焦点，例如拉下通知栏或弹出对话框时，当前界面就会失去焦点；另外，ListView的ListItem获得焦点时也会触发true状态，可以理解为当前窗口就是ListItem本身</li>
+<li>android:state_activated: 设置是否被激活状态，true表示被激活，false表示未激活，API Level 11及以上才支持，可通过代码调用控件的setActivated(boolean)方法设置是否激活该控件</li>
+<li>android:state_hovered: 设置是否鼠标在上面滑动的状态，true表示鼠标在上面滑动，默认为false，API Level 14及以上才支持</li>
+</ul>
+<p><img src="/image/android_selector.png" alt=""></p>
+<p>接下来，看看示例代码，以下是bg_btn_selector.xml的代码，用于按钮的背景：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 当前窗口失去焦点时 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/bg_btn_lost_window_focused"</span> <span class="attr">android:state_window_focused</span>=<span class="string">"false"</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 不可用时 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/bg_btn_disable"</span> <span class="attr">android:state_enabled</span>=<span class="string">"false"</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 按压时 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/bg_btn_pressed"</span> <span class="attr">android:state_pressed</span>=<span class="string">"true"</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 被选中时 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/bg_btn_selected"</span> <span class="attr">android:state_selected</span>=<span class="string">"true"</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 被激活时 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/bg_btn_activated"</span> <span class="attr">android:state_activated</span>=<span class="string">"true"</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 默认时 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/bg_btn_normal"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>那么，在使用过程中，有几点还是需要注意和了解的：</p>
+<ol>
+<li>selector作为drawable资源时，item指定android:drawable属性，并放于drawable目录下；</li>
+<li>selector作为color资源时，item指定android:color属性，并放于color目录下；</li>
+<li>color资源也可以放于drawable目录，引用时则用@drawable来引用，但不推荐这么做，drawable资源和color资源最好还是分开；</li>
+<li>android:drawable属性除了引用@drawable资源，也可以引用@color颜色值；但android:color只能引用@color；</li>
+<li>item是从上往下匹配的，如果匹配到一个item那它就将采用这个item，而不是采用最佳匹配的规则；所以设置默认的状态，一定要写在最后，如果写在前面，则后面所有的item都不会起作用了。<br>另外，selector标签下有两个比较有用的属性要说一下，添加了下面两个属性之后，则会在状态改变时出现淡入淡出效果，但必须在API Level 11及以上才支持：</li>
+</ol>
+<ul>
+<li>android:enterFadeDuration 状态改变时，新状态展示时的淡入时间，以毫秒为单位</li>
+<li><p>android:exitFadeDuration 状态改变时，旧状态消失时的淡出时间，以毫秒为单位<br>最后，关于ListView的ListItem样式，有两种设置方式，一种是在ListView标签里设置android:listSelector属性，另一种是在ListItem的布局layout里设置android:background。但是，这两种设置的结果却有着不同。同时，使用ListView时也有些其他需要注意的地方，总结如下：</p>
+</li>
+<li><p>android:listSelector设置的ListItem默认背景是透明的，不管你在selector里怎么设置都无法改变它的背景。所以，如果想改ListItem的默认背景，只能通过第二种方式，在ListItem的布局layout里设置android:background。</p>
+</li>
+<li>当触摸点击ListItem时，第一种设置方式下，state_pressed、state_focused和state_window_focused设为true时都会触发，而第二种设置方式下，只有state_pressed会触发。<br>当ListItem里有Button或CheckBox之类的控件时，会抢占ListItem本身的焦点，导致ListItem本身的触摸点击事件会无效。那么，要解决此问题，有三种解决方案：</li>
+</ul>
+<p>将Button或CheckBox换成TextView或ImageView之类的控件<br>设置Button或CheckBox之类的控件设置focusable属性为false<br>设置ListItem的根布局属性android:descendantFocusability=”blocksDescendants”<br>第三种是最方便，也是推荐的方式，它会将ListItem根布局下的所有子控件都设置为不能获取焦点。android:descendantFocusability属性的值有三种，其中，ViewGroup是指设置该属性的View，本例中就是ListItem的根布局：</p>
+<p>beforeDescendants：ViewGroup会优先其子类控件而获取到焦点<br>afterDescendants：ViewGroup只有当其子类控件不需要获取焦点时才获取焦点<br>blocksDescendants：ViewGroup会覆盖子类控件而直接获得焦点</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Android_NDK_编译总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android Studio NDK 编译总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/Hexo_Tutorial/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo_Tutorial</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android样式开发（二） selector" data-title="Android 样式开发（二） selector" data-url="http://nortonahu.github.io/2016/08/05/Android样式开发（二） selector/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>getRawX() 和 getX()的区别 | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="正如方法名一个是原生的坐标信息一个是坐标信息，我们需要了解的是他们是相对于什么的坐标。
+
+getRawX() 和 getRawY() 是相对于设备的屏幕返回的绝对坐标；
+getX() 和 getY() 是相对于 View 返回的绝对坐标。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="getRawX() 和 getX()的区别">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/getRawX() 和 getX()的区别/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="正如方法名一个是原生的坐标信息一个是坐标信息，我们需要了解的是他们是相对于什么的坐标。
+
+getRawX() 和 getRawY() 是相对于设备的屏幕返回的绝对坐标；
+getX() 和 getY() 是相对于 View 返回的绝对坐标。">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="getRawX() 和 getX()的区别">
+<meta name="twitter:description" content="正如方法名一个是原生的坐标信息一个是坐标信息，我们需要了解的是他们是相对于什么的坐标。
+
+getRawX() 和 getRawY() 是相对于设备的屏幕返回的绝对坐标；
+getX() 和 getY() 是相对于 View 返回的绝对坐标。">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-getRawX() 和 getX()的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/getRawX() 和 getX()的区别/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      getRawX() 和 getX()的区别
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>正如方法名一个是原生的坐标信息一个是坐标信息，我们需要了解的是他们是相对于什么的坐标。</p>
+<ul>
+<li>getRawX() 和 getRawY() 是相对于设备的屏幕返回的绝对坐标；</li>
+<li>getX() 和 getY() 是相对于 View 返回的绝对坐标。<a id="more"></a>
+测试代码：</li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@<span class="function">Override</span></div><div class="line"><span class="keyword">public</span> boolean <span class="title">onTouch</span>(<span class="params">View v, MotionEvent <span class="keyword">event</span></span>) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">float</span> rawX = <span class="keyword">event</span>.getRawX();</div><div class="line">    <span class="keyword">float</span> rawY = <span class="keyword">event</span>.getRawY();</div><div class="line"></div><div class="line">    Log.d(<span class="string">"event"</span>, String.format(<span class="string">"onTouch: rawX = %f; rawY = %f; x = %f; y = %f"</span>, <span class="keyword">event</span>.getRawX(), <span class="keyword">event</span>.getRawY(), <span class="keyword">event</span>.getX(), <span class="keyword">event</span>.getY()));</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>日志输出：</p>
+<blockquote>
+<p>01-26 09:49:36.483 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 145.000000; rawY = 1119.000000; x = 145.000000; y = 99.000000<br>01-26 09:49:36.573 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 169.787079; rawY = 1103.606445; x = 24.787079; y = -75.393555<br>01-26 09:49:36.593 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 178.488907; rawY = 1099.837036; x = 33.488907; y = -79.162964<br>01-26 09:49:36.603 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 191.901062; rawY = 1094.537109; x = 22.901062; y = -68.462891<br>01-26 09:49:36.623 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 207.099976; rawY = 1087.450073; x = 29.099976; y = -71.549927<br>01-26 09:49:36.633 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 224.537994; rawY = 1082.154053; x = 33.537994; y = -71.845947<br>01-26 09:49:36.653 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 240.591095; rawY = 1077.646362; x = 33.591095; y = -69.353638<br>01-26 09:49:36.673 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 254.480545; rawY = 1073.862671; x = 30.480545; y = -68.137329<br>01-26 09:49:36.693 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 265.685150; rawY = 1071.104980; x = 25.685150; y = -65.895020<br>01-26 09:49:36.703 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 275.384094; rawY = 1069.153931; x = 21.384094; y = -63.846069<br>01-26 09:49:36.723 23084-23084/com.bluecup.hongyu.androidanimation D/event: onTouch: rawX = 283.990814; rawY = 1067.252319; x = 18.990814; y = -63.747681</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/如何设置shape填充颜色的透明度/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          如何设置shape填充颜色的透明度
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/Styles and Themes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Andorid Styles And Themes</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="getRawX() 和 getX()的区别" data-title="getRawX() 和 getX()的区别" data-url="http://nortonahu.github.io/2016/08/05/getRawX() 和 getX()的区别/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

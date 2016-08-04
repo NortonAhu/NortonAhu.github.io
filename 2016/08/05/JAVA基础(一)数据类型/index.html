@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>JAVA 学习（一）数据类型 | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JAVA 学习（一）数据类型
+文章目录：
+
+JAVA 数据类型介绍；
+double 和 float 的区别；
+类型后缀的解释；
+参考文献
+
+JAVA 数据类型介绍现在每天的工作无时无刻不在使用 JAVA 码代码，但是对 JAVA 很多基础知识了解并不是很透彻，有时可能是错误的用法。这里计划归纳学习 JAVA 基础知识。首先要学习的就是 JAVA 的数据类型，我们接触最多应该就是不同的数据类型的定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA 学习（一）数据类型">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/JAVA基础(一)数据类型/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="JAVA 学习（一）数据类型
+文章目录：
+
+JAVA 数据类型介绍；
+double 和 float 的区别；
+类型后缀的解释；
+参考文献
+
+JAVA 数据类型介绍现在每天的工作无时无刻不在使用 JAVA 码代码，但是对 JAVA 很多基础知识了解并不是很透彻，有时可能是错误的用法。这里计划归纳学习 JAVA 基础知识。首先要学习的就是 JAVA 的数据类型，我们接触最多应该就是不同的数据类型的定义">
+<meta property="og:image" content="http://nortonahu.github.io/image/datatypesinjava.png">
+<meta property="og:image" content="http://nortonahu.github.io/image/java_datatype_1.png">
+<meta property="og:image" content="http://nortonahu.github.io/image/java_datatype_3.png">
+<meta property="og:image" content="http://nortonahu.github.io/image/java_datatype_2.png">
+<meta property="og:image" content="http://nortonahu.github.io/image/java_datatype_defaultvalue.png">
+<meta property="og:image" content="http://nortonahu.github.io/image/java_datatype_multipledata.png">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA 学习（一）数据类型">
+<meta name="twitter:description" content="JAVA 学习（一）数据类型
+文章目录：
+
+JAVA 数据类型介绍；
+double 和 float 的区别；
+类型后缀的解释；
+参考文献
+
+JAVA 数据类型介绍现在每天的工作无时无刻不在使用 JAVA 码代码，但是对 JAVA 很多基础知识了解并不是很透彻，有时可能是错误的用法。这里计划归纳学习 JAVA 基础知识。首先要学习的就是 JAVA 的数据类型，我们接触最多应该就是不同的数据类型的定义">
+<meta name="twitter:image" content="http://nortonahu.github.io/image/datatypesinjava.png">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-JAVA基础(一)数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/JAVA基础(一)数据类型/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA 学习（一）数据类型
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JAVA-学习（一）数据类型"><a href="#JAVA-学习（一）数据类型" class="headerlink" title="JAVA 学习（一）数据类型"></a>JAVA 学习（一）数据类型</h1><p><img src="/image/datatypesinjava.png" alt=""></p>
+<p>文章目录：</p>
+<ul>
+<li>JAVA 数据类型介绍；</li>
+<li>double 和 float 的区别；</li>
+<li>类型后缀的解释；</li>
+<li>参考文献</li>
+</ul>
+<h2 id="JAVA-数据类型介绍"><a href="#JAVA-数据类型介绍" class="headerlink" title="JAVA 数据类型介绍"></a>JAVA 数据类型介绍</h2><p>现在每天的工作无时无刻不在使用 JAVA 码代码，但是对 JAVA 很多基础知识了解并不是很透彻，有时可能是错误的用法。这里计划归纳学习 JAVA 基础知识。首先要学习的就是 JAVA 的数据类型，我们接触最多应该就是不同的数据类型的定义和声明使用。</p>
+<h3 id="为什么需要数据类型"><a href="#为什么需要数据类型" class="headerlink" title="为什么需要数据类型"></a>为什么需要数据类型</h3><ul>
+<li>数据类型可以通过代码暂时用来存储数据；</li>
+<li><p>数据类型指定了将要被存储到存储单元的数据类型</p>
+<a id="more"></a>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3></li>
+<li><p>数据类型是提供信息介绍的东东；</p>
+</li>
+<li>定义了存储器可以容纳的存储单元范围和数据范围；</li>
+<li>在存储器中所有合法的数据操作可以被执行；</li>
+<li>当我们使用该数据类型的表达式会产生什么的结果；</li>
+<li>JAVA 编程语言提供很多不同类别的数据类型；</li>
+<li>无论关键字给出的语义都将被视为「数据类型」。</li>
+</ul>
+<h3 id="不同的数据类型"><a href="#不同的数据类型" class="headerlink" title="不同的数据类型"></a>不同的数据类型</h3><p>可以分为两大类数据类型：</p>
+<ul>
+<li>原始数据类型（基础数据类型）</li>
+<li>引用数据类型（派生数据类型）</li>
+</ul>
+<p>从第一幅图就可以看出 JAVA 一共原始数据类型有八种类型，引用数据类型有两种。下面我们来详细介绍它们以及它们的关键知识点。</p>
+<ol>
+<li>原始数据类型</li>
+</ol>
+<ul>
+<li>原始数据类型是指编程语言定义好的数据类型和它们所表示的意思，原始数据类型是用来存储单一的数据值的。</li>
+<li>依据数据的类型和数据值的范围，将原始数据类型划分为八种数据类型。</li>
+</ul>
+<p>1.1 整型类别</p>
+<ul>
+<li>这里整型类型不是专门指 int 这一专门的类型而是指一个大类。先说下这类的定义内容这类主要是指那些存储数字的数据类型，既包括了正数也包括了负数但不包括小数；</li>
+<li>在这个大类里我们有四个数据类型它们的主要区别是内存大小的不同；</li>
+<li>这四种数据类型都是用来存储数字的，但是它们存储的数字范围是不同的。JAVA 在整型这个大类中提供这四种数据类型的主要目的是使内存的使用更高效点。</li>
+</ul>
+<ol>
+<li>byte ：byte 占 8-bit 位数的有符号补整数据类型，因为是有符号的所以它的数据值的范围是 -128~127 可以表示 256 个数字。</li>
+<li>short ：short 占 16-bit 位数的有符号数据类型，跟 byte 一样它表示的范围在 -32768~32767 。</li>
+<li>int ：int 默认占 32-bit 位数有符号补整数据类型，因为有符号所以它的数值范围是 -2147483648~2147483647。在 JAVA 1.8 及更高版本 int 可以表示无符号整型，这样的它能表示的范围就可以达到 0 到 <img src="/image/java_datatype_1.png" alt="">，要实现 int 型来表示无符号 int 需要使用 Integer 类。</li>
+<li>long ；long 占 64-bit 有符号数据类型，表示数据的范围是<img src="/image/java_datatype_3.png" alt=""> 到 <img src="/image/java_datatype_2.png" alt="">。同样跟 int 类型一样的也可以表示为 无符号类型。</li>
+</ol>
+<p>1.2 浮点数类别</p>
+<ul>
+<li>这类数据类型可以用来存储一个小数形式的数字通过 +VE 或者 -VE 来表示。在浮点数类型中有两种不同数据范围的数据类型: float 和 double</li>
+<li>和前面的一样的 JAVA 通过这两种数据类型来表示不同数值范围来节约内存；</li>
+<li>float 默认值是 0 ；</li>
+<li>double 默认值是 0.0 。</li>
+</ul>
+<ol>
+<li>float ： 占用位数是 32-bit 位，如果你的程序要考虑节约内存的话，在同样的需求下（数据范围）建议使用 float类型。该类型不应该用于精确的数据，比如说货币。</li>
+<li>double ：占用的位数是 64-bit，这种数据类型很实用用于小数数字的默认选择类型。</li>
+</ol>
+<p>1.3 字符类型</p>
+<ul>
+<li>这里类数据类型应该被用于存储单个字符，这个字符可以是字母、数字甚至是一个符号；</li>
+<li>该大类只包含一个数据类型并被作为字符类型；</li>
+<li>默认值是 「one space」</li>
+</ul>
+<ol>
+<li>char ：16-bit  Unicode 数据类型，数据范围是 0-65535 也可以表示为 ‘\u0000’ 到 ‘\uffff’。</li>
+</ol>
+<p>1.4 布尔类型</p>
+<p>这种类型没什么好说的两个数据值 true false。</p>
+<p><img src="/image/java_datatype_defaultvalue.png" alt=""></p>
+<p>上图是原始数据类型的默认值。总结下原始数据类型的局限性，第一我们不能用在连续的存储单元存储多个值，第二个就是我们要面对两个问题。</p>
+<ul>
+<li>如果我们存储多个数值的话，比如 100 个数据，我们就要定义 100 个数据变量，所有这些变量的定义创建都是通过 JVM 存储在不同的存储单元中。如下图所示，因此在查找的时候会耗费很多时间。<br><img src="/image/java_datatype_multipledata.png" alt=""></li>
+<li>如果想通过网络向远程计算机传递数据使用数据类型就显得无法完成了，因为这会给网络传输增加压力同样为会在程序中增加好多行。</li>
+</ul>
+<ol>
+<li>引用类型</li>
+</ol>
+<p>引用类型的出现就是为了解决上述问题，通过一个变量将值存储在连续的存储单元中，这样就可以使用引用类型了（自己理解跟多个变量指向同一个存储单元）。因为引用类型是通过一个变量将值存储在连续的存储单元中，因此查询速度会比较快。而且可以通过一个而网络请求来传输数据。</p>
+<p>引用数据类型有以下三种：</p>
+<ol>
+<li><a href="http://www.instanceofjava.com/2015/01/arrays-in-java.html" target="_blank" rel="external">Array</a></li>
+<li><a href="http://www.instanceofjava.com/2014/12/class.html" target="_blank" rel="external">Class</a></li>
+<li><a href="http://www.instanceofjava.com/2014/10/abstract-class-and-interfaces.html" target="_blank" rel="external">Interface</a></li>
+</ol>
+<p>以上就是 JAVA 数据类型的主要概念和解释，如果还有不理解的可以参考 <a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/variables.html" target="_blank" rel="external">Variables</a></p>
+<h2 id="double-和-float-的区别"><a href="#double-和-float-的区别" class="headerlink" title="double 和 float 的区别"></a>double 和 float 的区别</h2><p>前面的数据类型的介绍已经详细介绍了，二者的区别主要是在数据的精度上，更详细的区别如下：</p>
+<ol>
+<li>范围<br>float 和 double 范围是由指数的范围来决定的，float 表示的指数范围是 8 位，double 指数范围是 11 位。</li>
+</ol>
+<p><strong>float</strong><br>1bit (符号位) + 8bits (指数位) + 23bits (尾数位)<br><strong>double</strong><br>1bit(符号位) + 11bits (指数位) + 52bits (尾数位)</p>
+<ol>
+<li><p>精度<br>从上面可以看出 float 和 double 最大的区别是指数位和尾数位，float 和 double 都是采用科学计数的方法，整数部分始终是 1 位，它是不变的不会对精度造成影响。</p>
+</li>
+<li><p>影响<br>float 和 double 都是可以表示小数的，double 占用内存大运行速度慢，但是他表示的精度大，所以在不确定小数位数的情况下建议使用 double。</p>
+</li>
+</ol>
+<h2 id="数据类型后缀"><a href="#数据类型后缀" class="headerlink" title="数据类型后缀"></a>数据类型后缀</h2><p>因为我们在定义 long 、float 、double 时后面都会增加 L(l) 、F(f) 、D(d) 其实两个都可以用只是 L 建议使用大写，因为 1 和 1 很像。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/variables.html" target="_blank" rel="external">JAVA 变量教程</a><br><a href="http://www.instanceofjava.com/2015/02/java-data-types.html" target="_blank" rel="external">JAVA DATA TYPE</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Context of Android 初解析/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/JAVA基础(二)泛型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JAVA（二）泛型 （Generic）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JAVA基础(一)数据类型" data-title="JAVA 学习（一）数据类型" data-url="http://nortonahu.github.io/2016/08/05/JAVA基础(一)数据类型/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

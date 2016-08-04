@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Groovy 语言学习 | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Groovy 语言学习本文介绍 groovy 的基础知识，主要是为了学习 Android Studio gradle 编译学习点基础。
+Groovy 简介groovy 第一次接触是在写数据清洗脚本的时候，当时云计算的同事跟我说这个就是 Java 的确 groovy “就是” Java，有人说 groovy 是纯面向对象的语言，是下一代的 Java 语言。这门动态语言拥有类似Python、Ruby和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Groovy 语言学习">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Groovy 语言学习/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="Groovy 语言学习本文介绍 groovy 的基础知识，主要是为了学习 Android Studio gradle 编译学习点基础。
+Groovy 简介groovy 第一次接触是在写数据清洗脚本的时候，当时云计算的同事跟我说这个就是 Java 的确 groovy “就是” Java，有人说 groovy 是纯面向对象的语言，是下一代的 Java 语言。这门动态语言拥有类似Python、Ruby和">
+<meta property="og:image" content="http://nortonahu.github.io/image/groovy_project.png">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Groovy 语言学习">
+<meta name="twitter:description" content="Groovy 语言学习本文介绍 groovy 的基础知识，主要是为了学习 Android Studio gradle 编译学习点基础。
+Groovy 简介groovy 第一次接触是在写数据清洗脚本的时候，当时云计算的同事跟我说这个就是 Java 的确 groovy “就是” Java，有人说 groovy 是纯面向对象的语言，是下一代的 Java 语言。这门动态语言拥有类似Python、Ruby和">
+<meta name="twitter:image" content="http://nortonahu.github.io/image/groovy_project.png">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Groovy 语言学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Groovy 语言学习/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Groovy 语言学习
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/groovy/">groovy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Groovy-语言学习"><a href="#Groovy-语言学习" class="headerlink" title="Groovy 语言学习"></a>Groovy 语言学习</h2><p>本文介绍 groovy 的基础知识，主要是为了学习 Android Studio gradle 编译学习点基础。</p>
+<h2 id="Groovy-简介"><a href="#Groovy-简介" class="headerlink" title="Groovy 简介"></a>Groovy 简介</h2><p>groovy 第一次接触是在写数据清洗脚本的时候，当时云计算的同事跟我说这个就是 Java 的确 groovy “就是” Java，有人说 groovy 是纯面向对象的语言，是下一代的 Java 语言。这门动态语言拥有类似Python、Ruby和Smalltalk中的一些特性，可以作为Java平台的脚本语言使用。<br>它是一种 DSL 语言 （DSL：Domain-specific language 特定领域语言，解决特定问题的方法） 。它提供了更简单、更灵活的语法，可以在运行时动态地进行类型检查。您可以使用 Groovy 随意编写 Java 应用程序，连接 Java 模块，甚至扩展现有的 Java 应用程序 — 甚至可以用 Groovy 对 Java 代码进行单元测试。Groovy 的美妙之处还在于，它能够比编写纯粹的 Java 代码更快地完成所有工作 — 有时候会快许多。groovy 的安装这里不介绍了毕竟本blog主要还是为了解决问题，我使用的是 Eclipse 插件的方式。</p>
+<a id="more"></a>
+<h2 id="Groovy-语法知识"><a href="#Groovy-语法知识" class="headerlink" title="Groovy 语法知识"></a>Groovy 语法知识</h2><p>groovy 的语法跟 Java 差不多这点很重要，Java 的代码完全可以在 groovy 执行。这里在 eclipse 中新建一个 groovy 的工程，如下图所示</p>
+<p><img src="/image/groovy_project.png" alt=""></p>
+<p>其中新建两个 src 文件夹一个是 java 一个是 groovy 这个是为了后面更好的认识到这两个相似的。</p>
+<ol>
+<li>groovy 是松散的 java 语法允许省略分号和修改符，除非特殊规定 groovy 都是public；</li>
+<li>groovy 允许简单的脚本文件，同时无需定义正规的 class 对象；</li>
+<li>groovy 对 java 的基本语法来说增加了一些独特的语法，同时还支持省略 java 变量类型省略；</li>
+<li>自动导入常用包</li>
+</ol>
+<p>例子：</p>
+<pre><code><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> groovyLearn</div><div class="line">class GroovyTest &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">			System.out.<span class="built_in">println</span>(<span class="string">"Java的东西Groovy都能用"</span>);</div><div class="line">		&#125;</div><div class="line">		System.out.<span class="built_in">println</span>(<span class="string">"随便输入点啥试试"</span>);</div><div class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in); <span class="comment">// 不需要导入java.util包</span></div><div class="line">		<span class="keyword">String</span> <span class="built_in">str</span> = sc.next();</div><div class="line">		System.out.<span class="built_in">println</span>(<span class="string">"你刚才输入了："</span> + <span class="built_in">str</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><p>输出：</p>
+<blockquote>
+<p>Java的东西Groovy都能用 <br><br>Java的东西Groovy都能用 <br><br>Java的东西Groovy都能用 <br><br>随便输入点啥试试            <br><br>test <br><br>你刚才输入了：test</p>
+</blockquote>
+<p>上面的例子看出来 java 代码完全是可以在 groovy 中运行，而且它可以省略掉很多包的引入，下面我们来将这个代码改造下。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i in <span class="number">0</span>..&lt; <span class="number">3</span>) &#123;</div><div class="line">	<span class="keyword">println</span> <span class="string">"Java的东西Groovy都能用"</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">println</span> <span class="string">"随便输入点啥试试"</span></div><div class="line">Scanner sc = <span class="keyword">new</span> Scanner(System.in)</div><div class="line"><span class="keyword">def</span> str = sc.<span class="keyword">next</span>()</div><div class="line"><span class="keyword">println</span> <span class="string">"你刚才输入了："</span> + str</div></pre></td></tr></table></figure>
+<p>输出的结果是：</p>
+<blockquote>
+<p>Java的东西Groovy都能用 <br><br>Java的东西Groovy都能用<br><br>Java的东西Groovy都能用<br><br>随便输入点啥试试<br><br>test<br><br>你刚才输入了：test</p>
+</blockquote>
+<p>从上面的例子我是使用 groovy 语言改写执行的，代码简洁清晰也验证了 groovy 相对于java的几个特点。<br><br>小结一下：groovy 完全继承了 java 所有的语法，也就是说当你不记得 groovy 怎么写的时候完全可以使用 Java 来写同时支持两者混合着写。第二个二者都是使用 JVM 编译器将文件编译成 class 文件来执行的。</p>
+<ul>
+<li>定义变量类型<br>  groovy 会根据对象的值来确定对象的类型，所以不需要像 Java 那样在对象前面固定对象的类型。</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String</span> price = <span class="string">"1.23"</span></div><div class="line"><span class="built_in">println</span> price</div><div class="line">def price1 = <span class="string">"1.24"</span></div><div class="line"><span class="built_in">println</span> price1</div><div class="line">price2 = <span class="string">"1.25"</span></div><div class="line"><span class="built_in">println</span> price2</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1<span class="selector-class">.23</span></div><div class="line">1<span class="selector-class">.24</span></div><div class="line">1<span class="selector-class">.25</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>定义方法和返回值<br>  定义方法和定义变量差不多，使用 def 来定义也可以不使用，方法的返回值是方法的最后一行的值，如果没有的话返回就是 null 。而且返回值的类型也不用定义，定义了的话也是可以的，下面是代码：</p>
+  <figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">repeat</span></span>(<span class="keyword">val</span>) &#123;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">		println <span class="keyword">val</span></div><div class="line">	&#125;	</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">repeat2</span></span>(<span class="keyword">val</span>) &#123;</div><div class="line">	<span class="keyword">for</span>(i in <span class="number">0.</span>.&lt;<span class="number">5</span>) &#123;</div><div class="line">		println <span class="keyword">val</span></div><div class="line">	&#125;</div><div class="line">	<span class="string">"我是最后的结果："</span>+<span class="keyword">val</span> </div><div class="line">&#125;</div><div class="line">println repeat(<span class="string">"test"</span>)</div><div class="line">println repeat2(<span class="string">"test2"</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>输出结果是：</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">test</span></div><div class="line"><span class="built_in">test</span></div><div class="line"><span class="built_in">test</span></div><div class="line"><span class="built_in">test</span></div><div class="line"><span class="built_in">test</span></div><div class="line">null</div><div class="line"><span class="built_in">test</span>2</div><div class="line"><span class="built_in">test</span>2</div><div class="line"><span class="built_in">test</span>2</div><div class="line"><span class="built_in">test</span>2</div><div class="line"><span class="built_in">test</span>2</div><div class="line">我是最后的结果：<span class="built_in">test</span>2</div></pre></td></tr></table></figure>
+</code></pre><p>上面第二个 repeat 的方法使用了 Groovy 中一个写法，表示范围的 <br><br><em>范围</em> 是一系列的值。例如 “0..4” 表明包含 整数 0、1、2、3、4。Groovy 还支持排除范围，“0..&lt;4” 表示 0、1、2、3。还可以创建字符范围：“a..e” 相当于 a、b、c、d、e。“a..\&lt;e” 包括小于 e 的所有值。</p>
+<ul>
+<li><p>字符串</p>
+<p>  groovy 的字符串有三种，单引号、双引号、三引号</p>
+<ul>
+<li>单引号 输入什么就输出什么</li>
+<li>双引号 里面如果有关键符的话会输出相应的东西</li>
+<li><p>三个引号 输出的是文本想什么就输出什么</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">def</span> message = <span class="string">"hello world"</span></div><div class="line">println <span class="string">'<span class="variable">$message</span>'</span></div><div class="line">println <span class="string">"<span class="variable">$message</span>"</span></div><div class="line">println <span class="string">''</span><span class="string">'输入什么就是什么@</span></div><div class="line">而且支持换行'<span class="string">''</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>输出的结果是：</p>
+<pre><code>&gt; $message&lt;br&gt;
+&gt; hello world&lt;br&gt;
+&gt; 输入什么就是什么@&lt;br&gt;
+&gt; 而且支持换行
+</code></pre><ul>
+<li><p>数据类型</p>
+<p>  groovy 的数据类型包括三种</p>
+<ul>
+<li>基本数据类型</li>
+<li>容器</li>
+<li><p>闭包</p>
+<ol>
+<li><p>基本数据类型</p>
+<p>Groovy是纯面向对象的语言，没有Java里的byte、int、double、boolean等八个值类型。但是有对应的包装类如Integer、Double和Boolean。其中整数默认是Integer，浮点数默认是是BigDecimal。<br><br>如果想显式指定Long类型，在后面加L，Double则加D,Float 也是这样的</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>代码：</p>
+<pre><code><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">var1 = <span class="number">5</span></div><div class="line"><span class="keyword">println</span> var1.<span class="keyword">class</span></div><div class="line"></div><div class="line">var2 = <span class="string">"test"</span></div><div class="line"><span class="keyword">println</span> var2.<span class="keyword">class</span></div><div class="line"></div><div class="line">var3 = <span class="string">'c'</span></div><div class="line"><span class="keyword">println</span> var3.<span class="keyword">class</span></div><div class="line"></div><div class="line">var4 = <span class="number">1.0</span>F</div><div class="line"><span class="keyword">println</span> var4.<span class="keyword">class</span></div><div class="line"></div><div class="line">var5 = <span class="number">1.0</span>D</div><div class="line"><span class="keyword">println</span> var5.<span class="keyword">class</span></div><div class="line"></div><div class="line">var6 = <span class="number">6</span>L</div><div class="line"><span class="keyword">println</span> var6.<span class="keyword">class</span></div><div class="line"></div><div class="line">var7 = <span class="number">1.0</span></div><div class="line"><span class="keyword">println</span> var7.<span class="keyword">class</span></div><div class="line"></div><div class="line">var8 = <span class="keyword">false</span></div><div class="line"><span class="keyword">println</span> var8.<span class="keyword">class</span></div></pre></td></tr></table></figure>
+</code></pre><p>输出的结果是：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class java<span class="selector-class">.lang</span><span class="selector-class">.Integer</span></div><div class="line">class java<span class="selector-class">.lang</span><span class="selector-class">.String</span></div><div class="line">class java<span class="selector-class">.lang</span><span class="selector-class">.String</span></div><div class="line">class java<span class="selector-class">.lang</span><span class="selector-class">.Float</span></div><div class="line">class java<span class="selector-class">.lang</span><span class="selector-class">.Double</span></div><div class="line">class java<span class="selector-class">.lang</span><span class="selector-class">.Long</span></div><div class="line">class java<span class="selector-class">.math</span><span class="selector-class">.BigDecimal</span></div><div class="line">class java<span class="selector-class">.lang</span><span class="selector-class">.Boolean</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>容器（集合）</p>
+<p>  这块内容分为三块，List、Map、Range<br>  关于这块内容上面 for 循环已经说了点，下面来详细叙述下。</p>
+<p>  <strong>List</strong></p>
+<p>  代码：</p>
+<pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">def coll = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]	<span class="comment">// 使用［］来分隔数据</span></div><div class="line"><span class="comment">// coll 是 collection 的断言</span></div><div class="line">assert coll instanceof Collection</div><div class="line"><span class="comment">// coll 是 List 的断言</span></div><div class="line">assert coll instanceof List</div><div class="line"><span class="comment">// 打印数据</span></div><div class="line">println coll</div><div class="line"><span class="comment">//  打印坐标2元素值</span></div><div class="line">println coll[<span class="number">2</span>]</div><div class="line"><span class="comment">// 打印list的大小</span></div><div class="line">println coll.size()</div><div class="line"><span class="comment">// 在尾部添加数据的两种放</span></div><div class="line">coll.add(<span class="number">6</span>)</div><div class="line">coll &lt;&lt; <span class="number">7</span></div><div class="line"><span class="comment">// 打印每一个值</span></div><div class="line">coll.each &#123;</div><div class="line">	println it</div><div class="line">&#125;</div><div class="line"><span class="comment">// 删除列表中一些元素</span></div><div class="line">coll -= [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div><div class="line">println coll</div><div class="line"><span class="comment">// 添加列表中的元素</span></div><div class="line">coll +=[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div><div class="line">println coll</div></pre></td></tr></table></figure>
+</code></pre><p>  输出：</p>
+<pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">5</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">4</span></div><div class="line"><span class="number">5</span></div><div class="line"><span class="number">6</span></div><div class="line"><span class="number">7</span></div><div class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</div><div class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<p>其中 assert 断言 assert range instanceof List 用来断言 range 是 List 如果类型不匹配的会报错。<br>    <strong>Map</strong><br>    groovy 映射幕后都是使用 java 中的 map 在 java 中使用 Map 的操作</p>
+<pre><code><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt;<span class="built_in">map</span> = <span class="keyword">new</span> HashMap&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt;();</div><div class="line"><span class="built_in">map</span>.<span class="built_in">put</span>(<span class="string">"name"</span>, <span class="string">"Andy"</span>);</div><div class="line"><span class="built_in">map</span>.<span class="built_in">put</span>(<span class="string">"VPN-#"</span>,<span class="string">"45"</span>);</div></pre></td></tr></table></figure>
+
+map 都是使用这种 key-value 的方式，但是 groovy 使用的是使用[key : value]定义，元素之间用,隔开。
+
+ <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">	<span class="keyword">def</span> testMap = [<span class="string">name:</span><span class="string">"yuhong"</span>, <span class="string">age:</span><span class="string">"18"</span>, <span class="string">sex:</span><span class="string">"man"</span>]</div><div class="line">println testMap</div></pre></td></tr></table></figure>
+</code></pre><p>输出的结果是：</p>
+<blockquote>
+<p>[name:yuhong, age:18, sex:man]</p>
+</blockquote>
+<p>key必须是String，也可以不加引号自动转为String。</p>
+<p><strong>Range</strong></p>
+<pre><code><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 范围从1到10</span></div><div class="line"><span class="keyword">def</span> demoRange = <span class="number">1</span>..<span class="number">10</span></div><div class="line"><span class="comment">// 范围从1到9</span></div><div class="line"><span class="keyword">def</span> demoRange2 = <span class="number">1</span>..&lt;<span class="number">10</span></div><div class="line"><span class="keyword">println</span>(demoRange2.<span class="keyword">from</span>) <span class="comment">// 获取起始值</span></div><div class="line"><span class="keyword">println</span>(demoRange2.to) <span class="comment">// 获取最大值</span></div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li>闭包</li>
+</ul>
+<p>闭包是一段代码块，注意闭包也是数据类型，所以可以把闭包作为方法的参数或者返回类型。简单的说就说分离方法保持方法的单一性和简洁性</p>
+<pre><code>def goOdd(val) {
+    for(i in 1..val) {
+        if(i%2 !=0) {
+            println i
+        }
+    }
+}
+
+def goEvent(val) {
+    for(i in 1..val) {
+        if(i%2 == 0) {
+            println i
+        }
+    }
+}
+
+def pick(n, closure){
+    for (i in 1..n) {
+        closure(i)
+    }
+}
+// 打印奇数
+pick(10, {
+    if (it % 2 != 0) // it代表传进来的参数，也就是上面closure(i)的i
+            println it
+})
+
+// 打印偶数
+pick(10, {
+    if (it % 2 == 0)
+        println it
+})
+//goOdd(10)
+//goEvent(10)
+</code></pre><p>小结下：这上面基本都是groovy的一些基本用法和概念，讲述 groovy 的一些新特性和数据类型。详细的还可以查看参考文献。</p>
+<h2 id="JUNITE-进行单元测试"><a href="#JUNITE-进行单元测试" class="headerlink" title="JUNITE 进行单元测试"></a>JUNITE 进行单元测试</h2><p>单元测试，单元测试（又称为模块测试, Unit Testing）是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。</p>
+<p>小结下：groovy 和 java 很想但是他比java精简的太多包括了变量的定义，集合，没有修改符等等，最后学习了一个 junite 的测试上面看很简单的来说。</p>
+<p>参考文献：<br></p>
+<ol>
+<li><a href="http://www.ibm.com/developerworks/cn/education/java/j-groovy/j-groovy.html" target="_blank" rel="external">精通 Groovy</a><br></li>
+<li><a href="http://www.jianshu.com/p/1e95d03060f7" target="_blank" rel="external">Groovy语法</a></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Hexo_Tutorial/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Hexo_Tutorial
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/Context of Android 初解析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Groovy 语言学习" data-title="Groovy 语言学习" data-url="http://nortonahu.github.io/2016/08/05/Groovy 语言学习/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

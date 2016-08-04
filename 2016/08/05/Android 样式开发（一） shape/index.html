@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android 样式开发（一） shape | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android 样式开发（一） shape
+转载自Keegan小钢 Android样式的开发:shape篇。 对其中一些知识做了扩充，感谢钢哥提供这么详细的总结！
+一个应用，应该保持一套统一的样式，包括 Button、EditText、ProgressBar、Toast、Checkbox 等各种控件的样式，还包括控件间隔、文字大小和颜色、阴影等等。web的样式用css来定义，而 android 的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 样式开发（一） shape">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Android 样式开发（一） shape/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="Android 样式开发（一） shape
+转载自Keegan小钢 Android样式的开发:shape篇。 对其中一些知识做了扩充，感谢钢哥提供这么详细的总结！
+一个应用，应该保持一套统一的样式，包括 Button、EditText、ProgressBar、Toast、Checkbox 等各种控件的样式，还包括控件间隔、文字大小和颜色、阴影等等。web的样式用css来定义，而 android 的">
+<meta property="og:image" content="http://nortonahu.github.io/thumbnails/t1.jpg">
+<meta property="og:image" content="http://nortonahu.github.io/image/android_shape_rectangle.png">
+<meta property="og:image" content="http://nortonahu.github.io/image/android_shape_oval.png">
+<meta property="og:image" content="http://nortonahu.github.io/image/android_shape_ring.png">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 样式开发（一） shape">
+<meta name="twitter:description" content="Android 样式开发（一） shape
+转载自Keegan小钢 Android样式的开发:shape篇。 对其中一些知识做了扩充，感谢钢哥提供这么详细的总结！
+一个应用，应该保持一套统一的样式，包括 Button、EditText、ProgressBar、Toast、Checkbox 等各种控件的样式，还包括控件间隔、文字大小和颜色、阴影等等。web的样式用css来定义，而 android 的">
+<meta name="twitter:image" content="http://nortonahu.github.io/thumbnails/t1.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android 样式开发（一） shape" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android 样式开发（一） shape/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 样式开发（一） shape
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI/">UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘/">备忘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-样式开发（一）-shape"><a href="#Android-样式开发（一）-shape" class="headerlink" title="Android 样式开发（一） shape"></a>Android 样式开发（一） shape</h1><p><img src="/thumbnails/t1.jpg" alt=""></p>
+<h2 id="转载自"><a href="#转载自" class="headerlink" title="转载自"></a>转载自</h2><p><a href="http://keeganlee.me/post/android/20150830" target="_blank" rel="external">Keegan小钢 Android样式的开发:shape篇</a>。 对其中一些知识做了扩充，感谢钢哥提供这么详细的总结！</p>
+<p>一个应用，应该保持一套统一的样式，包括 Button、EditText、ProgressBar、Toast、Checkbox 等各种控件的样式，还包括控件间隔、文字大小和颜色、阴影等等。web的样式用css来定义，而 android 的样式主要则是通过 shape、selector、layer-list、level-list、style、theme 等组合实现。我将用一系列文章，循序渐进地讲解样式的每个方面该如何实现。第一个要讲的就是 shape，最基础的形状定义工具。</p>
+<p>一般用shape定义的xml文件存放在drawable目录下，若项目没有该目录则新建一个，而不要将它放到drawable-hdpi等目录中。</p>
+<p>使用shape可以自定义形状，可以定义下面四种类型的形状，通过android:shape属性指定：<br><a id="more"></a></p>
+<ul>
+<li><strong>rectangle</strong>: 矩形，默认的形状，可以画出直角矩形、圆角矩形、弧形等；</li>
+<li><strong>oval</strong> :椭圆形，用得比较多的是画正圆；</li>
+<li><strong>line</strong>: 线形，可以画实线和虚线；</li>
+<li><strong>ring</strong>: 环形，可以画环形进度条。</li>
+</ul>
+<p>语法：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;<span class="built_in">shape</span></div><div class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    android:<span class="built_in">shape</span>=[<span class="string">"rectangle"</span> | <span class="string">"oval"</span> | <span class="string">"line"</span> | <span class="string">"ring"</span>] &gt;</div><div class="line">    &lt;corners</div><div class="line">        android:radius=<span class="string">"integer"</span></div><div class="line">        android:topLeftRadius=<span class="string">"integer"</span></div><div class="line">        android:topRightRadius=<span class="string">"integer"</span></div><div class="line">        android:bottomLeftRadius=<span class="string">"integer"</span></div><div class="line">        android:bottomRightRadius=<span class="string">"integer"</span> /&gt;</div><div class="line">    &lt;gradient</div><div class="line">        android:angle=<span class="string">"integer"</span></div><div class="line">        android:centerX=<span class="string">"integer"</span></div><div class="line">        android:centerY=<span class="string">"integer"</span></div><div class="line">        android:centerColor=<span class="string">"integer"</span></div><div class="line">        android:endColor=<span class="string">"color"</span></div><div class="line">        android:gradientRadius=<span class="string">"integer"</span></div><div class="line">        android:startColor=<span class="string">"color"</span></div><div class="line">        android:type=[<span class="string">"linear"</span> | <span class="string">"radial"</span> | <span class="string">"sweep"</span>]</div><div class="line">        android:useLevel=[<span class="string">"true"</span> | <span class="string">"false"</span>] /&gt;</div><div class="line">    &lt;padding</div><div class="line">        android:left=<span class="string">"integer"</span></div><div class="line">        android:top=<span class="string">"integer"</span></div><div class="line">        android:right=<span class="string">"integer"</span></div><div class="line">        android:bottom=<span class="string">"integer"</span> /&gt;</div><div class="line">    &lt;<span class="built_in">size</span></div><div class="line">        android:<span class="built_in">width</span>=<span class="string">"integer"</span></div><div class="line">        android:<span class="built_in">height</span>=<span class="string">"integer"</span> /&gt;</div><div class="line">    &lt;solid</div><div class="line">        android:<span class="built_in">color</span>=<span class="string">"color"</span> /&gt;</div><div class="line">    &lt;<span class="built_in">stroke</span></div><div class="line">        android:<span class="built_in">width</span>=<span class="string">"integer"</span></div><div class="line">        android:<span class="built_in">color</span>=<span class="string">"color"</span></div><div class="line">        android:dashWidth=<span class="string">"integer"</span></div><div class="line">        android:dashGap=<span class="string">"integer"</span> /&gt;</div><div class="line">&lt;/<span class="built_in">shape</span>&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="Rectangle"><a href="#Rectangle" class="headerlink" title="Rectangle"></a>Rectangle</h2><p>rectangle是默认的形状，也是用得最多的形状，一些文字背景、按钮背景、控件或布局背景等。</p>
+<p><img src="/image/android_shape_rectangle.png" alt=""></p>
+<p>实现上面的那些效果，都用到了以下这些特性：</p>
+<ul>
+<li><strong>solid</strong>:设置形状填充的颜色，只有android:color一个属性<ul>
+<li><em>android:color</em> 填充的颜色</li>
+</ul>
+</li>
+<li><strong>padding</strong>:设置内容与形状边界的内间距，可分别设置左右上下的距离<ul>
+<li><em>android:left</em> 左内间距</li>
+<li><em>android:right</em> 右内间距</li>
+<li><em>android:top</em> 上内间距</li>
+<li><em>android:bottom</em> 下内间距</li>
+</ul>
+</li>
+<li><strong>gradient</strong>:设置形状的渐变颜色，可以是线性渐变、辐射渐变、扫描性渐变<ul>
+<li><em>android:type</em> 渐变的类型<ul>
+<li><em>linear </em> 线性渐变，默认的渐变类型</li>
+<li><em>radial </em> 放射渐变，设置该项时，android:gradientRadius也必须设置</li>
+<li><em>sweep </em> 扫描性渐变</li>
+</ul>
+</li>
+<li><em>android:startColor</em> 渐变开始的颜色</li>
+<li><em>android:endColor</em> 渐变结束的颜色</li>
+<li><em>android:centerColor</em> 渐变中间的颜色</li>
+<li><em>android:angle</em> 渐变的角度，线性渐变时才有效，必须是45的倍数，0表示从左到右，90表示从下到上</li>
+<li><em>android:centerX</em> 渐变中心的相对X坐标，放射渐变时才有效，在0.0到1.0之间，默认为0.5，表示在正中间</li>
+<li><em>android:centerY</em> 渐变中心的相对X坐标，放射渐变时才有效，在0.0到1.0之间，默认为0.5，表示在正中间</li>
+<li><em>android:gradientRadius</em> 渐变的半径，只有渐变类型为radial时才使用，补充下这里设置大小是纯数字才有效不需要单位。</li>
+<li><em>android:useLevel</em> 如果为true，则可在LevelListDrawable中使用</li>
+</ul>
+</li>
+<li><strong>corner</strong> ：设置圆角，只适用于rectangle类型，可分别设置四个角不同半径的圆角，当设置的圆角半径很大时，比如200dp，就可变成弧形边了<ul>
+<li>android:radius 圆角半径，会被下面每个特定的圆角属性重写</li>
+<li>android:topLeftRadius 左上角的半径</li>
+<li>android:topRightRadius 右上角的半径</li>
+<li>android:bottomLeftRadius 左下角的半径</li>
+<li>android:bottomRightRadius 右下角的半径</li>
+</ul>
+</li>
+<li><strong>stroke</strong> ：设置描边，可描成实线或虚线。<ul>
+<li>android:color 描边的颜色</li>
+<li>android:width 描边的宽度</li>
+<li>android:dashWidth 设置虚线时的横线长度</li>
+<li>android:dashGap 设置虚线时的横线之间的距离</li>
+</ul>
+</li>
+</ul>
+<p>接下来说下实际怎么使用。以下是加了虚线描边的矩形的代码，文件命名为bg_rectangle_with_stroke_dash.xml，放在drawable目录下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="comment">&lt;!-- android:shape指定形状类型，默认为rectangle --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</div><div class="line">    <span class="comment">&lt;!-- solid指定形状的填充色，只有android:color一个属性 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#2F90BD"</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!-- padding设置内容区域离边界的间距 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">padding</span></span></div><div class="line">        <span class="attr">android:bottom</span>=<span class="string">"12dp"</span></div><div class="line">        <span class="attr">android:left</span>=<span class="string">"12dp"</span></div><div class="line">        <span class="attr">android:right</span>=<span class="string">"12dp"</span></div><div class="line">        <span class="attr">android:top</span>=<span class="string">"12dp"</span> /&gt;</div><div class="line">    <span class="comment">&lt;!-- corners设置圆角，只适用于rectangle --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"200dp"</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!-- stroke设置描边 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">stroke</span></span></div><div class="line">        <span class="attr">android:width</span>=<span class="string">"2dp"</span></div><div class="line">        <span class="attr">android:color</span>=<span class="string">"@android:color/darker_gray"</span></div><div class="line">        <span class="attr">android:dashGap</span>=<span class="string">"4dp"</span></div><div class="line">        <span class="attr">android:dashWidth</span>=<span class="string">"4dp"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>接着在要使用的view里引用就可以了，例如本例中用做TextView的background：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;TextView</div><div class="line">    android:layout_width=<span class="string">"wrap_content"</span></div><div class="line">    android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">    android:layout_margin=<span class="string">"8dp"</span></div><div class="line">    android:<span class="built_in">text</span>=<span class="string">"加了虚线描边的矩形"</span></div><div class="line">    android:<span class="built_in">textSize</span>=<span class="string">"16sp"</span></div><div class="line">    android:textColor=<span class="string">"@android:color/white"</span></div><div class="line">    android:<span class="built_in">background</span>=<span class="string">"@drawable/bg_rectangle_with_stroke_dash"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="oval"><a href="#oval" class="headerlink" title="oval"></a>oval</h2><p>oval用来画椭圆，而在实际应用中，更多是画正圆，比如消息提示，圆形按钮等，下图是一些例子：<br><img src="/image/android_shape_oval.png" alt=""><br>上面的效果图应用了solid、padding、stroke、gradient、size几个特性。size是用来设置形状大小的，如下：</p>
+<ul>
+<li><strong>size</strong>: 设置形状默认的大小，可设置宽度和高度<ul>
+<li>android:width 宽度</li>
+<li>android:height 高度</li>
+</ul>
+</li>
+</ul>
+<p>数字0是默认的椭圆，只加了solid填充颜色，数字1则加了上下左右4dp的padding，后面的数字都是正圆，是通过设置size的同样大小的宽高实现的，也可以通过设置控件的宽高一致大小来实现。数字3加了描边，数字4是虚线描边，数字5是用了radial渐变，。注意，使用radial渐变时，必须指定渐变的半径，即android:gradientRadius属性。</p>
+<p>以下是渐变的代码实现，文件为bg_oval_with_gradient.xml：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="comment">&lt;!-- android:shape指定形状类型，默认为rectangle --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:shape</span>=<span class="string">"oval"</span>&gt;</div><div class="line">    <span class="comment">&lt;!-- padding设置内间距 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">padding</span></span></div><div class="line">        <span class="attr">android:bottom</span>=<span class="string">"4dp"</span></div><div class="line">        <span class="attr">android:left</span>=<span class="string">"4dp"</span></div><div class="line">        <span class="attr">android:right</span>=<span class="string">"4dp"</span></div><div class="line">        <span class="attr">android:top</span>=<span class="string">"4dp"</span> /&gt;</div><div class="line">    <span class="comment">&lt;!-- size设置形状的大小 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">size</span></span></div><div class="line">        <span class="attr">android:width</span>=<span class="string">"40dp"</span></div><div class="line">        <span class="attr">android:height</span>=<span class="string">"40dp"</span> /&gt;</div><div class="line">    <span class="comment">&lt;!-- gradient设置渐变 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">gradient</span></span></div><div class="line">        <span class="attr">android:endColor</span>=<span class="string">"#000000"</span></div><div class="line">        <span class="attr">android:gradientRadius</span>=<span class="string">"40dp"</span></div><div class="line">        <span class="attr">android:startColor</span>=<span class="string">"#FFFFFF"</span></div><div class="line">        <span class="attr">android:type</span>=<span class="string">"radial"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>引用代码<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;TextView</div><div class="line">    android:layout_width=<span class="string">"wrap_content"</span></div><div class="line">    android:layout_height=<span class="string">"wrap_content"</span></div><div class="line">    android:gravity=<span class="string">"center"</span></div><div class="line">    android:layout_margin=<span class="string">"8dp"</span></div><div class="line">    android:<span class="built_in">text</span>=<span class="string">"6"</span></div><div class="line">    android:<span class="built_in">textSize</span>=<span class="string">"20sp"</span></div><div class="line">    android:textColor=<span class="string">"@android:color/black"</span></div><div class="line">    android:<span class="built_in">background</span>=<span class="string">"@drawable/bg_oval_with_gradient"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="Line"><a href="#Line" class="headerlink" title="Line"></a>Line</h2><p>line主要用于画分割线，是通过stroke和size特性组合来实现的，先看虚线的代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:shape</span>=<span class="string">"line"</span>&gt;</div><div class="line">    <span class="comment">&lt;!-- 实际显示的线 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">stroke</span></span></div><div class="line">        <span class="attr">android:width</span>=<span class="string">"1dp"</span></div><div class="line">        <span class="attr">android:color</span>=<span class="string">"#2F90BD"</span></div><div class="line">        <span class="attr">android:dashGap</span>=<span class="string">"2dp"</span></div><div class="line">        <span class="attr">android:dashWidth</span>=<span class="string">"4dp"</span> /&gt;</div><div class="line">    <span class="comment">&lt;!-- 形状的高度 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">size</span> <span class="attr">android:height</span>=<span class="string">"4dp"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>画线时，有几点特性必须要知道的：</p>
+<ol>
+<li>只能画水平线，画不了竖线；</li>
+<li>线的高度是通过stroke的android:width属性设置的；</li>
+<li>size的android:height属性定义的是整个形状区域的高度；</li>
+<li>size的height必须大于stroke的width，否则，线无法显示；</li>
+<li>线在整个形状区域中是居中显示的；</li>
+<li>线左右两边会留有空白间距，线越粗，空白越大；</li>
+<li>引用虚线的view需要添加属性android:layerType，值设为”software”，否则显示不了虚线。</li>
+</ol>
+<h2 id="Ring"><a href="#Ring" class="headerlink" title="Ring"></a>Ring</h2><p>首先，shape根元素有些属性只适用于ring类型，先过目下这些属性吧：</p>
+<pre><code>* android:innerRadius 内环的半径
+* android:innerRadiusRatio 浮点型，以环的宽度比率来表示内环的半径，默认为3，表示内环半径为环的宽度除以3，该值会被android:innerRadius覆盖
+* android:thickness 环的厚度
+* android:thicknessRatio 浮点型，以环的宽度比率来表示环的厚度，默认为9，表示环的厚度为环的宽度除以9，该值会被android:thickness覆盖
+* android:useLevel 一般为false，否则可能环形无法显示，只有作为LevelListDrawable使用时才设为true
+</code></pre><p><img src="/image/android_shape_ring.png" alt=""><br>第一个图只添加了solid；第二个图只添加了gradient，类型为sweep；第三个图只添加了stroke；第四个图添加了gradient和stroke两项特性。<br>以下为第四个图的代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:innerRadiusRatio</span>=<span class="string">"3"</span></div><div class="line">    <span class="attr">android:shape</span>=<span class="string">"ring"</span></div><div class="line">    <span class="attr">android:thicknessRatio</span>=<span class="string">"9"</span></div><div class="line">    <span class="attr">android:useLevel</span>=<span class="string">"false"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">gradient</span></span></div><div class="line">        <span class="attr">android:endColor</span>=<span class="string">"#2F90BD"</span></div><div class="line">        <span class="attr">android:startColor</span>=<span class="string">"#FFFFFF"</span></div><div class="line">        <span class="attr">android:type</span>=<span class="string">"sweep"</span> /&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">stroke</span></span></div><div class="line">        <span class="attr">android:width</span>=<span class="string">"1dp"</span></div><div class="line">        <span class="attr">android:color</span>=<span class="string">"@android:color/black"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Android UI 基本知识/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android UI基本知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/Android 动画知识总结篇/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 动画知识总结篇</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android 样式开发（一） shape" data-title="Android 样式开发（一） shape" data-url="http://nortonahu.github.io/2016/08/05/Android 样式开发（一） shape/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

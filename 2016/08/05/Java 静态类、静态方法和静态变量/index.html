@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Java 静态类、静态方法和静态变量 | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java 静态类、静态方法和静态变量static 是Java中的一个关键字，我们不能声明普通外层类或者包为静态的。static用于下面四种情况。
+
+静态变量：我们可以将类级别的变量声明为static。静态变量是属于类的，而不是属于类创建的对象或实例。因为静态变量被类的所有实例共用，所以非线程安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 静态类、静态方法和静态变量">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Java 静态类、静态方法和静态变量/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="Java 静态类、静态方法和静态变量static 是Java中的一个关键字，我们不能声明普通外层类或者包为静态的。static用于下面四种情况。
+
+静态变量：我们可以将类级别的变量声明为static。静态变量是属于类的，而不是属于类创建的对象或实例。因为静态变量被类的所有实例共用，所以非线程安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 静态类、静态方法和静态变量">
+<meta name="twitter:description" content="Java 静态类、静态方法和静态变量static 是Java中的一个关键字，我们不能声明普通外层类或者包为静态的。static用于下面四种情况。
+
+静态变量：我们可以将类级别的变量声明为static。静态变量是属于类的，而不是属于类创建的对象或实例。因为静态变量被类的所有实例共用，所以非线程安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Java 静态类、静态方法和静态变量" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Java 静态类、静态方法和静态变量/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java 静态类、静态方法和静态变量
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java-静态类、静态方法和静态变量"><a href="#Java-静态类、静态方法和静态变量" class="headerlink" title="Java 静态类、静态方法和静态变量"></a>Java 静态类、静态方法和静态变量</h2><p><strong>static</strong> 是Java中的一个关键字，我们不能声明普通外层类或者包为静态的。static用于下面四种情况。</p>
+<ol>
+<li><p>静态变量：我们可以将类级别的变量声明为static。静态变量是属于类的，而不是属于类创建的对象或实例。因为静态变量被类的所有实例共用，所以非线程安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可以通过ClassName.variableName来访问它.</p>
+ <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//静态变量的例子</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> count;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> <span class="built_in">str</span>;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> DB_USER = <span class="string">"myuser"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>静态方法，类似于静态变量，静态方法也属于类，不属于实例的。静态类只能访问类的静态变量，或调用类的静态方法。通常静态方法作为工具方法，被其它类使用，而不需要创建类的实例。譬如集合类、Wrapper类(String, Integer等)和工具类(java.util中的类)都有很多静态方法。通常java程序的开始就是一个main()方法，它就是个静态方法。</p>
+ <figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//静态方法的例子</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> setCount(<span class="keyword">int</span> <span class="keyword">count</span>) &#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">count</span> &gt; <span class="number">0</span>)</div><div class="line">    StaticExample.<span class="keyword">count</span> = <span class="keyword">count</span>;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//静态工具方法</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> addInts(<span class="keyword">int</span> i, <span class="keyword">int</span>...js)&#123;</div><div class="line">    <span class="keyword">int</span> <span class="keyword">sum</span>=i;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> x : js) <span class="keyword">sum</span>+=x;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">sum</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>静态块就是类加载器加载对象时，要执行的一组语句。它用于初始化静态变量。通常用于类加载的时候创建静态资源。我们在静态块中不能访问非静态变量。我们可以在一个类中有多个静态块，尽管这么做没什么意义。静态块只会在类加载到内存中的时候执行一次。</p>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>静态块：静态块就是类加载器加载对象时，要执行的一组语句。它用于初始化静态变量。通常用于类加载的时候创建静态资源。我们在静态块中不能访问非静态变量。我们可以在一个类中有多个静态块，尽管这么做没什么意义。静态块只会在类加载到内存中的时候执行一次。</p>
+ <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span>&#123;</div><div class="line">    <span class="comment">//在类被加载的时候用于初始化资源</span></div><div class="line">    System.out.<span class="built_in">println</span>(<span class="string">"StaticExample static block"</span>);</div><div class="line">    <span class="comment">//仅能访问静态变量和静态方法</span></div><div class="line">    <span class="built_in">str</span>=<span class="string">"Test"</span>;</div><div class="line">    setCount(<span class="number">2</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>静态类：我们对嵌套类使用static关键字。static不能用于最外层的类。静态的嵌套类和其它外层的类别无二致，嵌套只是为了方便打包。</p>
+</li>
+</ol>
+<h3 id="静态类与内部类的区别"><a href="#静态类与内部类的区别" class="headerlink" title="静态类与内部类的区别"></a>静态类与内部类的区别</h3><p><strong>内部类</strong></p>
+<p>1、内部类拥有普通类的所有特性，也拥有类成员变量的特性</p>
+<p>2、内部类可以访问其外部类的成员变量，属性，方法，其它内部类</p>
+<p><strong>静态内部类</strong></p>
+<p>1、只有内部类才能声明为static，也可以说是静态内部类</p>
+<p>2、只有静态内部类才能拥有静态成员，普通内部类只能定义普通成员</p>
+<p>3、静态类跟静态方法一样，只能访问其外部类的静态成员</p>
+<p>4、如果在外部类的静态方法中访问内部类，这时候只能访问静态内部类</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 外部类，不能声明为 static</div><div class="line"> * </div><div class="line"> * @author zhanqi</div><div class="line"> * </div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OuterClass</span> &#123;</div><div class="line"> </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> ab = <span class="number">1</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> sab = <span class="number">2</span>;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 普通内部类</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NormalInnerClass</span> &#123;</div><div class="line"> </div><div class="line">        <span class="comment">// private static int age = 22;</span></div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> age = <span class="number">22</span>; <span class="comment">// 不能声明为static</span></div><div class="line"> </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">NormalInnerClass</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="comment">// 可以访问外部类静态与非静态成员</span></div><div class="line">            System.<span class="keyword">out</span>.println(ab);</div><div class="line">            System.<span class="keyword">out</span>.println(sab);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 静态内部类</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">StaticInnerClass</span> &#123;</div><div class="line">        <span class="comment">// 定义静态与非静态成员都是可以的</span></div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> age = <span class="number">22</span>;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> age2 = <span class="number">22</span>;</div><div class="line"> </div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">echo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="comment">// System.out.println(ab);</span></div><div class="line">            System.<span class="keyword">out</span>.println(sab);<span class="comment">// 只能访问外部类的静态成员</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>内部类实例化</strong></p>
+<ol>
+<li><p>问内部类，必须使用：外部类.内部类，OutClass.InnerClass</p>
+</li>
+<li><p>普通内部类必须绑定在其外部类的实例上</p>
+</li>
+<li><p>静态内部类可以直接 new</p>
+</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 外部类访问内部类</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OuterClass</span> &#123;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 普通方法</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        StaticInnerClass sic = <span class="keyword">new</span> StaticInnerClass();</div><div class="line">        NormalInnerClass nic = <span class="keyword">new</span> NormalInnerClass();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Main</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 在静态方法中，只能访问静态成员，静态内部类</span></div><div class="line">        <span class="comment">// NormalInnerClass nic = new NormalInnerClass();</span></div><div class="line">        StaticInnerClass sic = <span class="keyword">new</span> StaticInnerClass();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 其它类访问内部类</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> <span class="title">Test</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 1：其它类访问内部类，必须使用：外部类.内部类，OutClass.InnerClass</div><div class="line">         * 2：普通内部类必须绑定在其外部类的实例上</div><div class="line">         * 3：静态内部类可以直接 new</div><div class="line">         */</div><div class="line">        OuterClass.StaticInnerClass sic = <span class="keyword">new</span> OuterClass.StaticInnerClass();</div><div class="line">        <span class="comment">// OuterClass.NormalInnerClass n = new OuterClass.NormalInnerClass();</span></div><div class="line"> </div><div class="line">        OuterClass oc = <span class="keyword">new</span> OuterClass();</div><div class="line">        OuterClass.NormalInnerClass nic = oc.new NormalInnerClass();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>静态对象</strong></p>
+<p>静态对象我们经常使用,但是对静态对象和非静态对象的区别却并不一定那么了解。下表格就是静态对象和非静态对象主要区别。</p>
+<ol>
+<li>拥有的对象，静态对象是类共同拥有的 ，而非静态对象是由类单独拥有；</li>
+<li>内存空间，静态对象内存空间是固定，非静态类对象是附着相关类的分配；</li>
+<li>分配顺序，先分配静态对象的空间，然后才会分配非静态对象也就是初始化。</li>
+</ol>
+<h3 id="静态类和单例模式的区别"><a href="#静态类和单例模式的区别" class="headerlink" title="静态类和单例模式的区别"></a>静态类和单例模式的区别</h3><blockquote>
+<p><a href="http://www.raychase.net/257" target="_blank" rel="external">再议单例模式和静态类</a></p>
+</blockquote>
+<ol>
+<li><p>单例模式便于mock，可测性好。虽说静态方法也可以mock （比如需要使用一些特殊的注解），但是毕竟相对还是麻烦一些，也没有那么灵活。</p>
+</li>
+<li><p>有人说单例模式可以做到lazy load，但是静态类不行。这肯定是扯淡，静态类也完全可以做到第一次使用的时候再加载。不过，其中值得一提的是单例中的Double Check Lock，这里做一个简单介绍。看下面的代码</p>
+</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> Singleton &#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="keyword">private</span> <span class="built_in">Number</span> n = <span class="keyword">new</span> <span class="built_in">Number</span>();  </div><div class="line">    <span class="keyword">public</span> <span class="built_in">Number</span> <span class="keyword">get</span>() &#123;  </div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.n; <span class="comment">//(1)  </span></div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton getInstance() &#123;  </div><div class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;  </div><div class="line">            synchronized(Singleton.class) &#123;  </div><div class="line">                <span class="keyword">if</span>(instance == <span class="literal">null</span>)  </div><div class="line">                    instance = <span class="keyword">new</span> Singleton();  </div><div class="line">            &#125; <span class="comment">//(2)  </span></div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">return</span> instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是很常见的一种写法，不过，由于编译器的优化，允许出现主存和线程工作内存数据不一致问题，这就是“DCL失效”的问题。上面的代码是其典型表现：</p>
+<p>根据JMM规范，主存数据和工作内存的数据是允许存在不一致的。JDK1.2之后，分配空间、对象初始化等等操作才都放到工作内存中进行了。由于synchronized关键字的关系，执行到语句(2)的时候，走出同步块时，JVM会将主存和工作内存的instance引用的对象刷新到一致，即instance是“可见”的。但问题出在上面的(1)，没有synchronized，也没有volatile、final，没有人来保证调用get方法时获得的n是正确的值，即这个n未必是“可见”的。如果n比instance晚同步到主存，就存在一个时间间隙，这个间隙内获取到的instance是一个不健康的instance，其中的this.n是取不到正确的Number对象的。</p>
+<p>在JSR133中，对JMM做了一个修正，后引入或增强了synchronized、volatile和final关键字，通过它们的运用，上述问题能够得到解决。另外，还有一种解决的方法可以是使用静态的内部类：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">private<span class="keyword"> static</span> class InnerInstance &#123;  </div><div class="line">  <span class="keyword"> public</span><span class="keyword"> static</span> Instance<span class="built_in"> instance </span>=<span class="built_in"> new </span>Instance();  </div><div class="line">&#125;  <span class="keyword"></span></div><div class="line">public<span class="keyword"> static</span> Instance getInstance() &#123;  </div><div class="line">  <span class="built_in"> return </span>InnerInstance.instance;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>单例可以被继承，这是一个很大的好处，这便于用户overwrite其中的某方法，当然，继承单例的场景较少见；而静态类一般不被继承。关于单例的继承细节，这里暂不讨论，有几种办法，有兴趣的同学可以自行阅读JDK的Calendar类。</li>
+<li>单例可以实现自某接口，可以继承自某类。静态类也可以继承自某类，但是就没法使用父类里面的protect成员了。推广来说，这一点和上一点都可以看做是面向对象带来的好处：封装、继承和多态，静态类不能很好地具备其中的后两点。</li>
+<li>单例可以比较方便地扩展为有限实例。根据需要，我可以通过工厂，生产出两个内部状态不同的单例对象——这在静态类中是难以做到的。Spring可以看做一系列大工厂，但其中的bean也只有singleton和prototype两种，生产不出static的新类型；当你的工具成为了对象，就能够保持良好的扩展性。</li>
+<li>有人说，单例在使用过程中申请的资源可以被及时释放并回收内存，但是静态类不行。这也是没有道理的，别忘了静态类也是可以存放状态的，在确定不再使用资源后，及时将资源的引用置为null就可以了。</li>
+<li>如果希望在类加载的时候做复杂的操作，那么在静态类中，需要引入static块来初始化数据，如果期间抛出了异常，就可能发生一个“ClassDefNotFoundError”的诡异错误，这对问题定位是不利的。</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/05/2015年总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2015年总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Java 静态类、静态方法和静态变量" data-title="Java 静态类、静态方法和静态变量" data-url="http://nortonahu.github.io/2016/08/05/Java 静态类、静态方法和静态变量/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

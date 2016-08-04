@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>JAVA（二）泛型 （Generic） | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JAVA（二）泛型
+好文转载：原文地址
+遇到的问题？今天早上准备重构下项目代码，在处理一个实现类的时候想借鉴下接口与实现分离的方式。接口使用抽象类处理 OK 没什么问题，实现类的时候里面数据对象是一个 A 类实现了 Parcelable 接口的 list。因为考虑到后面可能会有多个类型要来操作，所以打算用泛型来处理这个数据，但是在赋值的时候，从 Intent.getParcelableArrayL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA（二）泛型 （Generic）">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/JAVA基础(二)泛型/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="JAVA（二）泛型
+好文转载：原文地址
+遇到的问题？今天早上准备重构下项目代码，在处理一个实现类的时候想借鉴下接口与实现分离的方式。接口使用抽象类处理 OK 没什么问题，实现类的时候里面数据对象是一个 A 类实现了 Parcelable 接口的 list。因为考虑到后面可能会有多个类型要来操作，所以打算用泛型来处理这个数据，但是在赋值的时候，从 Intent.getParcelableArrayL">
+<meta property="og:image" content="http://nortonahu.github.io/thumbnails/cupt.jpg">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA（二）泛型 （Generic）">
+<meta name="twitter:description" content="JAVA（二）泛型
+好文转载：原文地址
+遇到的问题？今天早上准备重构下项目代码，在处理一个实现类的时候想借鉴下接口与实现分离的方式。接口使用抽象类处理 OK 没什么问题，实现类的时候里面数据对象是一个 A 类实现了 Parcelable 接口的 list。因为考虑到后面可能会有多个类型要来操作，所以打算用泛型来处理这个数据，但是在赋值的时候，从 Intent.getParcelableArrayL">
+<meta name="twitter:image" content="http://nortonahu.github.io/thumbnails/cupt.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-JAVA基础(二)泛型" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/JAVA基础(二)泛型/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA（二）泛型 （Generic）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JAVA（二）泛型"><a href="#JAVA（二）泛型" class="headerlink" title="JAVA（二）泛型"></a>JAVA（二）泛型</h1><p><img src="/thumbnails/cupt.jpg" alt=""></p>
+<p><em>好文转载</em>：<a href="http://www.infoq.com/cn/articles/cf-java-generics#anch66633" target="_blank" rel="external">原文地址</a></p>
+<p><em>遇到的问题？</em><br>今天早上准备重构下项目代码，在处理一个实现类的时候想借鉴下接口与实现分离的方式。接口使用抽象类处理 OK 没什么问题，实现类的时候里面数据对象是一个 A 类实现了 Parcelable 接口的 list。因为考虑到后面可能会有多个类型要来操作，所以打算用泛型来处理这个数据，但是在赋值的时候，从 Intent.getParcelableArrayListExtra 得到的数据没办法直接传递给接口抽象类的构造方法。具体代码如下：<br><a id="more"></a><br>抽象类构造方法：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> AsyncUpload(ArrayList&lt;T&gt; uploadFileList, AsyncUploadService service, int fileType,</div><div class="line">        int taskId) &#123;</div><div class="line">    <span class="keyword">this</span>.uploadFileList = uploadFileList;</div><div class="line">    <span class="keyword">this</span>.service = service;</div><div class="line">    <span class="keyword">this</span>.fileType = fileType;</div><div class="line">    <span class="keyword">this</span>.taskId = taskId;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>子类的构造方法：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiPartUploadTask</span> <span class="keyword">extends</span> <span class="title">AsyncUpload&lt;MultiPartUploadFile&gt;</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="comment">//  private static final String TAG = MultiPartUploadTask.class.getSimpleName();</span></div><div class="line"></div><div class="line">    public <span class="type">MultiPartUploadTask</span>(<span class="type">Intent</span> intent,<span class="type">AsyncUploadService</span> service) &#123;</div><div class="line">        <span class="keyword">super</span>(intent.getParcelableArrayListExtra(<span class="type">AsyncUploadService</span>.<span class="type">PARAM_FILES</span>), </div><div class="line">                service,</div><div class="line">                intent.getIntExtra(<span class="type">AsyncUploadService</span>.<span class="type">FILE_TYPE</span>, <span class="type">TEXT_TYPE</span>),</div><div class="line">                intent.getIntExtra(<span class="type">AsyncUploadService</span>.<span class="type">PARAM_ID</span>, <span class="number">0</span>));</div><div class="line">        mTotalSize = getTotalSize();</div><div class="line">        _client = <span class="type">ApiHttpClient</span>.getInstance();</div><div class="line">        hasFail = <span class="literal">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>这里就会报一个错误</p>
+<blockquote>
+<p>The constructor AsyncUpload<multipartuploadfile>(ArrayList<parcelable>, AsyncUploadService, int,<br> int) is undefined</parcelable></multipartuploadfile></p>
+</blockquote>
+<p>如果不在实现类中注明类型的话会有一个 warn 信息。</p>
+<blockquote>
+<p>Type safety: The constructor AsyncUpload(ArrayList, AsyncUploadService, int, int) belongs to the raw<br> type AsyncUpload. References to generic type AsyncUpload<t> should be parameterized</t></p>
+</blockquote>
+<p>看到这个问题就知道是因为类型转换的问题导致，查了下资料原来一直用的泛型理解都错了，下面原文的主要内容：</p>
+<p>Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换。泛型最主要的应用是在JDK 5中的新集合类框架中。对于泛型概念的引入，开发社区的观点是褒贬不一。从好的方面来说，泛型的引入可以解决之前的集合类框架在使用过程中通常会出现的运行时刻类型错误，因为编译器可以在编译时刻就发现很多明显的错误。而从不好的地方来说，为了保证与旧有版本的兼容性，Java泛型的实现上存在着一些不够优雅的地方。当然这也是任何有历史的编程语言所需要承担的历史包袱。后续的版本更新会为早期的设计缺陷所累。  </p>
+<p>开发人员在使用泛型的时候，很容易根据自己的直觉而犯一些错误。比如一个方法如果接收 List<object\> 作为形式参数，那么如果尝试将一个 List<string\> 的对象作为实际参数传进去，却发现无法通过编译。虽然从直觉上来说，Object是String的父类，这种类型转换应该是合理的。但是实际上这会产生隐含的类型转换问题，因此编译器直接就禁止这样的行为。本文试图对Java泛型做一个概括性的说明。</string\></object\></p>
+<h2 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h2><p>正确理解泛型概念的首要前提是理解类型擦除（type erasure）。 Java中的泛型基本上都是在编译器这个层次来实现的。在生成的Java字节代码中是不包含泛型中的类型信息的。使用泛型的时候加上的类型参数，会被编译器在编译的时候去掉。这个过程就称为类型擦除。如在代码中定义的 List&lt; Object > 和 List<string\> 等类型，在编译之后都会变成List。JVM看到的只是List，而由泛型附加的类型信息对JVM来说是不可见的。Java编译器会在编译时尽可能的发现可能出错的地方，但是仍然无法避免在运行时刻出现类型转换异常的情况。类型擦除也是Java的泛型实现方式与C++模板机制实现方式之间的重要区别。</string\></p>
+<p>很多泛型的奇怪特性都与这个类型擦除的存在有关，包括：</p>
+<ul>
+<li>泛型类并没有自己独有的Class类对象。比如并不存在 List<string\>.class 或是 List<integer\>.class ，而只有 List.class。</integer\></string\></li>
+<li>静态变量是被泛型类的所有实例所共享的。对于声明为 MyClass<t\>的类，访问其中的静态变量的方法仍然是 MyClass.myStaticVar。不管是通过 new MyClass<string\> 还是 new MyClass<integer\> 创建的对象，都是共享一个静态变量。</integer\></string\></t\></li>
+<li>泛型的类型参数不能用在Java异常处理的catch语句中。因为异常处理是由JVM在运行时刻来进行的。由于类型信息被擦除，JVM是无法区分两个异常类型 MyException<string\>和 MyException<integer\> 的。对于JVM来说，它们都是 MyException 类型的。也就无法执行与异常对应的 catch 语句。</integer\></string\></li>
+</ul>
+<p>类型擦除的基本过程也比较简单，首先是找到用来替换类型参数的具体类。这个具体类一般是 Object。如果指定了类型参数的上界的话，则使用这个上界。把代码中的类型参数都替换成具体的类。同时去掉出现的类型声明，即去掉&lt;&gt;的内容。比如T get()方法声明就变成了 Object get()；List<string\>就变成了 List。接下来就可能需要生成一些桥接方法（bridge method）。这是由于擦除了类型之后的类可能缺少某些必须的方法。比如考虑下面的代码：<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyString</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">String</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> compareTo(String <span class="keyword">str</span>) &#123;        </div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;    </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></string\></p>
+<p>当类型信息被擦除之后，上述类的声明变成了class MyString implements Comparable。但是这样的话，类MyString就会有编译错误，因为没有实现接口Comparable声明的int compareTo(Object)方法。这个时候就由编译器来动态生成这个方法。</p>
+<h2 id="实例分析"><a href="#实例分析" class="headerlink" title="实例分析"></a>实例分析</h2><p>了解了类型擦除机制之后，就会明白编译器承担了全部的类型检查工作。编译器禁止某些泛型的使用方式，正是为了确保类型的安全性。以上面提到的 List<object\> 和 List<string\> 为例来具体分析：</string\></object\></p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="literal">void</span> inspect(<span class="built_in">List</span>&lt;Object&gt; <span class="built_in">list</span>) &#123;    </div><div class="line">    for (Object obj : <span class="built_in">list</span>) &#123;        </div><div class="line">        System.out.println(obj);    </div><div class="line">    &#125;    </div><div class="line">    <span class="built_in">list</span>.add(<span class="number">1</span>); <span class="comment">//这个操作在当前方法的上下文是合法的。 </span></div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="literal">void</span> test() &#123;    </div><div class="line">    <span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; strs = <span class="literal">new</span> ArrayList&lt;<span class="built_in">String</span>&gt;();    </div><div class="line">    inspect(strs); <span class="comment">//编译错误 </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码中，inspect 方法接受 List<object\> 作为参数，当在test方法中试图传入 List<string\>的时候，会出现编译错误。假设这样的做法是允许的，那么在 inspect 方法就可以通过 list.add(1)来向集合中添加一个数字。这样在test方法看来，其声明为 List<string\>的集合中却被添加了一个 Integer 类型的对象。这显然是违反类型安全的原则的，在某个时候肯定会抛出 ClassCastException。因此，编译器禁止这样的行为。编译器会尽可能的检查可能存在的类型安全问题。对于确定是违反相关原则的地方，会给出编译错误。当编译器无法判断类型的使用是否正确的时候，会给出警告信息。 </string\></string\></object\></p>
+<h2 id="通配符与上下界"><a href="#通配符与上下界" class="headerlink" title="通配符与上下界"></a>通配符与上下界</h2><p>在使用泛型类的时候，既可以指定一个具体的类型，如List <string\>就声明了具体的类型是 String；也可以用通配符?来表示未知类型，如 List&lt;?>就声明了List 中包含的元素类型是未知的。 通配符所代表的其实是一组类型，但具体的类型是未知的。List&lt;?>所声明的就是所有类型都是可以的。但是 List&lt;?> 并不等同于 List<object\>。List<object\> 实际上确定了 List 中包含的是 Object及其子类，在使用的时候都可以通过 Object 来进行引用。而 List&lt;?>则其中所包含的元素类型是不确定。其中可能包含的是 String，也可能是 Integer。如果它包含了 String 的话，往里面添加Integer类型的元素就是错误的。正因为类型未知，就不能通过n ew ArrayList&lt;?>()的方法来创建一个新的 rrayList对象。因为编译器无法知道具体的类型是什么。但是对于 List&lt;?&gt;中的元素确总是可以用 Object 来引用的，因为虽然类型未知，但肯定是Object及其子类。考虑下面的代码：</object\></object\></string\></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">wildcard</span><span class="params">(List&lt;?&gt; <span class="built_in">list</span>)</span> </span>&#123;</div><div class="line">    <span class="built_in">list</span>.add(<span class="number">1</span>);<span class="comment">//编译错误 </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上所示，试图对一个带通配符的泛型类进行操作的时候，总是会出现编译错误。其原因在于通配符所表示的类型是未知的。</p>
+<p>因为对于 List&lt;?> 中的元素只能用 Object 来引用，在有些情况下不是很方便。在这些情况下，可以使用上下界来限制未知类型的范围。 如 List&lt;? extends Number> 说明List 中可能包含的元素类型是 Number 及其子类。而 List&lt;? super Number> 则说明 List 中包含的是 Number 及其父类。当引入了上界之后，在使用类型的时候就可以使用上界类中定义的方法。比如访问 List&lt;? extends Number> 的时候，就可以使用 Number 类的 intValue 等方法。</p>
+<h2 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h2><p>在 Java 中，大家比较熟悉的是通过继承机制而产生的类型体系结构。比如 String 继承自Object 。根据 Liskov 替换原则，子类是可以替换父类的。当需要 Object类的引用的时候，如果传入一个 String 对象是没有任何问题的。但是反过来的话，即用父类的引用替换子类引用的时候，就需要进行强制类型转换。编译器并不能保证运行时刻这种转换一定是合法的。这种自动的子类替换父类的类型转换机制，对于数组也是适用的。 String[] 可以替换 Object[]。但是泛型的引入，对于这个类型系统产生了一定的影响。正如前面提到的 List<string\>是不能替换掉 List<object\>的。</object\></string\></p>
+<p>引入泛型之后的类型系统增加了两个维度：一个是类型参数自身的继承体系结构，另外一个是泛型类或接口自身的继承体系结构。第一个指的是对于 List<string\> 和 List<object\> 这样的情况，类型参数 String 是继承自 Object 的。而第二种指的是 List 接口继承自 Collection 接口。对于这个类型系统，有如下的一些规则：</object\></string\></p>
+<ul>
+<li>相同类型参数的泛型类的关系取决于泛型类自身的继承体系结构。即 List<string\> 是Collection<string\> 的子类型，List<string\>可以替换 Collection<string\>。这种情况也适用于带有上下界的类型声明。</string\></string\></string\></string\></li>
+<li>当泛型类的类型声明中使用了通配符的时候， 其子类型可以在两个维度上分别展开。如对 Collection&lt;? extends Number>来说，其子类型可以在Collection这个维度上展开，即List&lt;? extends Number&gt;和Set&lt;? extends Number>等；也可以在 Number 这个层次上展开，即 Collection<double\>和 Collection<integer\>等。如此循环下去，ArrayList<long\> 和 HashSet<double\>等也都算是 Collection&lt;? extends Number> 的子类型。</double\></long\></integer\></double\></li>
+<li>如果泛型类中包含多个类型参数，则对于每个类型参数分别应用上面的规则。</li>
+</ul>
+<p>理解了上面的规则之后，就可以很容易的修正实例分析中给出的代码了。只需要把 List<object\>改成 List&lt;?>即可。List<string\> 是 List&lt;?>的子类型，因此传递参数时不会发生错误。</string\></object\></p>
+<h2 id="开发自己的泛型类"><a href="#开发自己的泛型类" class="headerlink" title="开发自己的泛型类"></a>开发自己的泛型类</h2><p>泛型类与一般的Java类基本相同，只是在类和接口定义上多出来了用&lt;&gt;声明的类型参数。一个类可以有多个类型参数，如 MyClass<x, y,="" z="">。 每个类型参数在声明的时候可以指定上界。所声明的类型参数在Java类中可以像一般的类型一样作为方法的参数和返回值，或是作为域和局部变量的类型。但是由于类型擦除机制，类型参数并不能用来创建对象或是作为静态变量的类型。考虑下面的泛型类中的正确和错误的用法。</x,></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassTest&lt;X</span> <span class="keyword">extends</span> <span class="title">Number</span>, <span class="title">Y</span>, <span class="title">Z&gt;</span> </span>&#123;    </div><div class="line">    <span class="keyword">private</span> <span class="type">X</span> x;    </div><div class="line">    <span class="keyword">private</span> static <span class="type">Y</span> y; <span class="comment">//编译错误，不能用在静态变量中    </span></div><div class="line">    public <span class="type">X</span> getFirst() &#123;</div><div class="line">        <span class="comment">//正确用法        </span></div><div class="line">        <span class="keyword">return</span> x;    </div><div class="line">    &#125;    </div><div class="line">    public void wrong() &#123;        </div><div class="line">        <span class="type">Z</span> z = <span class="keyword">new</span> <span class="type">Z</span>(); <span class="comment">//编译错误，不能创建对象    </span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><p>在使用泛型的时候可以遵循一些基本的原则，从而避免一些常见的问题。</p>
+<ul>
+<li>在代码中避免泛型类和原始类型的混用。比如 List<string\> 和List不应该共同使用。这样会产生一些编译器警告和潜在的运行时异常。当需要利用JDK 5之前开发的遗留代码，而不得不这么做时，也尽可能的隔离相关的代码。</string\></li>
+<li>在使用带通配符的泛型类的时候，需要明确通配符所代表的一组类型的概念。由于具体的类型是未知的，很多操作是不允许的。</li>
+<li>泛型类最好不要同数组一块使用。你只能创建 new List&lt;?>[10]这样的数组，无法创建new List<string\>[10]这样的。这限制了数组的使用能力，而且会带来很多费解的问题。因此，当需要类似数组的功能时候，使用集合类即可。</string\></li>
+<li>不要忽视编译器给出的警告信息。</li>
+</ul>
+<p>总结，看懂了上面的解释我们将 T 改成 ？即可解决问题。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/JAVA基础(一)数据类型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          JAVA 学习（一）数据类型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/AndroidStudio使用小技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AndroidStudio使用小技巧</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JAVA基础(二)泛型" data-title="JAVA（二）泛型 （Generic）" data-url="http://nortonahu.github.io/2016/08/05/JAVA基础(二)泛型/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

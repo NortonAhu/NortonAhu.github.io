@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>OkHttp 使用指南(一)--Calls | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="OkHttp 使用指南(一)–Calls
+手打翻译原文，若转载本文请注明出处
+1&amp;amp;emsp;英语比较差翻译的不好，主要是没从网上找到合适中文版，各种 OkHttp 的中文介绍也觉得完全是站在一个使用者的角度立场上阐述。该文完全是按照官方的原文翻译，对刚了解 OkHttp 的人来说应该是一个很不错的借鉴。
+Calls(调用)&amp;emsp;Http 客户端的作用就是接受你的发送请求并且获得响应，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OkHttp 使用指南(一)--Calls">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/okhttp使用指南(一)/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="OkHttp 使用指南(一)–Calls
+手打翻译原文，若转载本文请注明出处
+1&amp;amp;emsp;英语比较差翻译的不好，主要是没从网上找到合适中文版，各种 OkHttp 的中文介绍也觉得完全是站在一个使用者的角度立场上阐述。该文完全是按照官方的原文翻译，对刚了解 OkHttp 的人来说应该是一个很不错的借鉴。
+Calls(调用)&amp;emsp;Http 客户端的作用就是接受你的发送请求并且获得响应，">
+<meta property="og:image" content="http://nortonahu.github.io/thumbnails/okhttp_call.jpg">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OkHttp 使用指南(一)--Calls">
+<meta name="twitter:description" content="OkHttp 使用指南(一)–Calls
+手打翻译原文，若转载本文请注明出处
+1&amp;amp;emsp;英语比较差翻译的不好，主要是没从网上找到合适中文版，各种 OkHttp 的中文介绍也觉得完全是站在一个使用者的角度立场上阐述。该文完全是按照官方的原文翻译，对刚了解 OkHttp 的人来说应该是一个很不错的借鉴。
+Calls(调用)&amp;emsp;Http 客户端的作用就是接受你的发送请求并且获得响应，">
+<meta name="twitter:image" content="http://nortonahu.github.io/thumbnails/okhttp_call.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-okhttp使用指南(一)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/okhttp使用指南(一)/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OkHttp 使用指南(一)--Calls
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OkHttp/">OkHttp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Square/">Square</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OkHttp-使用指南-一-–Calls"><a href="#OkHttp-使用指南-一-–Calls" class="headerlink" title="OkHttp 使用指南(一)–Calls"></a>OkHttp 使用指南(一)–Calls</h1><p><img src="/thumbnails/okhttp_call.jpg" alt=""></p>
+<p>手打翻译<a href="https://github.com/square/okio" target="_blank" rel="external">原文</a>，若转载本文请注明出处</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">&amp;emsp</span>;英语比较差翻译的不好，主要是没从网上找到合适中文版，各种 OkHttp 的中文介绍也觉得完全是站在一个使用者的角度立场上阐述。该文完全是按照官方的原文翻译，对刚了解 OkHttp 的人来说应该是一个很不错的借鉴。</div></pre></td></tr></table></figure>
+<h2 id="Calls-调用"><a href="#Calls-调用" class="headerlink" title="Calls(调用)"></a>Calls(调用)</h2><p>&emsp;Http 客户端的作用就是接受你的发送请求并且获得响应，这个在理论上是很简单但是实际上是很复杂的。<br><a id="more"></a><br><strong><a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/Request.html" target="_blank" rel="external">Request</a>(请求)</strong><br>&emsp;每一个 Http 请求都是包含了一个 <em>URL</em> 、一个 <em>Method</em>(例如 <em>POST</em> <em>GET</em>) 、<em>header</em> 列表，Request 也会包含一个数据体：指定内容类型(<em>Content-type</em>) 的数据流。</p>
+<p><strong><a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/Response.html" target="_blank" rel="external">Response</a>(响应)</strong><br>&emsp;响应是为了回应 Request 请求，它包含了返回码(<em>200</em>,<em>404</em> 等)，header 信息以及自身的数据体信息。</p>
+<p><strong>Rewriting Request(重写请求)</strong><br>&emsp;当你准备使用 OkHttp 来发送一个 Http 请求，并且你将这个请求描述为最高级别：「使用当前的 headers 信息获取该 URL 的信息」。为了正确和高效率，OkHttp 会在发送请求之前重写请求（主要是 headers 信息）。<br>&emsp;OkHttp 会加上原来请求信息的头部信息中缺失的部分，例如 <em>content-Length, Transfer-Encoding, User-Agent, Host, Connection, and Content-Type</em>。并且还会上一个 <em>Accept-Encoding</em> 到请求的头部中，除非你已经指定该头部信息，如果你有一个 cookie 信息，也会将这个 cookie 信息加到 headers 中的。<br>&emsp;有些请求会有 cache 响应，当这种 cache 响应没有刷新的时候，OkHttp 可以通过一种 <em>有条件</em> 的 GET 请求来下载刷新这个 cache ，当然这个 cache 要比当前的要新。这就需要在 header 中增加 <em>If-Modified-Since</em> 或者 <em>If-None-Match</em>  。</p>
+<p><strong>ReWriting Response(重写响应)</strong><br>&emsp;如果采用了透明的压缩，OkHttp 会删除相应的响应 headers 中的 <em>Content-Encoding</em> 和 <em>Content-Length</em>，因为这些将不会应用到响应信息的解压缩。<br>&emsp;如果有条件的 GET 请求成功了，来自网络的响应和缓存会按照规范来定向合并。</p>
+<p><strong>Follow-up Requests(持续请求)</strong><br>&emsp;当你请求的 Url 已经被移动了，WebServer 会返回一个响应码类似于 302 这种来告知去请求一个新的 Url。OkHttp 会根据这个新的 Url 来查找最终的响应。<br>&emsp;如果响应信息是一个授权质疑。OkHttp 会查询 <a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/Authenticator.html" target="_blank" rel="external">Authenticator</a>来满足这种质疑(前提是已经有了一个配置信息)。如果认证器能够提供一个授权证书，那么 OkHttp 将会加上这个证书再一次请求。</p>
+<p><strong>Retrying Request(重新请求)</strong><br>&emsp;有时候连接会失败原因可能是连接池已经满了和断开连接，也有可能是 WebServer 自己是不可达的。如果有可选的路由的话 OkHttp 重现选择一条来请求。 </p>
+<p><strong><a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/Call.html" target="_blank" rel="external">Calls</a></strong><br>&emsp;通过重写，重定向、持续请求和重新请求，你简单的请求会导致大量的请求和响应。OkHttp 使用 <em>Call</em> 满足你的请求任务的模型来通过无论多少中间必要的请求和响应。通常这不是很多!但是如果你请求的 url 被重定向了或者由于故障转移更换了 IP 地址这对你来说便捷的是请求代码会持续工作。</p>
+<p>&emsp;Calls 将会通过下面两种方式来进行请求：</p>
+<ul>
+<li>Synchronous：在响应未到达之前你的进程会阻塞；</li>
+<li>Asynchronous：你的请求会在任一线程中排队，通过 <a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/Callback.html" target="_blank" rel="external">call back</a> 来在另外一线程中执行。</li>
+</ul>
+<p>&emsp;Calls 可能会在任意线程中被取消。如果请求没有完成的话会导致调用失败。当调用被取消的时候代码中执行读取操作或者写入操作可能会抛出 <em>IOException</em></p>
+<p><strong>Dispatch(调度)</strong><br>&emsp;对于同步调用，在你的线程中对于同时请求会有很多响应需要处理。太多相同的连接会浪费掉你的资源。但很少潜在的伤害。<br>&emsp;对于异步请求，<a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/Dispatcher.html" target="_blank" rel="external">Dispatcher</a> 使用最大请求次数的方案，你可以设置最大的 per-webserver （默认是 5 个）和 overall（默认64个连接）。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Sqlite_ContentProvider/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android SQlite
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/okhttp使用指南(四)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="okhttp使用指南(一)" data-title="OkHttp 使用指南(一)--Calls" data-url="http://nortonahu.github.io/2016/08/05/okhttp使用指南(一)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

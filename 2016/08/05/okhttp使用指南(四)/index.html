@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="OkHttp 使用指南(五)–Https手打翻译原文，若转载本文请注明出处&amp;emsp;OkHttp 努力尝试将以下两个相互矛盾的问题达到平衡
+
+尽可能连接更多的 host，这里包括了使用最新版本的 boringssl 的高级 host 也包括了那些还在使用过时旧版本的 OpenSSL host。
+安全性连接，这里包括了使用需要证书验证远程服务器和通过强加密算法加密的数据交互。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WinterFell">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/okhttp使用指南(四)/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="OkHttp 使用指南(五)–Https手打翻译原文，若转载本文请注明出处&amp;emsp;OkHttp 努力尝试将以下两个相互矛盾的问题达到平衡
+
+尽可能连接更多的 host，这里包括了使用最新版本的 boringssl 的高级 host 也包括了那些还在使用过时旧版本的 OpenSSL host。
+安全性连接，这里包括了使用需要证书验证远程服务器和通过强加密算法加密的数据交互。">
+<meta property="og:image" content="http://nortonahu.github.io/thumbnails/okhttp_https.jpg">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WinterFell">
+<meta name="twitter:description" content="OkHttp 使用指南(五)–Https手打翻译原文，若转载本文请注明出处&amp;emsp;OkHttp 努力尝试将以下两个相互矛盾的问题达到平衡
+
+尽可能连接更多的 host，这里包括了使用最新版本的 boringssl 的高级 host 也包括了那些还在使用过时旧版本的 OpenSSL host。
+安全性连接，这里包括了使用需要证书验证远程服务器和通过强加密算法加密的数据交互。">
+<meta name="twitter:image" content="http://nortonahu.github.io/thumbnails/okhttp_https.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-okhttp使用指南(四)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/okhttp使用指南(四)/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OkHttp-使用指南-五-–Https"><a href="#OkHttp-使用指南-五-–Https" class="headerlink" title="OkHttp 使用指南(五)–Https"></a>OkHttp 使用指南(五)–Https</h1><p><img src="/thumbnails/okhttp_https.jpg" alt=""><br>手打翻译<a href="https://github.com/square/okhttp/wiki/HTTPS" target="_blank" rel="external">原文</a>，若转载本文请注明出处<br>&emsp;OkHttp 努力尝试将以下两个相互矛盾的问题达到平衡</p>
+<ul>
+<li>尽可能连接更多的 host，这里包括了使用最新版本的 <a href="https://boringssl.googlesource.com/boringssl/" target="_blank" rel="external">boringssl</a> 的高级 host 也包括了那些还在使用过时旧版本的 <a href="https://www.openssl.org/" target="_blank" rel="external">OpenSSL</a> host。</li>
+<li>安全性连接，这里包括了使用需要证书验证远程服务器和通过强加密算法加密的数据交互。<a id="more"></a>
+&emsp;当 OkHttp 连接一个 Https 的服务的时候，OkHttp 需要知道提供 <a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/TlsVersion.html" target="_blank" rel="external">TLS 版本</a> 和<a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/CipherSuite.html" target="_blank" rel="external">加密算法</a>。一个客户端希望能包括过期的 TLS 版本和弱设计的加密套件最大化连接。一个严格的客户端希望能够包括最新的 TLS 版本和最强的加密套件最大化连接。</li>
+</ul>
+<p>&emsp;决定是用特定的安全性还是连接数优先的是 <a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/ConnectionSpec.html" target="_blank" rel="external">ConnectionSpec</a>。OkHttp 嵌入了三个规格的链接</p>
+<ul>
+<li><em>MODERN_TLS</em> 是一个安全的链接配置来连接当前的 Https 服务器；</li>
+<li><em>COMPATIBLE_TLS</em> 使用链接安全但是不是当前的 Https 服务器配置；</li>
+<li><em>CLEARTEXT</em> 是用于 http://  url 的链接非安全性配置。<br>默认情况下，OkHttp 会使用 <em>MODERN_TLS</em> 来进行连接，但是当前配置失败的时候会使用 <em>COMPATIBLE_TLS</em>。</li>
+</ul>
+<p>&emsp;每一个规格中的 TLS 版本和加密算法组件是可变的。例如在 OkHttp 2.2 我们删除了支持对响应中遇到 SSL 3.0 <a href="http://googleonlinesecurity.blogspot.ca/2014/10/this-poodle-bites-exploiting-ssl-30.html" target="_blank" rel="external">POOLDLE</a>，在 2.4 的时候删除了对 <a href="https://en.wikipedia.org/wiki/RC4#Security" target="_blank" rel="external">RC4</a> 的支持。正如和你的桌面浏览器一样，保证安全性最好的办法就是时常更新 OkHttp 版本。<br>&emsp;你也可以自定义 TLS 版本和加密算法套件规格的，例如，这个配置使用三个权威的加密算法组件，这个有个缺点就是就是需要 Andorid 5.0 以上和相应的类似设置的服务端<br><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="type">ConnectionSpec</span> spec = <span class="function"><span class="keyword">new</span> <span class="title">ConnectionSpec</span>.<span class="title">Builder</span>(<span class="type">ConnectionSpec</span>.<span class="type">MODERN_TLS</span>)  </span></div><div class="line">    .<span class="title">tlsVersions</span>(<span class="type">TlsVersion</span>.<span class="type">TLS_1_2</span>)</div><div class="line">    .<span class="title">cipherSuites</span>(</div><div class="line">          <span class="type">CipherSuite</span>.<span class="type">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</span>,</div><div class="line">          <span class="type">CipherSuite</span>.<span class="type">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</span>,</div><div class="line">          <span class="type">CipherSuite</span>.<span class="type">TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</span>)</div><div class="line">    .<span class="title">build</span>();</div><div class="line"></div><div class="line"><span class="title">OkHttpClient</span> <span class="title">client</span> = ...</div><div class="line"><span class="title">client</span>.<span class="title">setConnectionSpecs</span>(<span class="type">Collections</span>.singletonList(spec));</div></pre></td></tr></table></figure></p>
+<p><strong>Certificate Pinning（证书锁定）</strong><br>&emsp;默认情况下，OkHttp 信任 host 平台的证书验证。这种策略是最大化的连接。但是这种主观的证书验证会遇到<a href="http://www.computerworld.com/article/2510951/cybercrime-hacking/hackers-spied-on-300-000-iranians-using-fake-google-certificate.html" target="_blank" rel="external">2011 DigiNotar attack</a>。前提是假定你 HTTPS 服务器证书已经在证书授权放得到签名。</p>
+<p>&emsp;通过<a href="http://square.github.io/okhttp/2.x/okhttp/com/squareup/okhttp/CertificatePinner.html" target="_blank" rel="external">证书锁定</a> 来限制拿一个证书授权被信任。证书锁定能够增加安全性，但是限制服务端整体的更新 TLS 证书。<strong>如果没有得到服务端 TLS 管理者的允许千万不要使用证书锁定</strong><br><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> CertificatePinning() &#123;</div><div class="line">   client = <span class="keyword">new</span> OkHttpClient();</div><div class="line">   client.setCertificatePinner(</div><div class="line">       <span class="keyword">new</span> CertificatePinner.Builder()</div><div class="line">           .add(<span class="string">"publicobject.com"</span>, <span class="string">"sha1/DmxUShsZuNiqPQsX2Oi9uv2sCnw="</span>)</div><div class="line">           .add(<span class="string">"publicobject.com"</span>, <span class="string">"sha1/SXxoaOSEzPC6BgGmxAt/EAcsajw="</span>)</div><div class="line">           .add(<span class="string">"publicobject.com"</span>, <span class="string">"sha1/blhOM3W9V/bVQhsWAcLYwPU6n24="</span>)</div><div class="line">           .add(<span class="string">"publicobject.com"</span>, <span class="string">"sha1/T5x9IXmcrQ7YuQxXnxoCmeeQ84c="</span>)</div><div class="line">           .build());</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">public</span> void run() throws Exception &#123;</div><div class="line">   <span class="built_in">Request</span> <span class="built_in">request</span> = <span class="keyword">new</span> <span class="built_in">Request</span>.Builder()</div><div class="line">       .url(<span class="string">"https://publicobject.com/robots.txt"</span>)</div><div class="line">       .build();</div><div class="line"></div><div class="line">   <span class="built_in">Response</span> <span class="built_in">response</span> = client.newCall(<span class="built_in">request</span>).<span class="keyword">execute</span>();</div><div class="line">   <span class="keyword">if</span> (!<span class="built_in">response</span>.isSuccessful()) throw <span class="keyword">new</span> IOException(<span class="string">"Unexpected code "</span> + <span class="built_in">response</span>);</div><div class="line"></div><div class="line">   <span class="keyword">for</span> (Certificate certificate : <span class="built_in">response</span>.handshake().peerCertificates()) &#123;</div><div class="line">     System.out.println(CertificatePinner.pin(certificate));</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p><a href="https://github.com/square/okhttp/blob/master/samples/guide/src/main/java/com/squareup/okhttp/recipes/CustomTrust.java" target="_blank" rel="external">Customizing Trusted Certificates（自定义信任证书）</a><br>&emsp;下面是完整的实现怎样用自己的设置替换当前 host 平台的证书授权，和上面一样 <strong>do not use custom certificates without the blessing of your server’s TLS administrator!</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> final OkHttpClient client;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">CustomTrust</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    client = <span class="keyword">new</span> OkHttpClient();</div><div class="line">    SSLContext sslContext = sslContextForTrustedCertificates(trustedCertificatesInputStream());</div><div class="line">    client.setSslSocketFactory(sslContext.getSocketFactory());</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>(<span class="params"></span>) throws Exception </span>&#123;</div><div class="line">    Request request = <span class="keyword">new</span> Request.Builder()</div><div class="line">        .url(<span class="string">"https://publicobject.com/helloworld.txt"</span>)</div><div class="line">        .build();</div><div class="line"></div><div class="line">    Response response = client.newCall(request).execute();</div><div class="line">    System.<span class="keyword">out</span>.println(response.body().<span class="keyword">string</span>());</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> InputStream <span class="title">trustedCertificatesInputStream</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    ... <span class="comment">// Full source omitted. See sample.</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> SSLContext <span class="title">sslContextForTrustedCertificates</span>(<span class="params">InputStream <span class="keyword">in</span></span>) </span>&#123;</div><div class="line">    ... <span class="comment">// Full source omitted. See sample.</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/okhttp使用指南(一)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          OkHttp 使用指南(一)--Calls
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/okhttp使用指南(三)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OkHttp 使用指南(四)--Recipes</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="okhttp使用指南(四)" data-title="" data-url="http://nortonahu.github.io/2016/08/05/okhttp使用指南(四)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

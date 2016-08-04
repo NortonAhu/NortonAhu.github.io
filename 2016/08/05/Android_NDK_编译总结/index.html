@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android Studio NDK 编译总结 | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;emsp;最近想做一个高斯模糊的效果，像这种图像处理是比较耗时的。大多开发者都是编译so库来实现性能上的优化。昨天花了小半天时间调试安装Android Studio的NDK的编译环境，踩了好几个雷这里做下总结。
+目录:
+
+NDK Android Studio环境的配置
+Android Studio 编译JNI文件
+手动编译JNI文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio NDK 编译总结">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Android_NDK_编译总结/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="&amp;emsp;最近想做一个高斯模糊的效果，像这种图像处理是比较耗时的。大多开发者都是编译so库来实现性能上的优化。昨天花了小半天时间调试安装Android Studio的NDK的编译环境，踩了好几个雷这里做下总结。
+目录:
+
+NDK Android Studio环境的配置
+Android Studio 编译JNI文件
+手动编译JNI文件">
+<meta property="og:image" content="http://nortonahu.github.io/\image/r11c_plateforms.png">
+<meta property="og:image" content="http://nortonahu.github.io/\image/ndk-2.png">
+<meta property="og:image" content="http://nortonahu.github.io/\image/ndk-3.png">
+<meta property="og:image" content="http://nortonahu.github.io/\image/ndk-4.png">
+<meta property="og:image" content="http://nortonahu.github.io/\image/ndk-5.png">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Studio NDK 编译总结">
+<meta name="twitter:description" content="&amp;emsp;最近想做一个高斯模糊的效果，像这种图像处理是比较耗时的。大多开发者都是编译so库来实现性能上的优化。昨天花了小半天时间调试安装Android Studio的NDK的编译环境，踩了好几个雷这里做下总结。
+目录:
+
+NDK Android Studio环境的配置
+Android Studio 编译JNI文件
+手动编译JNI文件">
+<meta name="twitter:image" content="http://nortonahu.github.io/\image/r11c_plateforms.png">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android_NDK_编译总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android_NDK_编译总结/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android Studio NDK 编译总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NDK/">NDK</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&emsp;最近想做一个高斯模糊的效果，像这种图像处理是比较耗时的。大多开发者都是编译so库来实现性能上的优化。昨天花了小半天时间调试安装Android Studio的NDK的编译环境，踩了好几个雷这里做下总结。</p>
+<p><strong>目录:</strong></p>
+<ol>
+<li>NDK Android Studio环境的配置</li>
+<li>Android Studio 编译JNI文件</li>
+<li>手动编译JNI文件<a id="more"></a>
+<h2 id="NDK-Android-Studio-环境配置"><a href="#NDK-Android-Studio-环境配置" class="headerlink" title="NDK Android Studio 环境配置"></a>NDK Android Studio 环境配置</h2></li>
+</ol>
+<p><strong>一、准备</strong></p>
+<p>我当时现场：</p>
+<ul>
+<li>Android Studio 2.1.0</li>
+<li>SDK Version 23</li>
+</ul>
+<p>基本上算0起步吧。首先第一步需要下载<a href="http://developer.android.com/intl/zh-cn/ndk/downloads/index.html" target="_blank" rel="external">NDK</a>。这里有第一个<strong><font color="red" size="5">雷</font></strong>  </p>
+<blockquote>
+<ol>
+<li>如何选择下载合适的NDK版本？</li>
+</ol>
+</blockquote>
+<p>&emsp;首先NDK存在两个问题<em>稳定性</em>和<em>平台版本</em>。</p>
+<ul>
+<li><strong>稳定性</strong> 一般来说Google发布的NDK经常出现bug，而且有时候不同版本的编译出来的so库运行起来有可能有甚至出现崩溃的问题；</li>
+<li><strong>平台版本</strong> 每个NDK版本支持的SDK Version的范围是不一样的。</li>
+</ul>
+<p>我这里使用的是 r11c 版本，用起来还算稳定。下面是 r11c 支持的 Version 范围。</p>
+<p><img src="\image/r11c_plateforms.png" alt="image"></p>
+<p>刚开始不知道下载了一个r10e的版本导致编译不过，原因就是版本不对。</p>
+<p><strong>二、mac环境配置</strong></p>
+<p>这里只介绍mac的环境配置方法，记下环境变量的打开和生效的方法。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">open</span> <span class="selector-class">.bash_profile</span></div><div class="line"><span class="selector-tag">source</span> <span class="selector-class">.bash_profile</span></div></pre></td></tr></table></figure>
+<p>在 bash_profile 文件中编辑输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> ANDROID_NDK=/Users/hongyu/Documents/android-ndk-r11c</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;PATH&#125;</span>:<span class="variable">$ANDROID_NDK</span></div></pre></td></tr></table></figure>
+<p>基本上按照上面的操作ndk-build就可以在终端命令行使用了，后面介绍手动编译的时候会再仔细介绍。</p>
+<p><strong>三、Android Studio环境配置</strong></p>
+<p>Android Studio环境配置我觉得是最简单的主要有三个地方：</p>
+<ol>
+<li><p>NDK文件夹路径设置如下图</p>
+<p> <img src="\image/ndk-2.png" alt=""></p>
+</li>
+<li><p>工程的gradle.properties文件夹里添加</p>
+ <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android.useDeprecatedNdk=<span class="literal">true</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>检查local.properties中ndk.dir</p>
+</li>
+</ol>
+<p>然后就可以NDK开发了，比较简单吧！</p>
+<h2 id="Android-Studio-编译JNI文件"><a href="#Android-Studio-编译JNI文件" class="headerlink" title="Android Studio 编译JNI文件"></a>Android Studio 编译JNI文件</h2><p>&emsp;这里使用高斯模糊动态库编译例子，高斯模糊参考的是<a href="https://github.com/qiujuer/ImageBlurring" target="_blank" rel="external">ImageBlurring</a>库。</p>
+<p>1、 新建一个StackNative类文件：</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">└── com</div><div class="line">    └── bluecup</div><div class="line">        └── hongyu</div><div class="line">            └── ndkdemo</div><div class="line">                ├── MainActivity<span class="selector-class">.java</span></div><div class="line">                ├── blur</div><div class="line">                │   ├── StackBlur<span class="selector-class">.java</span></div><div class="line">                │   └── StackNative<span class="selector-class">.java</span></div><div class="line">                └── util</div><div class="line">                    └── FastBlur.java</div></pre></td></tr></table></figure>
+<p>2、输入文件内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.bluecup.hongyu.ndkdemo.blur;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.graphics.Bitmap;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Des:</div><div class="line"> * Created by hongyu</div><div class="line"> * Date:16/5/12_下午2:08</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StackNative</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">        System.loadLibrary(<span class="string">"blurjni"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Blur Image By Pixels</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> img Img pixel array</div><div class="line">     * <span class="doctag">@param</span> w   Img width</div><div class="line">     * <span class="doctag">@param</span> h   Img height</div><div class="line">     * <span class="doctag">@param</span> r   Blur radius</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">blurPixels</span><span class="params">(<span class="keyword">int</span>[] img, <span class="keyword">int</span> w, <span class="keyword">int</span> h, <span class="keyword">int</span> r)</span></span>;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Blur Image By Bitmap</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> bitmap Img Bitmap</div><div class="line">     * <span class="doctag">@param</span> r      Blur radius</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">blurBitmap</span><span class="params">(Bitmap bitmap, <span class="keyword">int</span> r)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>&emsp;这里面有两个 native 方法 blurPixls 和 blurBitmap 方法，前者使用的图片的像素进行高斯模糊后者直接使用图像来进行高斯模糊。</p>
+<p>3、打开Android Terminal的命令框cd到应用的<font color="red"> java 文件夹下</font>。输入下面命令：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javah -jni com<span class="selector-class">.bluecup</span><span class="selector-class">.hongyu</span><span class="selector-class">.ndkdemo</span><span class="selector-class">.blur</span><span class="selector-class">.StackNative</span></div></pre></td></tr></table></figure>
+<p>然后你会得到这样的提示：</p>
+<blockquote>
+<font color="red"> 错误: 无法确定Bitmap的签名</font>
+
+</blockquote>
+<p>这就是 NDK 编译的第二个<font color="red">雷</font>，因为我们的方法中有一个 android 的类 Bitmap ，因为 C/C++ 中没有这个类。解决办法也比较简单加上 android.jar 的文件路径就可以了。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javah -classpath /Users/hongyu/Library/Android/sdk/platforms/android-<span class="number">23</span>/android<span class="selector-class">.jar</span>: com<span class="selector-class">.bluecup</span><span class="selector-class">.hongyu</span><span class="selector-class">.ndkdemo</span><span class="selector-class">.blur</span><span class="selector-class">.StackNative</span></div></pre></td></tr></table></figure>
+<p>一般如果你不使用一些特殊的类的只要安装最开始的那样编译就可以了，编译完成之后会得到一个 .h 的头文件。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* DO NOT EDIT THIS FILE - it is machine generated */</span></div><div class="line"><span class="comment">#include &lt;jni.h&gt;</span></div><div class="line"><span class="comment">/* Header for class com_bluecup_hongyu_ndkdemo_blur_StackNative */</span></div><div class="line"></div><div class="line"><span class="comment">#ifndef _Included_com_bluecup_hongyu_ndkdemo_blur_StackNative</span></div><div class="line"><span class="comment">#define _Included_com_bluecup_hongyu_ndkdemo_blur_StackNative</span></div><div class="line"><span class="comment">#ifdef __cplusplus</span></div><div class="line"><span class="keyword">extern </span><span class="string">"C"</span> &#123;</div><div class="line"><span class="comment">#endif</span></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Class:     com_bluecup_hongyu_ndkdemo_blur_StackNative</div><div class="line"> * Method:    blurPixels</div><div class="line"> * Signature: ([IIII)V</div><div class="line"> */</div><div class="line"><span class="keyword">JNIEXPORT </span>void <span class="keyword">JNICALL </span><span class="keyword">Java_com_bluecup_hongyu_ndkdemo_blur_StackNative_blurPixels</span></div><div class="line">  (<span class="keyword">JNIEnv </span>*, <span class="keyword">jclass, </span><span class="keyword">jintArray, </span><span class="keyword">jint, </span><span class="keyword">jint, </span><span class="keyword">jint);</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Class:     com_bluecup_hongyu_ndkdemo_blur_StackNative</div><div class="line"> * Method:    blurBitmap</div><div class="line"> * Signature: (Landroid/graphics/Bitmap;I)V</div><div class="line"> */</div><div class="line"><span class="keyword">JNIEXPORT </span>void <span class="keyword">JNICALL </span><span class="keyword">Java_com_bluecup_hongyu_ndkdemo_blur_StackNative_blurBitmap</span></div><div class="line">  (<span class="keyword">JNIEnv </span>*, <span class="keyword">jclass, </span><span class="keyword">jobject, </span><span class="keyword">jint);</span></div><div class="line"></div><div class="line"><span class="comment">#ifdef __cplusplus</span></div><div class="line">&#125;</div><div class="line"><span class="comment">#endif</span></div><div class="line"><span class="comment">#endif</span></div></pre></td></tr></table></figure>
+<p>可以看到这种文件是系统自动生成的不能修改的。好的头文件编好之后。我们就开始写 jni 文件。</p>
+<p>4、首先需要建立一个 jni 文件夹，这里第三个<font color="red">雷</font>。我们这里要使用 Android Studio新建jni类型的文件夹。自己创建的文件夹不知道为啥不行，这里也不深究了。</p>
+<p><img src="\image/ndk-3.png" alt=""></p>
+<p>将之前的生成的头文件移动到jni目录下。下面就实现头文件中的两个方法。新建一个和头文件一模一样名字的c文件。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">// Created by Hong Yu on 16/5/14.</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;android/bitmap.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_com_bluecup_hongyu_ndkdemo_blur_StackNative_blurPixels</span></span></div><div class="line">        <span class="params">(JNIEnv *env, jclass cls, jintArray arrayIn, jint w, jint h, jint r)</span> &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_com_bluecup_hongyu_ndkdemo_blur_StackNative_blurBitmap</span></span></div><div class="line">        <span class="params">(JNIEnv *env, jclass cls, jobject bimapIn, jint r)</span> &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好的头文件的两个方法已经写好了，下面我们要copy高斯模糊的算法了。这里因为只介绍NDK编译具体原理自行google。新建一个 stackblur.h 的头文件：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">// Created by Hong Yu on 16/5/14.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> *<span class="title">blur</span><span class="params">(<span class="keyword">int</span> *, <span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</div></pre></td></tr></table></figure>
+<p>新建stackblur.c 来实现他，拷贝一份代码。</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//</div><div class="line">// Created by Hong Yu on <span class="number">16</span>/<span class="number">5</span>/<span class="number">14</span>.</div><div class="line">//</div><div class="line"><span class="comment">#include &lt;malloc.h&gt;</span></div><div class="line"></div><div class="line"><span class="comment">#define MAX(a, b) ((a) &gt; (b) ? (a):(b))</span></div><div class="line"><span class="comment">#define MIN(a, b) ((a) &lt; (b) ? (a):(b))</span></div><div class="line"><span class="comment">#define ABS(a) ((a) &gt; 0 ? (a) :(-a))</span></div><div class="line"></div><div class="line">int *blur(int *pix, int w, int h, int radius) &#123;</div><div class="line">    int <span class="attr">wm</span> = w - <span class="number">1</span>;</div><div class="line">    int <span class="attr">hm</span> = h - <span class="number">1</span>;</div><div class="line">    int <span class="attr">wh</span> = w * h;</div><div class="line">    int <span class="attr">div</span> = radius + radius + <span class="number">1</span>;</div><div class="line"></div><div class="line">    int *<span class="attr">r</span> = (int *) malloc(wh * sizeof(int));</div><div class="line">    int *<span class="attr">g</span> = (int *) malloc(wh * sizeof(int));</div><div class="line">    int *<span class="attr">b</span> = (int *) malloc(wh * sizeof(int));</div><div class="line">    int rsum, gsum, bsum, x, y, i, p, yp, yi, yw;</div><div class="line"></div><div class="line">    int *<span class="attr">vmin</span> = (int *) malloc(MAX(w, h) * sizeof(int));</div><div class="line"></div><div class="line">    int <span class="attr">divsum</span> = (div + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>;</div><div class="line">    divsum *= divsum;</div><div class="line">    int *<span class="attr">dv</span> = (int *) malloc(<span class="number">256</span> * divsum * sizeof(int));</div><div class="line">    for (<span class="attr">i</span> = <span class="number">0</span>; i &lt; <span class="number">256</span> * divsum; i++) &#123;</div><div class="line">        dv[i] = (i / divsum);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="attr">yw</span> = <span class="attr">yi</span> = <span class="number">0</span>;</div><div class="line"></div><div class="line">    int(*stack)[<span class="number">3</span>] = (int (*)[<span class="number">3</span>]) malloc(div * <span class="number">3</span> * sizeof(int));</div><div class="line">    int stackpointer;</div><div class="line">    int stackstart;</div><div class="line">    int *sir;</div><div class="line">    int rbs;</div><div class="line">    int <span class="attr">r1</span> = radius + <span class="number">1</span>;</div><div class="line">    int routsum, goutsum, boutsum;</div><div class="line">    int rinsum, ginsum, binsum;</div><div class="line"></div><div class="line">    for (<span class="attr">y</span> = <span class="number">0</span>; y &lt; h; y++) &#123;</div><div class="line">        <span class="attr">rinsum</span> = <span class="attr">ginsum</span> = <span class="attr">binsum</span> = <span class="attr">routsum</span> = <span class="attr">goutsum</span> = <span class="attr">boutsum</span> = <span class="attr">rsum</span> = <span class="attr">gsum</span> = <span class="attr">bsum</span> = <span class="number">0</span>;</div><div class="line">        for (<span class="attr">i</span> = -radius; i &lt;= radius; i++) &#123;</div><div class="line">            <span class="attr">p</span> = pix[yi + (MIN(wm, MAX(i, <span class="number">0</span>)))];</div><div class="line">            <span class="attr">sir</span> = stack[i + radius];</div><div class="line">            sir[<span class="number">0</span>] = (p &amp; <span class="number">0</span>xff0000) &gt;&gt; <span class="number">16</span>;</div><div class="line">            sir[<span class="number">1</span>] = (p &amp; <span class="number">0</span>x00ff00) &gt;&gt; <span class="number">8</span>;</div><div class="line">            sir[<span class="number">2</span>] = (p &amp; <span class="number">0</span>x0000ff);</div><div class="line"></div><div class="line">            <span class="attr">rbs</span> = r1 - ABS(i);</div><div class="line">            rsum += sir[<span class="number">0</span>] * rbs;</div><div class="line">            gsum += sir[<span class="number">1</span>] * rbs;</div><div class="line">            bsum += sir[<span class="number">2</span>] * rbs;</div><div class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</div><div class="line">                rinsum += sir[<span class="number">0</span>];</div><div class="line">                ginsum += sir[<span class="number">1</span>];</div><div class="line">                binsum += sir[<span class="number">2</span>];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                routsum += sir[<span class="number">0</span>];</div><div class="line">                goutsum += sir[<span class="number">1</span>];</div><div class="line">                boutsum += sir[<span class="number">2</span>];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="attr">stackpointer</span> = radius;</div><div class="line"></div><div class="line">        for (<span class="attr">x</span> = <span class="number">0</span>; x &lt; w; x++) &#123;</div><div class="line"></div><div class="line">            r[yi] = dv[rsum];</div><div class="line">            g[yi] = dv[gsum];</div><div class="line">            b[yi] = dv[bsum];</div><div class="line"></div><div class="line">            rsum <span class="attr">-=</span> routsum;</div><div class="line">            gsum <span class="attr">-=</span> goutsum;</div><div class="line">            bsum <span class="attr">-=</span> boutsum;</div><div class="line"></div><div class="line">            <span class="attr">stackstart</span> = stackpointer - radius + div;</div><div class="line">            <span class="attr">sir</span> = stack[stackstart % div];</div><div class="line"></div><div class="line">            routsum <span class="attr">-=</span> sir[<span class="number">0</span>];</div><div class="line">            goutsum <span class="attr">-=</span> sir[<span class="number">1</span>];</div><div class="line">            boutsum <span class="attr">-=</span> sir[<span class="number">2</span>];</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (<span class="attr">y</span> == <span class="number">0</span>) &#123;</div><div class="line">                vmin[x] = MIN(x + radius + <span class="number">1</span>, wm);</div><div class="line">            &#125;</div><div class="line">            <span class="attr">p</span> = pix[yw + vmin[x]];</div><div class="line"></div><div class="line">            sir[<span class="number">0</span>] = (p &amp; <span class="number">0</span>xff0000) &gt;&gt; <span class="number">16</span>;</div><div class="line">            sir[<span class="number">1</span>] = (p &amp; <span class="number">0</span>x00ff00) &gt;&gt; <span class="number">8</span>;</div><div class="line">            sir[<span class="number">2</span>] = (p &amp; <span class="number">0</span>x0000ff);</div><div class="line"></div><div class="line">            rinsum += sir[<span class="number">0</span>];</div><div class="line">            ginsum += sir[<span class="number">1</span>];</div><div class="line">            binsum += sir[<span class="number">2</span>];</div><div class="line"></div><div class="line">            rsum += rinsum;</div><div class="line">            gsum += ginsum;</div><div class="line">            bsum += binsum;</div><div class="line"></div><div class="line">            <span class="attr">stackpointer</span> = (stackpointer + <span class="number">1</span>) % div;</div><div class="line">            <span class="attr">sir</span> = stack[(stackpointer) % div];</div><div class="line"></div><div class="line">            routsum += sir[<span class="number">0</span>];</div><div class="line">            goutsum += sir[<span class="number">1</span>];</div><div class="line">            boutsum += sir[<span class="number">2</span>];</div><div class="line"></div><div class="line">            rinsum <span class="attr">-=</span> sir[<span class="number">0</span>];</div><div class="line">            ginsum <span class="attr">-=</span> sir[<span class="number">1</span>];</div><div class="line">            binsum <span class="attr">-=</span> sir[<span class="number">2</span>];</div><div class="line"></div><div class="line">            yi++;</div><div class="line">        &#125;</div><div class="line">        yw += w;</div><div class="line">    &#125;</div><div class="line">    for (<span class="attr">x</span> = <span class="number">0</span>; x &lt; w; x++) &#123;</div><div class="line">        <span class="attr">rinsum</span> = <span class="attr">ginsum</span> = <span class="attr">binsum</span> = <span class="attr">routsum</span> = <span class="attr">goutsum</span> = <span class="attr">boutsum</span> = <span class="attr">rsum</span> = <span class="attr">gsum</span> = <span class="attr">bsum</span> = <span class="number">0</span>;</div><div class="line">        <span class="attr">yp</span> = -radius * w;</div><div class="line">        for (<span class="attr">i</span> = -radius; i &lt;= radius; i++) &#123;</div><div class="line">            <span class="attr">yi</span> = MAX(<span class="number">0</span>, yp) + x;</div><div class="line"></div><div class="line">            <span class="attr">sir</span> = stack[i + radius];</div><div class="line"></div><div class="line">            sir[<span class="number">0</span>] = r[yi];</div><div class="line">            sir[<span class="number">1</span>] = g[yi];</div><div class="line">            sir[<span class="number">2</span>] = b[yi];</div><div class="line"></div><div class="line">            <span class="attr">rbs</span> = r1 - ABS(i);</div><div class="line"></div><div class="line">            rsum += r[yi] * rbs;</div><div class="line">            gsum += g[yi] * rbs;</div><div class="line">            bsum += b[yi] * rbs;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</div><div class="line">                rinsum += sir[<span class="number">0</span>];</div><div class="line">                ginsum += sir[<span class="number">1</span>];</div><div class="line">                binsum += sir[<span class="number">2</span>];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                routsum += sir[<span class="number">0</span>];</div><div class="line">                goutsum += sir[<span class="number">1</span>];</div><div class="line">                boutsum += sir[<span class="number">2</span>];</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (i &lt; hm) &#123;</div><div class="line">                yp += w;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="attr">yi</span> = x;</div><div class="line">        <span class="attr">stackpointer</span> = radius;</div><div class="line">        for (<span class="attr">y</span> = <span class="number">0</span>; y &lt; h; y++) &#123;</div><div class="line">            // Preserve alpha channel: ( <span class="number">0</span>xff000000 &amp; pix[yi] )</div><div class="line">            pix[yi] = (<span class="number">0</span>xff000000 &amp; pix[yi]) | (dv[rsum] &lt;&lt; <span class="number">16</span>) | (dv[gsum] &lt;&lt; <span class="number">8</span>) | dv[bsum];</div><div class="line"></div><div class="line">            rsum <span class="attr">-=</span> routsum;</div><div class="line">            gsum <span class="attr">-=</span> goutsum;</div><div class="line">            bsum <span class="attr">-=</span> boutsum;</div><div class="line"></div><div class="line">            <span class="attr">stackstart</span> = stackpointer - radius + div;</div><div class="line">            <span class="attr">sir</span> = stack[stackstart % div];</div><div class="line"></div><div class="line">            routsum <span class="attr">-=</span> sir[<span class="number">0</span>];</div><div class="line">            goutsum <span class="attr">-=</span> sir[<span class="number">1</span>];</div><div class="line">            boutsum <span class="attr">-=</span> sir[<span class="number">2</span>];</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (<span class="attr">x</span> == <span class="number">0</span>) &#123;</div><div class="line">                vmin[y] = MIN(y + r1, hm) * w;</div><div class="line">            &#125;</div><div class="line">            <span class="attr">p</span> = x + vmin[y];</div><div class="line"></div><div class="line">            sir[<span class="number">0</span>] = r[p];</div><div class="line">            sir[<span class="number">1</span>] = g[p];</div><div class="line">            sir[<span class="number">2</span>] = b[p];</div><div class="line"></div><div class="line">            rinsum += sir[<span class="number">0</span>];</div><div class="line">            ginsum += sir[<span class="number">1</span>];</div><div class="line">            binsum += sir[<span class="number">2</span>];</div><div class="line"></div><div class="line">            rsum += rinsum;</div><div class="line">            gsum += ginsum;</div><div class="line">            bsum += binsum;</div><div class="line"></div><div class="line">            <span class="attr">stackpointer</span> = (stackpointer + <span class="number">1</span>) % div;</div><div class="line">            <span class="attr">sir</span> = stack[stackpointer];</div><div class="line"></div><div class="line">            routsum += sir[<span class="number">0</span>];</div><div class="line">            goutsum += sir[<span class="number">1</span>];</div><div class="line">            boutsum += sir[<span class="number">2</span>];</div><div class="line"></div><div class="line">            rinsum <span class="attr">-=</span> sir[<span class="number">0</span>];</div><div class="line">            ginsum <span class="attr">-=</span> sir[<span class="number">1</span>];</div><div class="line">            binsum <span class="attr">-=</span> sir[<span class="number">2</span>];</div><div class="line"></div><div class="line">            yi += w;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    free(r);</div><div class="line">    free(g);</div><div class="line">    free(b);</div><div class="line">    free(vmin);</div><div class="line">    free(dv);</div><div class="line">    free(stack);</div><div class="line">    return (pix);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后实现 com_bluecup_hongyu_ndkdemo_blur_StackNative.c 的两个方法。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">// Created by Hong Yu on 16/5/14.</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;android/bitmap.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stackblur.h"</span></span></div><div class="line"></div><div class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_com_bluecup_hongyu_ndkdemo_blur_StackNative_blurPixels</span></span></div><div class="line">        <span class="params">(JNIEnv *env, jclass cls, jintArray arrayIn, jint w, jint h, jint r)</span> &#123;</div><div class="line">    jint *pix;</div><div class="line">    pix = (*env) -&gt; GetIntArrayElements(env, arrayIn, <span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (pix == <span class="literal">NULL</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    pix = blur(pix, w, h, r);</div><div class="line"></div><div class="line">    (*env) -&gt; ReleaseIntArrayElements(env, arrayIn, pix, <span class="number">0</span>);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_com_bluecup_hongyu_ndkdemo_blur_StackNative_blurBitmap</span></span></div><div class="line">        <span class="params">(JNIEnv *env, jclass cls, jobject bitmapIn, jint r)</span> &#123;</div><div class="line">    AndroidBitmapInfo infoIn;</div><div class="line">    <span class="keyword">void</span> *pixelsIn;</div><div class="line">    <span class="keyword">int</span> ret;</div><div class="line"></div><div class="line">    <span class="comment">// get imageinfo</span></div><div class="line">    <span class="keyword">if</span>((ret = AndroidBitmap_getInfo(env, bitmapIn, &amp;infoIn)) != <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (infoIn.format != ANDROID_BITMAP_FORMAT_RGBA_8888)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ((ret = AndroidBitmap_lockPixels(env, bitmapIn, &amp;pixelsIn)) != <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> w = infoIn.width;</div><div class="line">    <span class="keyword">int</span> h = infoIn.height;</div><div class="line"></div><div class="line">    pixelsIn = blur((<span class="keyword">int</span> *) pixelsIn, w, h, r);</div><div class="line">    AndroidBitmap_unlockPixels(env, bitmapIn);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是生成编译完成的代码。</p>
+<p>然后在应用的 build 文件中写入 NDK 配置。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">apply</span> plugin: <span class="string">'com.android.application'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    <span class="attribute">compileSdkVersion</span> <span class="number">23</span></div><div class="line">    buildToolsVersion <span class="string">"23.0.2"</span></div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        <span class="attribute">applicationId</span> <span class="string">"com.bluecup.hongyu.ndkdemo"</span></div><div class="line">        minSdkVersion <span class="number">15</span></div><div class="line">        targetSdkVersion <span class="number">23</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line"></div><div class="line">        ndk&#123;</div><div class="line">            <span class="attribute">moduleName</span> <span class="string">"blurjni"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        <span class="section">release</span> &#123;</div><div class="line">            <span class="attribute">minifyEnabled</span> <span class="literal">false</span></div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    <span class="attribute">compile</span> fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</div><div class="line">    testCompile <span class="string">'junit:junit:4.12'</span></div><div class="line">    compile <span class="string">'com.android.support:appcompat-v7:23.3.0'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行编译文件，我们会得到错误。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/Users/hongyu/Documents/github/NDKDemo/<span class="keyword">app</span>/src/main/jni/com_bluecup_hongyu_ndkdemo_blur_StackNative.c</div><div class="line"><span class="keyword">Error</span>:(28) undefined reference to <span class="symbol">`AndroidBitmap_getInfo'</span></div><div class="line"><span class="keyword">Error</span>:(34) undefined reference to <span class="symbol">`AndroidBitmap_lockPixels'</span></div><div class="line"><span class="keyword">Error</span>:(41) undefined reference to <span class="symbol">`AndroidBitmap_unlockPixels'</span></div><div class="line"><span class="keyword">Error</span>:<span class="keyword">error</span>: ld returned 1 <span class="keyword">exit</span> status</div><div class="line">make: *** [/Users/hongyu/Documents/github/NDKDemo/<span class="keyword">app</span>/build/intermediates/ndk/debug/obj/<span class="keyword">local</span>/arm64-v8a/libblurjni.<span class="keyword">so</span>] <span class="keyword">Error</span> 1</div><div class="line"><span class="keyword">Error</span>:Execution failed <span class="keyword">for</span> task ':<span class="keyword">app</span>:compileDebugNdk'.</div><div class="line">&gt; com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process 'command '/Users/hongyu/Documents/android-ndk-r11c/ndk-build'' finished with non-zero <span class="keyword">exit</span> value 2</div></pre></td></tr></table></figure>
+<p>上面的错误日志是我的踩得第三个<font color="red">雷</font>。原因主要是对 Android Studio 的选项配置的不理解，而且我们之前引入的一个 bitmap 类这里需要做下配置。</p>
+<p>&emsp;我们在build文件中安主 cmd 点击 ndk 中的module字段 我们基本上就一目了然了。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">// Source code recreated from a .class file by IntelliJ IDEA</span></div><div class="line"><span class="comment">// (powered by Fernflower decompiler)</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">package</span> com.android.build.gradle.<span class="keyword">internal</span>.dsl;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.android.build.gradle.<span class="keyword">internal</span>.dsl.CoreNdkOptions;</div><div class="line"><span class="keyword">import</span> com.google.common.collect.Lists;</div><div class="line"><span class="keyword">import</span> com.google.common.collect.Sets;</div><div class="line"><span class="keyword">import</span> java.io.Serializable;</div><div class="line"><span class="keyword">import</span> java.util.Collection;</div><div class="line"><span class="keyword">import</span> java.util.Collections;</div><div class="line"><span class="keyword">import</span> java.util.Iterator;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.Set;</div><div class="line"><span class="keyword">import</span> org.gradle.api.tasks.Input;</div><div class="line"><span class="keyword">import</span> org.gradle.api.tasks.Optional;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NdkOptions</span> <span class="title">implements</span> <span class="title">CoreNdkOptions</span>, <span class="type">Serializable &#123;</span></span></div><div class="line">    <span class="keyword">private</span> static <span class="keyword">final</span> long serialVersionUID = <span class="number">1</span>L;</div><div class="line">    <span class="keyword">private</span> String moduleName;</div><div class="line">    <span class="keyword">private</span> String cFlags;</div><div class="line">    <span class="keyword">private</span> List&lt;String&gt; ldLibs;</div><div class="line">    <span class="keyword">private</span> Set&lt;String&gt; abiFilters;</div><div class="line">    <span class="keyword">private</span> String stl;</div><div class="line">    <span class="keyword">private</span> Integer jobs;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> NdkOptions() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> NdkOptions(NdkOptions ndkConfig) &#123;</div><div class="line">        <span class="keyword">this</span>.moduleName = ndkConfig.moduleName;</div><div class="line">        <span class="keyword">this</span>.cFlags = ndkConfig.cFlags;</div><div class="line">        <span class="keyword">this</span>.setLdLibs(ndkConfig.ldLibs);</div><div class="line">        <span class="keyword">this</span>.setAbiFilters(ndkConfig.abiFilters);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Input</span></div><div class="line">    <span class="meta">@Optional</span></div><div class="line">    <span class="keyword">public</span> String getModuleName() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.moduleName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> void setModuleName(String moduleName) &#123;</div><div class="line">        <span class="keyword">this</span>.moduleName = moduleName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Input</span></div><div class="line">    <span class="meta">@Optional</span></div><div class="line">    <span class="keyword">public</span> String getcFlags() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.cFlags;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> void setcFlags(String cFlags) &#123;</div><div class="line">        <span class="keyword">this</span>.cFlags = cFlags;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Input</span></div><div class="line">    <span class="meta">@Optional</span></div><div class="line">    <span class="keyword">public</span> List&lt;String&gt; getLdLibs() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.ldLibs;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> NdkOptions ldLibs(String lib) &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.ldLibs == <span class="literal">null</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.ldLibs = Lists.newArrayList();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.ldLibs.add(lib);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> NdkOptions ldLibs(String... libs) &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.ldLibs == <span class="literal">null</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.ldLibs = Lists.newArrayListWithCapacity(libs.length);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Collections.addAll(<span class="keyword">this</span>.ldLibs, libs);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> NdkOptions setLdLibs(Collection&lt;String&gt; libs) &#123;</div><div class="line">        <span class="keyword">if</span>(libs != <span class="literal">null</span>) &#123;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.ldLibs == <span class="literal">null</span>) &#123;</div><div class="line">                <span class="keyword">this</span>.ldLibs = Lists.newArrayListWithCapacity(libs.size());</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">this</span>.ldLibs.clear();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Iterator i$ = libs.iterator();</div><div class="line"></div><div class="line">            <span class="keyword">while</span>(i$.hasNext()) &#123;</div><div class="line">                String filter = (String)i$.next();</div><div class="line">                <span class="keyword">this</span>.ldLibs.add(filter);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">this</span>.ldLibs = <span class="literal">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Input</span></div><div class="line">    <span class="meta">@Optional</span></div><div class="line">    <span class="keyword">public</span> Set&lt;String&gt; getAbiFilters() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.abiFilters;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> NdkOptions abiFilter(String filter) &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.abiFilters == <span class="literal">null</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.abiFilters = Sets.newHashSetWithExpectedSize(<span class="number">2</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.abiFilters.add(filter);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> NdkOptions abiFilters(String... filters) &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.abiFilters == <span class="literal">null</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.abiFilters = Sets.newHashSetWithExpectedSize(<span class="number">2</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Collections.addAll(<span class="keyword">this</span>.abiFilters, filters);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> NdkOptions setAbiFilters(Collection&lt;String&gt; filters) &#123;</div><div class="line">        <span class="keyword">if</span>(filters != <span class="literal">null</span>) &#123;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.abiFilters == <span class="literal">null</span>) &#123;</div><div class="line">                <span class="keyword">this</span>.abiFilters = Sets.newHashSetWithExpectedSize(filters.size());</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">this</span>.abiFilters.clear();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Iterator i$ = filters.iterator();</div><div class="line"></div><div class="line">            <span class="keyword">while</span>(i$.hasNext()) &#123;</div><div class="line">                String filter = (String)i$.next();</div><div class="line">                <span class="keyword">this</span>.abiFilters.add(filter);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">this</span>.abiFilters = <span class="literal">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> String getStl() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.stl;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> void setStl(String stl) &#123;</div><div class="line">        <span class="keyword">this</span>.stl = stl;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Integer getJobs() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.jobs;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> void setJobs(Integer jobs) &#123;</div><div class="line">        <span class="keyword">this</span>.jobs = jobs;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的主要内容就是我们之前在 Eclipse 环境下 .mk 文件的作用。我们常用到Android Studio 编译配置主要有:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">ndk &#123;</div><div class="line">			// 编译的<span class="keyword">so</span>库名字</div><div class="line">            moduleName <span class="string">"blurjni"</span></div><div class="line">            // 指定编译平台，更多平台信息 参见http<span class="variable">s:</span>//developer.android.<span class="keyword">com</span>/ndk/guides/abis.html#sa</div><div class="line">            abiFilters <span class="string">"armeabi"</span>, <span class="string">"armeabi-v7a"</span></div><div class="line">            /*</div><div class="line">             * Other ndk flags configurable here are</div><div class="line">             * cppFlags.<span class="built_in">add</span>(<span class="string">"-fno-rtti"</span>)</div><div class="line">             * cppFlags.<span class="built_in">add</span>(<span class="string">"-fno-exceptions"</span>)</div><div class="line">             * </div><div class="line">             * ldLibs.addAll([<span class="string">"android"</span>, <span class="string">"log"</span>])</div><div class="line">             * stl       = <span class="string">"system"</span></div><div class="line">             */</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>ldlib就是LOCAL_LDFLAGS：这个编译变量传递给链接器一个一些额外的参数，比如想传递而外的库和库路径给ld，或者传递给ld linker的一些链接参数，-On，-EL{B}(大小端字节序)，那么就要加到这个上面，如：</p>
+<p>LOCAL_LDFLAGS += -L$(LOCAL_PATH)/lib/ -lHWrecog –EB{EL} –O{n} …</p>
+<p>或者直接加上绝对路径库的全名：</p>
+<p>LOCAL_LDFLAGS += $(LOCAL_PATH)/lib/libHWrecog.a –EB{EL} –O{n}</p>
+<p>其他的含义可以查找<a href="http://blog.csdn.net/lizhiguo0532/article/details/7219349" target="_blank" rel="external">link</a>。</p>
+<p>&emsp;我们这里需要加入一个图形的静态库</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="section">ndk</span> &#123;</div><div class="line">            <span class="attribute">moduleName</span> <span class="string">"blurjni"</span></div><div class="line">            abiFilters <span class="string">"armeabi"</span>, <span class="string">"armeabi-v7a"</span></div><div class="line">            ldLibs <span class="string">"jnigraphics"</span></div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>经过一连串的的踩雷基本上就可以运行了。最终运行的效果图如下</p>
+<p>模糊前：</p>
+<p><img src="\image/ndk-4.png" alt=""></p>
+<p>模糊后：<br><img src="\image/ndk-5.png" alt=""></p>
+<p>这种方式生成的so库位置也说下吧，自己也找了很久</p>
+<blockquote>
+<p>/Users/hongyu/Documents/github/NDKDemo/app/build/intermediates/ndk/debug/lib</p>
+</blockquote>
+<h2 id="手动编译-NDK-文件"><a href="#手动编译-NDK-文件" class="headerlink" title="手动编译 NDK 文件"></a>手动编译 NDK 文件</h2><p>&emsp;其实手动编译很简单主要是 Android.mk 文件（选项配置）和 Application.mk 文件（平台选择）。</p>
+<p>这里吧代码贴出来：</p>
+<p>Android.mk</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">LOCAL_PATH		<span class="symbol">:</span>= <span class="variable">$(</span>call my-dir)</div><div class="line"></div><div class="line"><span class="keyword">include</span> <span class="variable">$(</span>CLEAR_VARS)</div><div class="line"></div><div class="line">LOCAL_MODULE    <span class="symbol">:</span>= blurjni</div><div class="line">LOCAL_SRC_FILES <span class="symbol">:</span>= satckblur.c com_bluecup_hongyu_ndkdemo_blur_StackNative.c </div><div class="line">LOCAL_LDLIBS    <span class="symbol">:</span>= -lm -llog -ljnigraphics</div><div class="line"></div><div class="line"><span class="keyword">include</span> <span class="variable">$(</span>BUILD_SHARED_LIBRARY)</div></pre></td></tr></table></figure>
+<p>主要内容上面的连接都介绍了 值得注意的是 LOCAL_SRC_FILES 如果有多个文件的话需要使用空格分开。cd 到jni文件中</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">HongdeMacBook-Pro:jni hongyu$ ndk-build </div><div class="line">[armeabi] Compile thumb  : blurjni &lt;= satckblur<span class="selector-class">.c</span></div><div class="line">[armeabi] Compile thumb  : blurjni &lt;= com_bluecup_hongyu_ndkdemo_blur_StackNative<span class="selector-class">.c</span></div><div class="line">[armeabi] Compile thumb  : blurjni &lt;= load<span class="selector-class">.c</span></div><div class="line">[armeabi] SharedLibrary  : libblurjni<span class="selector-class">.so</span></div><div class="line">[armeabi] Install        : libblurjni<span class="selector-class">.so</span> =&gt; libs/armeabi/libblurjni<span class="selector-class">.so</span></div><div class="line">[armeabi-v7a] Compile thumb  : blurjni &lt;= satckblur<span class="selector-class">.c</span></div><div class="line">[armeabi-v7a] Compile thumb  : blurjni &lt;= com_bluecup_hongyu_ndkdemo_blur_StackNative<span class="selector-class">.c</span></div><div class="line">[armeabi-v7a] Compile thumb  : blurjni &lt;= load<span class="selector-class">.c</span></div><div class="line">[armeabi-v7a] SharedLibrary  : libblurjni<span class="selector-class">.so</span></div><div class="line">[armeabi-v7a] Install        : libblurjni<span class="selector-class">.so</span> =&gt; libs/armeabi-v7a/libblurjni<span class="selector-class">.so</span></div><div class="line">[x86] Compile        : blurjni &lt;= satckblur<span class="selector-class">.c</span></div><div class="line">[x86] Compile        : blurjni &lt;= com_bluecup_hongyu_ndkdemo_blur_StackNative<span class="selector-class">.c</span></div><div class="line">[x86] Compile        : blurjni &lt;= load<span class="selector-class">.c</span></div><div class="line">[x86] SharedLibrary  : libblurjni<span class="selector-class">.so</span></div><div class="line">[x86] Install        : libblurjni<span class="selector-class">.so</span> =&gt; libs/x86/libblurjni<span class="selector-class">.so</span></div><div class="line">[mips] Compile        : blurjni &lt;= satckblur<span class="selector-class">.c</span></div><div class="line">[mips] Compile        : blurjni &lt;= com_bluecup_hongyu_ndkdemo_blur_StackNative<span class="selector-class">.c</span></div><div class="line">[mips] Compile        : blurjni &lt;= load<span class="selector-class">.c</span></div><div class="line">[mips] SharedLibrary  : libblurjni<span class="selector-class">.so</span></div><div class="line">[mips] Install        : libblurjni<span class="selector-class">.so</span> =&gt; libs/mips/libblurjni<span class="selector-class">.so</span></div><div class="line">HongdeMacBook-Pro:jni hongyu$</div></pre></td></tr></table></figure>
+<p>这样基本上就可以完成编译的所用工作了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&emsp;NDK编译总体还是蛮简单的主要是一些配置上的。</p>
+<h1 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h1><p><a href="http://yanbober.github.io/2015/02/25/android_studio_jni_3/#ndk-jni开发-ref" target="_blank" rel="external">NDK-JNI实战教程</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Android备忘录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android 备忘录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/Android样式开发（二） selector/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 样式开发（二） selector</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android_NDK_编译总结" data-title="Android Studio NDK 编译总结" data-url="http://nortonahu.github.io/2016/08/05/Android_NDK_编译总结/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

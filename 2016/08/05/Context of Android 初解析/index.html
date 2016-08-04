@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Context of Android 初解析目录
+
+Context 基本知识
+Context 相关类的源码解析
+Context 的创建
+Context,ApplicationContext,BaseApplicationContext 区别
+参考文献
+
+Context 基本知识Context 翻译成汉语是“上下文”的意思。当开始学习 Android 开发时候就跟 Context 打交道，无论是打开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WinterFell">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Context of Android 初解析/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="Context of Android 初解析目录
+
+Context 基本知识
+Context 相关类的源码解析
+Context 的创建
+Context,ApplicationContext,BaseApplicationContext 区别
+参考文献
+
+Context 基本知识Context 翻译成汉语是“上下文”的意思。当开始学习 Android 开发时候就跟 Context 打交道，无论是打开">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WinterFell">
+<meta name="twitter:description" content="Context of Android 初解析目录
+
+Context 基本知识
+Context 相关类的源码解析
+Context 的创建
+Context,ApplicationContext,BaseApplicationContext 区别
+参考文献
+
+Context 基本知识Context 翻译成汉语是“上下文”的意思。当开始学习 Android 开发时候就跟 Context 打交道，无论是打开">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Context of Android 初解析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Context of Android 初解析/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Context-of-Android-初解析"><a href="#Context-of-Android-初解析" class="headerlink" title="Context of Android 初解析"></a>Context of Android 初解析</h1><p><strong>目录</strong></p>
+<ul>
+<li>Context 基本知识</li>
+<li>Context 相关类的源码解析</li>
+<li>Context 的创建</li>
+<li>Context,ApplicationContext,BaseApplicationContext 区别</li>
+<li>参考文献</li>
+</ul>
+<h2 id="Context-基本知识"><a href="#Context-基本知识" class="headerlink" title="Context 基本知识"></a>Context 基本知识</h2><p>Context 翻译成汉语是“上下文”的意思。当开始学习 Android 开发时候就跟 Context 打交道，无论是打开 Activity 、 Service 等组件还是使用一些系统方法都是需要传入一个 Context 类型的参数。刚开始理解 Context 是一种信息类包含了一些基础信息的东西。随着 Android 学习的不断深入，遇到的问题越来越多的时候会对这个重要参数越加迷惑不解。比如说一个很普遍的问题，我们打开 Activity 使用的 Context 并不是所有的 Context 能打开，可能会抛出 “Calling a method in the system process without a qualified user:<br>”。还有我们一个应用中有多少个 Context ? 它们都一样吗？这些问题读完本文应该就能回答了。<br>google API 对Context 是这样描述的：</p>
+<blockquote>
+<p>Interface to global information about an application environment. This is an abstract class whose implementation is provided by the Android system. It allows access to application-specific resources and classes, as well as up-calls for application-level operations such as launching activities, broadcasting and receiving intents, etc.</p>
+</blockquote>
+<p>大体的意思 Context 是应用的全局信息接口，是一个由系统本身提供该抽象类实现类出来的。它可以访问应用特定资源和类，同时可以向上调用应用级别的操作比如打开 Activity、Broadcast、接收 Intent 等操作。<br><a id="more"></a><br>小结下： 以上是我们简单了解了 Context 是什么？平时遇到的一些 Context 问题。</p>
+<h2 id="Context-相关类源码解析"><a href="#Context-相关类源码解析" class="headerlink" title="Context 相关类源码解析"></a>Context 相关类源码解析</h2><p>Android 源码分析是最好解决 Context 迷惑的问题，这里需要分析的源码有 Context 、ContextWrapper、 ContextThemeWrapper、 Activity、 Service、 Application、 ContextImpl。 这几个类的源码分析明白应该就能明白所有 Context 一些底层的知识了。分析的源码是最新 API－23 源码。我们从Activity继承顺序来分析源码，Activity —&gt; ContextThemeWrapper —&gt;  ContextWrapper —&gt; Context。</p>
+<p><strong>Context</strong></p>
+<p> Context 我第一个想到就是 Context 是实现类，其实看到它的源码你会很无奈。</p>
+<figure class="highlight zephir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</div><div class="line">	    <span class="comment">/**</span></div><div class="line">	     * File creation mode: the default mode, where the created file can only</div><div class="line">	     * be accessed by the calling application (or all applications sharing the</div><div class="line">	     * same user ID).</div><div class="line">	     * <span class="doctag">@see</span> #MODE_WORLD_READABLE</div><div class="line">	     * <span class="doctag">@see</span> #MODE_WORLD_WRITEABLE</div><div class="line">	     */</div><div class="line">	    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MODE_PRIVATE = <span class="number">0x0000</span>;</div></pre></td></tr></table></figure>
+<p>上面是截取一部分的源码，从上面的基础知识就可以知道它是一个抽象类，定义了抽象方法。我们需要看他的实现类。再往下一层查看 ContextWrapper。</p>
+<p><strong>ContextWrapper</strong></p>
+<p>ContextWrapper 类正如其名字是 Context 的一个封装类。源码如下：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Proxying implementation of Context that simply delegates all of its calls to</div><div class="line"> * another Context.  Can be subclassed to modify behavior without changing</div><div class="line"> * the original Context.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ContextWrapper</span> <span class="title">extends</span> <span class="title">Context</span> &#123;</div><div class="line">    Context mBase;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContextWrapper</span>(<span class="params">Context <span class="keyword">base</span></span>) </span>&#123;</div><div class="line">        mBase = <span class="keyword">base</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Set the base context for this ContextWrapper.  All calls will then be</div><div class="line">     * delegated to the base context.  Throws</div><div class="line">     * IllegalStateException if a base context has already been set.</div><div class="line">     * </div><div class="line">     * @param base The new base context for this wrapper.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">attachBaseContext</span>(<span class="params">Context <span class="keyword">base</span></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (mBase != <span class="literal">null</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Base context already set"</span>);</div><div class="line">        &#125;</div><div class="line">        mBase = <span class="keyword">base</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * @return the base context as set by the constructor or setBaseContext</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> Context <span class="title">getBaseContext</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> mBase;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @<span class="function">Override</span></div><div class="line">    <span class="keyword">public</span> AssetManager <span class="title">getAssets</span>(<span class="params"></span>) &#123;</div><div class="line">        <span class="keyword">return</span> mBase.getAssets();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>源码中虽然继承了实现了 Context 的方法，但是其实真正的操作实现是通过引用对象 mBase 来操作实现的。也就是说这个类不是实现类。再分析 ContextThemeWrapper 类。</p>
+<p><strong>ContextThemeWrapper</strong></p>
+<p>ContextThemeWrapper 跟 ContextWrapper 基本上差不多但是这个类引入了 Theme 接口，Activity 中有 Theme 设置，所以这一层是 Activity 的直接父类了。源码：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * A ContextWrapper that allows you to modify the theme from what is in the </div><div class="line"> * wrapped context. </div><div class="line"> */</div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">ContextThemeWrapper</span> <span class="keyword">extends</span> <span class="title">ContextWrapper</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> int mThemeResource;</div><div class="line">    <span class="keyword">private</span> <span class="type">Resources</span>.<span class="type">Theme</span> mTheme;</div><div class="line">    <span class="keyword">private</span> <span class="type">LayoutInflater</span> mInflater;</div><div class="line">    <span class="keyword">private</span> <span class="type">Configuration</span> mOverrideConfiguration;</div><div class="line">    <span class="keyword">private</span> <span class="type">Resources</span> mResources;</div><div class="line"></div><div class="line">    public <span class="type">ContextThemeWrapper</span>() &#123;</div><div class="line">        <span class="keyword">super</span>(<span class="literal">null</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public <span class="type">ContextThemeWrapper</span>(<span class="type">Context</span> base, <span class="meta">@StyleRes</span> int themeResId) &#123;</div><div class="line">        <span class="keyword">super</span>(base);</div><div class="line">        mThemeResource = themeResId;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public <span class="type">ContextThemeWrapper</span>(<span class="type">Context</span> base, <span class="type">Resources</span>.<span class="type">Theme</span> theme)</div></pre></td></tr></table></figure>
+<p>可以看出这个除了多了几个布局和资源主题的操作外，其他大多的操作都是其父类对象 mBase 操作实现的，也就是说到这里我们都没看到 Context 的实现类。回过头来想下官方的 API 说是由系统提供的实现类，也就是说我们应该找下系统提供的。我们看看 ContextImpl。</p>
+<p><strong>ContextImpl</strong></p>
+<p>首先从 Impl 结尾可以猜测出这是一个实现类，再看看源码：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** </span></div><div class="line"> * Common implementation of Context API, which provides the base </div><div class="line"> * context object for Activity and other application components. </div><div class="line"> */  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContextImpl</span> <span class="keyword">extends</span> <span class="title">Context</span></span>&#123;  </div><div class="line">    <span class="comment">//所有Application程序公用一个mPackageInfo对象  </span></div><div class="line">    <span class="comment">/*package*/</span> <span class="type">ActivityThread</span>.<span class="type">PackageInfo</span> mPackageInfo;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    public <span class="type">Object</span> getSystemService(<span class="type">String</span> name)&#123;  </div><div class="line">        ...  </div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="type">ACTIVITY_SERVICE</span>.equals(name)) &#123;  </div><div class="line">            <span class="keyword">return</span> getActivityManager();  </div><div class="line">        &#125;   </div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="type">INPUT_METHOD_SERVICE</span>.equals(name)) &#123;  </div><div class="line">            <span class="keyword">return</span> <span class="type">InputMethodManager</span>.getInstance(<span class="keyword">this</span>);  </div><div class="line">        &#125;  </div><div class="line">    &#125;   </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    public void startActivity(<span class="type">Intent</span> intent) &#123;  </div><div class="line">        ...  </div><div class="line">        <span class="comment">//开始启动一个Activity  </span></div><div class="line">        mMainThread.getInstrumentation().execStartActivity(  </div><div class="line">            getOuterContext(), mMainThread.getApplicationThread(), <span class="literal">null</span>, <span class="literal">null</span>, intent, <span class="number">-1</span>);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以这里就是 Context 的实现类，而且这个实现类基本上都是通过 mPackageInfo 一个 LoadApk 类型的.</p>
+<p>小结：这一章节我们介绍了 Activity 的继承关系分析了 Conext 的继承关系，其中 Application 和 Service 是直接继承 ContextWrapper 类这里就不分析后面讲实现类会讲的，最后讲了下实现类 ContextImpl 类。下面一个章节我们来介绍下那里创建了 ContextImpl。</p>
+<h2 id="Context-的创建"><a href="#Context-的创建" class="headerlink" title="Context 的创建"></a>Context 的创建</h2><p>从上一章节的分析知道 Activity、Service、Application是ContextWrapper 的子类 ContextImpl 是 Context 的实现类。Context 实现类的创建就是这几个类的实现的，所以我们大的来分 ContextImpl 的创建的地方就三处，剩下就是来分析他们怎么创建的。</p>
+<p><strong>Application</strong></p>
+<p>Application 整个 App 就一个（这有个前提是一个 Davlid 虚拟机里感兴趣的可以查下这方面的资料）。创建一个 Application 在 ActivityThread.java 中有 handleBindApplication() 方法</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> final <span class="literal">void</span> handleBindApplication(AppBindData <span class="built_in">data</span>) &#123;</div><div class="line">        mBoundApplication = <span class="built_in">data</span>;</div><div class="line">        mConfiguration = <span class="literal">new</span> Configuration(<span class="built_in">data</span>.config);</div><div class="line"> </div><div class="line">        <span class="attr">...</span>.</div><div class="line">        <span class="built_in">data</span>.info = getPackageInfoNoCheck(<span class="built_in">data</span>.appInfo);</div><div class="line"> </div><div class="line">               <span class="attr">...</span></div><div class="line">         </div><div class="line">        Application app = <span class="built_in">data</span>.info.makeApplication(<span class="built_in">data</span>.restrictedBackupMode, <span class="built_in">null</span>);</div><div class="line">        mInitialApplication = app;</div><div class="line"> </div><div class="line">      <span class="attr">...</span>.</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<p>查看getPackageInfoNoCheck 方法</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="function">LoadedApk <span class="title">getPackageInfoNoCheck</span><span class="params">(ApplicationInfo ai,</span></span></div><div class="line">        CompatibilityInfo compatInfo) &#123;</div><div class="line">    <span class="function"><span class="keyword">return</span> <span class="title">getPackageInfo</span><span class="params">(ai, compatInfo, <span class="keyword">null</span>, <span class="keyword">false</span>, <span class="keyword">true</span>, <span class="keyword">false</span>)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中调用了 getPackageInfo</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> LoadedApk <span class="title">getPackageInfo</span>(<span class="params">ApplicationInfo aInfo, CompatibilityInfo compatInfo,</span></span></div><div class="line">        ClassLoader baseLoader, boolean securityViolation, boolean includeCode,</div><div class="line">        boolean registerPackage) &#123;</div><div class="line">    final boolean differentUser = (UserHandle.myUserId() != UserHandle.getUserId(aInfo.uid));</div><div class="line">    synchronized (mResourcesManager) &#123;</div><div class="line">        WeakReference&lt;LoadedApk&gt; <span class="keyword">ref</span>;</div><div class="line">        <span class="keyword">if</span> (differentUser) &#123;</div><div class="line">            <span class="comment">// Caching not supported across users</span></div><div class="line">            <span class="keyword">ref</span> = <span class="literal">null</span>;</div><div class="line">        &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> (<span class="params">includeCode</span>) </span>&#123;</div><div class="line">            <span class="keyword">ref</span> = mPackages.<span class="keyword">get</span>(aInfo.packageName);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">ref</span> = mResourcePackages.<span class="keyword">get</span>(aInfo.packageName);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        LoadedApk packageInfo = <span class="keyword">ref</span> != <span class="literal">null</span> ? <span class="keyword">ref</span>.<span class="keyword">get</span>() : <span class="literal">null</span>;</div><div class="line">        <span class="keyword">if</span> (packageInfo == <span class="literal">null</span> || (packageInfo.mResources != <span class="literal">null</span></div><div class="line">                &amp;&amp; !packageInfo.mResources.getAssets().isUpToDate())) &#123;</div><div class="line">            <span class="keyword">if</span> (localLOGV) Slog.v(TAG, (includeCode ? <span class="string">"Loading code package "</span></div><div class="line">                    : <span class="string">"Loading resource-only package "</span>) + aInfo.packageName</div><div class="line">                    + <span class="string">" (in "</span> + (mBoundApplication != <span class="literal">null</span></div><div class="line">                            ? mBoundApplication.processName : <span class="literal">null</span>)</div><div class="line">                    + <span class="string">")"</span>);</div><div class="line">            packageInfo =</div><div class="line">                <span class="keyword">new</span> LoadedApk(<span class="keyword">this</span>, aInfo, compatInfo, baseLoader,</div><div class="line">                        securityViolation, includeCode &amp;&amp;</div><div class="line">                        (aInfo.flags&amp;ApplicationInfo.FLAG_HAS_CODE) != <span class="number">0</span>, registerPackage);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (mSystemThread &amp;&amp; <span class="string">"android"</span>.equals(aInfo.packageName)) &#123;</div><div class="line">                packageInfo.installSystemApplicationInfo(aInfo,</div><div class="line">                        getSystemContext().mPackageInfo.getClassLoader());</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (differentUser) &#123;</div><div class="line">                <span class="comment">// Caching not supported across users</span></div><div class="line">            &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> (<span class="params">includeCode</span>) </span>&#123;</div><div class="line">                mPackages.put(aInfo.packageName,</div><div class="line">                        <span class="keyword">new</span> WeakReference&lt;LoadedApk&gt;(packageInfo));</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                mResourcePackages.put(aInfo.packageName,</div><div class="line">                        <span class="keyword">new</span> WeakReference&lt;LoadedApk&gt;(packageInfo));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> packageInfo;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>includeCode 传入的是 true 所以他会先去取一个出来如果没有就回重新 new 一个出来，并放入 mPackages 中。</p>
+<p>在 LoadApk 这个类中有：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">            java.lang.ClassLoader cl = getClassLoader();</div><div class="line">            <span class="comment">//创建一个ContextImpl对象</span></div><div class="line">            ContextImpl appContext = <span class="keyword">new</span> ContextImpl();</div><div class="line">            appContext.init(<span class="keyword">this</span>, <span class="literal">null</span>, mActivityThread);</div><div class="line">            app = mActivityThread.mInstrumentation.newApplication(</div><div class="line">                    cl, appClass, appContext);</div><div class="line">            appContext.setOuterContext(app);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (!mActivityThread.mInstrumentation.onException(app, e)) &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(</div><div class="line">                    <span class="string">"Unable to instantiate application "</span> + appClass</div><div class="line">                    + <span class="string">": "</span> + e.toString(), e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>这里创建一个 ContextImpl 并调用了它的init方法，现在进入init方法。<br>mPackageInfo = packageInfo;<br>mResources = mPackageInfo.getResources(mainThread);</p>
+<p>返回到 makeApplication 中创建一个新的 Application 并将 appContext 对象传进去,因为Application 是继承 ContextWrappper 也就是将 appContext 传入了。</p>
+<p><strong>Activity</strong></p>
+<p>在调用 startActivity 或者 startActivityForResult 时系统会调用 ActivityThread.java 的 handleLaunchActivity</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">handleLaunchActivity</span><span class="params">(ActivityClientRecord r, Intent customIntent)</span> </span>&#123;</div><div class="line">    <span class="comment">// If we are getting ready to gc after going to the background, well</span></div><div class="line">    <span class="comment">// we are back active so skip it.</span></div><div class="line">    unscheduleGcIdler();</div><div class="line">    mSomeActivitiesChanged = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (r.profilerInfo != <span class="keyword">null</span>) &#123;</div><div class="line">        mProfiler.setProfiler(r.profilerInfo);</div><div class="line">        mProfiler.startProfiling();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Make sure we are running with the most recent config.</span></div><div class="line">    handleConfigurationChanged(<span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (localLOGV) Slog.v(</div><div class="line">        TAG, <span class="string">"Handling launch of "</span> + r);</div><div class="line"></div><div class="line">    <span class="comment">// Initialize before creating the activity</span></div><div class="line">    WindowManagerGlobal.initialize();</div><div class="line"></div><div class="line">    Activity a = performLaunchActivity(r, customIntent);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (a != <span class="keyword">null</span>) &#123;</div><div class="line">        r.createdConfig = <span class="keyword">new</span> Configuration(mConfiguration);</div><div class="line">        Bundle oldState = r.state;</div><div class="line">        handleResumeActivity(r.token, <span class="keyword">false</span>, r.isForward,</div><div class="line">                !r.activity.mFinished &amp;&amp; !r.startsNotResumed);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!r.activity.mFinished &amp;&amp; r.startsNotResumed) &#123;</div><div class="line">            <span class="comment">// The activity manager actually wants this one to start out</span></div><div class="line">            <span class="comment">// paused, because it needs to be visible but isn't in the</span></div><div class="line">            <span class="comment">// foreground.  We accomplish this by going through the</span></div><div class="line">            <span class="comment">// normal startup (because activities expect to go through</span></div><div class="line">            <span class="comment">// onResume() the first time they run, before their window</span></div><div class="line">            <span class="comment">// is displayed), and then pausing it.  However, in this case</span></div><div class="line">            <span class="comment">// we do -not- need to do the full pause cycle (of freezing</span></div><div class="line">            <span class="comment">// and such) because the activity manager assumes it can just</span></div><div class="line">            <span class="comment">// retain the current state it has.</span></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                r.activity.mCalled = <span class="keyword">false</span>;</div><div class="line">                mInstrumentation.callActivityOnPause(r.activity);</div><div class="line">                <span class="comment">// We need to keep around the original state, in case</span></div><div class="line">                <span class="comment">// we need to be created again.  But we only do this</span></div><div class="line">                <span class="comment">// for pre-Honeycomb apps, which always save their state</span></div><div class="line">                <span class="comment">// when pausing, so we can not have them save their state</span></div><div class="line">                <span class="comment">// when restarting from a paused state.  For HC and later,</span></div><div class="line">                <span class="comment">// we want to (and can) let the state be saved as the normal</span></div><div class="line">                <span class="comment">// part of stopping the activity.</span></div><div class="line">                <span class="keyword">if</span> (r.isPreHoneycomb()) &#123;</div><div class="line">                    r.state = oldState;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (!r.activity.mCalled) &#123;</div><div class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> SuperNotCalledException(</div><div class="line">                        <span class="string">"Activity "</span> + r.intent.getComponent().toShortString() +</div><div class="line">                        <span class="string">" did not call through to super.onPause()"</span>);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125; <span class="keyword">catch</span> (SuperNotCalledException e) &#123;</div><div class="line">                <span class="keyword">throw</span> e;</div><div class="line"></div><div class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                <span class="keyword">if</span> (!mInstrumentation.onException(r.activity, e)) &#123;</div><div class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(</div><div class="line">                            <span class="string">"Unable to pause activity "</span></div><div class="line">                            + r.intent.getComponent().toShortString()</div><div class="line">                            + <span class="string">": "</span> + e.toString(), e);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            r.paused = <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// If there was an error, for any reason, tell the activity</span></div><div class="line">        <span class="comment">// manager to stop us.</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            ActivityManagerNative.getDefault()</div><div class="line">                .finishActivity(r.token, Activity.RESULT_CANCELED, <span class="keyword">null</span>, <span class="keyword">false</span>);</div><div class="line">        &#125; <span class="keyword">catch</span> (RemoteException ex) &#123;</div><div class="line">            <span class="comment">// Ignore</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中</p>
+<blockquote>
+<p>Activity a = performLaunchActivity(r, customIntent);</p>
+</blockquote>
+<p>说明有调用了 performLaunchActivity 。</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div></pre></td><td class="code"><pre><div class="line">private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) &#123;</div><div class="line">    // System.out.println(<span class="string">"##### ["</span> + System.currentTimeMillis() + <span class="string">"] ActivityThread.performLaunchActivity("</span> + r + <span class="string">")"</span>);</div><div class="line"></div><div class="line">    ActivityInfo <span class="attr">aInfo</span> = r.activityInfo;</div><div class="line">    <span class="keyword">if</span> (r.<span class="attr">packageInfo</span> == <span class="literal">null</span>) &#123;</div><div class="line">        r.<span class="attr">packageInfo</span> = getPackageInfo(aInfo.applicationInfo, r.compatInfo,</div><div class="line">                Context.CONTEXT_INCLUDE_CODE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ComponentName <span class="attr">component</span> = r.intent.getComponent();</div><div class="line">    <span class="keyword">if</span> (<span class="attr">component</span> == <span class="literal">null</span>) &#123;</div><div class="line">        <span class="attr">component</span> = r.intent.resolveActivity(</div><div class="line">            mInitialApplication.getPackageManager());</div><div class="line">        r.intent.setComponent(component);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (r.activityInfo.targetActivity != <span class="literal">null</span>) &#123;</div><div class="line">        <span class="attr">component</span> = new ComponentName(r.activityInfo.packageName,</div><div class="line">                r.activityInfo.targetActivity);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Activity <span class="attr">activity</span> = <span class="literal">null</span>;</div><div class="line">    try &#123;</div><div class="line">        java.lang.ClassLoader <span class="attr">cl</span> = r.packageInfo.getClassLoader();</div><div class="line">        <span class="attr">activity</span> = mInstrumentation.newActivity(</div><div class="line">                cl, component.getClassName(), r.intent);</div><div class="line">        StrictMode.incrementExpectedActivityCount(activity.getClass());</div><div class="line">        r.intent.setExtrasClassLoader(cl);</div><div class="line">        r.intent.prepareToEnterProcess();</div><div class="line">        <span class="keyword">if</span> (r.state != <span class="literal">null</span>) &#123;</div><div class="line">            r.state.setClassLoader(cl);</div><div class="line">        &#125;</div><div class="line">    &#125; catch (Exception e) &#123;</div><div class="line">        <span class="keyword">if</span> (!mInstrumentation.onException(activity, e)) &#123;</div><div class="line">            <span class="built_in">throw</span> new RuntimeException(</div><div class="line">                <span class="string">"Unable to instantiate activity "</span> + component</div><div class="line">                + <span class="string">": "</span> + e.<span class="built_in">toString</span>(), e);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    try &#123;</div><div class="line">        Application <span class="attr">app</span> = r.packageInfo.makeApplication(<span class="literal">false</span>, mInstrumentation);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (localLOGV) Slog.v(TAG, <span class="string">"Performing launch of "</span> + r);</div><div class="line">        <span class="keyword">if</span> (localLOGV) Slog.v(</div><div class="line">                TAG, r + <span class="string">": app="</span> + app</div><div class="line">                + <span class="string">", appName="</span> + app.getPackageName()</div><div class="line">                + <span class="string">", pkg="</span> + r.packageInfo.getPackageName()</div><div class="line">                + <span class="string">", comp="</span> + r.intent.getComponent().toShortString()</div><div class="line">                + <span class="string">", dir="</span> + r.packageInfo.getAppDir());</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (activity != <span class="literal">null</span>) &#123;</div><div class="line">            Context <span class="attr">appContext</span> = createBaseContextForActivity(r, activity);</div><div class="line">            CharSequence <span class="attr">title</span> = r.activityInfo.loadLabel(appContext.getPackageManager());</div><div class="line">            Configuration <span class="attr">config</span> = new Configuration(mCompatConfiguration);</div><div class="line">            <span class="keyword">if</span> (DEBUG_CONFIGURATION) Slog.v(TAG, <span class="string">"Launching activity "</span></div><div class="line">                    + r.activityInfo.name + <span class="string">" with config "</span> + config);</div><div class="line">            activity.attach(appContext, this, getInstrumentation(), r.token,</div><div class="line">                    r.ident, app, r.intent, r.activityInfo, title, r.parent,</div><div class="line">                    r.embeddedID, r.lastNonConfigurationInstances, config,</div><div class="line">                    r.referrer, r.voiceInteractor);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (customIntent != <span class="literal">null</span>) &#123;</div><div class="line">                activity.<span class="attr">mIntent</span> = customIntent;</div><div class="line">            &#125;</div><div class="line">            r.<span class="attr">lastNonConfigurationInstances</span> = <span class="literal">null</span>;</div><div class="line">            activity.<span class="attr">mStartedActivity</span> = <span class="literal">false</span>;</div><div class="line">            int <span class="attr">theme</span> = r.activityInfo.getThemeResource();</div><div class="line">            <span class="keyword">if</span> (theme != <span class="number">0</span>) &#123;</div><div class="line">                activity.setTheme(theme);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            activity.<span class="attr">mCalled</span> = <span class="literal">false</span>;</div><div class="line">            <span class="keyword">if</span> (r.isPersistable()) &#123;</div><div class="line">                mInstrumentation.callActivityOnCreate(activity, r.state, r.persistentState);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                mInstrumentation.callActivityOnCreate(activity, r.state);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (!activity.mCalled) &#123;</div><div class="line">                <span class="built_in">throw</span> new SuperNotCalledException(</div><div class="line">                    <span class="string">"Activity "</span> + r.intent.getComponent().toShortString() +</div><div class="line">                    <span class="string">" did not call through to super.onCreate()"</span>);</div><div class="line">            &#125;</div><div class="line">            r.<span class="attr">activity</span> = activity;</div><div class="line">            r.<span class="attr">stopped</span> = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">if</span> (!r.activity.mFinished) &#123;</div><div class="line">                activity.performStart();</div><div class="line">                r.<span class="attr">stopped</span> = <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (!r.activity.mFinished) &#123;</div><div class="line">                <span class="keyword">if</span> (r.isPersistable()) &#123;</div><div class="line">                    <span class="keyword">if</span> (r.state != <span class="literal">null</span> || r.persistentState != <span class="literal">null</span>) &#123;</div><div class="line">                        mInstrumentation.callActivityOnRestoreInstanceState(activity, r.state,</div><div class="line">                                r.persistentState);</div><div class="line">                    &#125;</div><div class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (r.state != <span class="literal">null</span>) &#123;</div><div class="line">                    mInstrumentation.callActivityOnRestoreInstanceState(activity, r.state);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (!r.activity.mFinished) &#123;</div><div class="line">                activity.<span class="attr">mCalled</span> = <span class="literal">false</span>;</div><div class="line">                <span class="keyword">if</span> (r.isPersistable()) &#123;</div><div class="line">                    mInstrumentation.callActivityOnPostCreate(activity, r.state,</div><div class="line">                            r.persistentState);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    mInstrumentation.callActivityOnPostCreate(activity, r.state);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (!activity.mCalled) &#123;</div><div class="line">                    <span class="built_in">throw</span> new SuperNotCalledException(</div><div class="line">                        <span class="string">"Activity "</span> + r.intent.getComponent().toShortString() +</div><div class="line">                        <span class="string">" did not call through to super.onPostCreate()"</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        r.<span class="attr">paused</span> = <span class="literal">true</span>;</div><div class="line"></div><div class="line">        mActivities.put(r.token, r);</div><div class="line"></div><div class="line">    &#125; catch (SuperNotCalledException e) &#123;</div><div class="line">        <span class="built_in">throw</span> e;</div><div class="line"></div><div class="line">    &#125; catch (Exception e) &#123;</div><div class="line">        <span class="keyword">if</span> (!mInstrumentation.onException(activity, e)) &#123;</div><div class="line">            <span class="built_in">throw</span> new RuntimeException(</div><div class="line">                <span class="string">"Unable to start activity "</span> + component</div><div class="line">                + <span class="string">": "</span> + e.<span class="built_in">toString</span>(), e);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return activity;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中有 </p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Context</span> appContext = createBaseContextForActivity(r, activity)<span class="comment">;</span></div><div class="line">                CharSequence title = r.activityInfo.loadLabel(appContext.getPackageManager())<span class="comment">;</span></div><div class="line">                Configuration <span class="built_in">config</span> = new Configuration(mCompatConfiguration)<span class="comment">;</span></div><div class="line">                if (DEBUG_CONFIGURATION) Slog.v(TAG, <span class="string">"Launching activity "</span></div><div class="line">                        + r.activityInfo.name + <span class="string">" with config "</span> + <span class="built_in">config</span>)<span class="comment">;</span></div><div class="line">                activity.attach(appContext, this, getInstrumentation(), r.token,</div><div class="line">                        r.ident, app, r.intent, r.activityInfo, title, r.parent,</div><div class="line">                        r.embeddedID, r.lastNonConfigurationInstances, <span class="built_in">config</span>,</div><div class="line">                        r.referrer, r.voiceInteractor)<span class="comment">;</span></div><div class="line"></div><div class="line">                if (customIntent != null) &#123;</div><div class="line">                    activity.mIntent = customIntent<span class="comment">;</span></div><div class="line">                &#125;</div></pre></td></tr></table></figure>
+<p>其中 createBaseContextForActivity 是</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ContextImpl appContext = ContextImpl.createActivityContext(</div><div class="line">                this, r.packageInfo, <span class="keyword">displayId, </span>r.overrideConfig)<span class="comment">;</span></div><div class="line">        appContext.setOuterContext(activity)<span class="comment">;</span></div><div class="line">        <span class="built_in">Context</span> <span class="keyword">baseContext </span>= appContext<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>这就跟上面 Application 一样的了。</p>
+<p><strong>Service</strong></p>
+<p>用户使用 startService 或者 BindService 系统检测需要创建一个新的 Service 就回将调用 ActivityThread.java 的handleCreateService<br>如下所示：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> void handleCreateService(CreateServiceData <span class="keyword">data</span>) &#123;</div><div class="line">    <span class="comment">// If we are getting ready to gc after going to the background, well</span></div><div class="line">    <span class="comment">// we are back active so skip it.</span></div><div class="line">    unscheduleGcIdler();</div><div class="line"></div><div class="line">    LoadedApk packageInfo = getPackageInfoNoCheck(</div><div class="line">            <span class="keyword">data</span>.info.applicationInfo, <span class="keyword">data</span>.compatInfo);</div><div class="line">    Service service = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        java.lang.ClassLoader cl = packageInfo.getClassLoader();</div><div class="line">        service = (Service) cl.loadClass(<span class="keyword">data</span>.info.name).newInstance();</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="keyword">if</span> (!mInstrumentation.onException(service, e)) &#123;</div><div class="line">            <span class="keyword">throw</span> new RuntimeException(</div><div class="line">                <span class="string">"Unable to instantiate service "</span> + <span class="keyword">data</span>.info.name</div><div class="line">                + <span class="string">": "</span> + e.toString(), e);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">if</span> (localLOGV) Slog.v(TAG, <span class="string">"Creating service "</span> + <span class="keyword">data</span>.info.name);</div><div class="line"></div><div class="line">        ContextImpl context = ContextImpl.createAppContext(<span class="keyword">this</span>, packageInfo);</div><div class="line">        context.setOuterContext(service);</div><div class="line"></div><div class="line">        Application app = packageInfo.makeApplication(<span class="literal">false</span>, mInstrumentation);</div><div class="line">        service.attach(context, <span class="keyword">this</span>, <span class="keyword">data</span>.info.name, <span class="keyword">data</span>.token, app,</div><div class="line">                ActivityManagerNative.getDefault());</div><div class="line">        service.onCreate();</div><div class="line">        mServices.put(<span class="keyword">data</span>.token, service);</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            ActivityManagerNative.getDefault().serviceDoneExecuting(</div><div class="line">                    <span class="keyword">data</span>.token, SERVICE_DONE_EXECUTING_ANON, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        &#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">            <span class="comment">// nothing to do.</span></div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="keyword">if</span> (!mInstrumentation.onException(service, e)) &#123;</div><div class="line">            <span class="keyword">throw</span> new RuntimeException(</div><div class="line">                <span class="string">"Unable to create service "</span> + <span class="keyword">data</span>.info.name</div><div class="line">                + <span class="string">": "</span> + e.toString(), e);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>基本上方式和前两个是一样的，这里就不过多叙述了</p>
+<p>小结一下：</p>
+<ol>
+<li>Context是一个抽象类，ContextWrapper是对Context的封装，它包含一个Context类型的变量,ContextWrapper的功能函数内部其实都是调用里面的Context类型变量完成的。 Application,Service,Activity等都是直接或者间接继承自ContextWrapper,但是并没有真正的实现其中的功能，Application，Service，Activity中关于Context的功能都是通过其内部的Context类型变量完成的，而这个变量的 真实对象必定是ContextImpl，所以没创建一个Application,Activity,Servcice便会创建一个 ContextImpl,并且这些ContextImpl中的mPackages和mResources变量都是一样的，所以不管使用Acitivty还 是Service调用getResources得到相同的结果;</li>
+<li>通过对ContextImp的分析可知，其方法的大多数操作都是直接调用其属性mPackageInfo(该属性类型为PackageInfo)的相关方法而来。这说明ContextImp是一种轻量级类，而PackageInfo才是真正重量级的类。而一个App里的所有ContextIml实例，都对应同一个packageInfo对象。</li>
+<li>一个应用的 ContextNum ＝ ActivityNum + ServiceNum + 1(Application).</li>
+</ol>
+<h2 id="this、BaseContext、ApplicationContext-区别"><a href="#this、BaseContext、ApplicationContext-区别" class="headerlink" title="this、BaseContext、ApplicationContext 区别"></a>this、BaseContext、ApplicationContext 区别</h2><p>当我们知道了 Context 是什么后，这几个区别也比较好理解了，首先看下面的代码：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">   public void method() &#123;</div><div class="line">      mContext = <span class="keyword">this</span>;    <span class="comment">// since Activity extends Context</span></div><div class="line">      mContext = getApplicationContext();</div><div class="line">      mContext = getBaseContext();</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先 this 我们通过前面说了那么多应该明白 Activity 继承了 Context 所以这个 ok， 然后是 getBaseContext 我们看到在 getBaseContext 方法，</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * @<span class="keyword">return</span> the base context <span class="built_in">as</span> <span class="built_in">set</span> <span class="built_in">by</span> the <span class="built_in">constructor</span> or setBaseContext</div><div class="line">     */</div><div class="line">public <span class="keyword">Context</span> getBaseContext() &#123;</div><div class="line">    <span class="keyword">return</span> mBase;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其实返回就是之前创建的 ContextImpl 他也是继承 Context 的。最后一个 <em>mContext = getApplicationContext();</em><br>其实他调用 mBase.getApplicationContext() mBase 是 ContextImpl 然后里面的方法描述是：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="keyword">public</span> <span class="function">Context <span class="title">getApplicationContext</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> (mPackageInfo != <span class="keyword">null</span>) ?</div><div class="line">            mPackageInfo.getApplication() : mMainThread.getApplication();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从上面可以看出来的是 this 是会随着 Activity 的声明周期结束而结束 BaseContext 也是的，而ApplicaContext 是系统的唯一是跟着应用的声明周期的。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1223/2205.html" target="_blank" rel="external">更深层次的理解Context</a></p>
+<p><a href="http://blog.csdn.net/qinjuning/article/details/7310620" target="_blank" rel="external"> Android中Context详解 —- 你所不知道的Context</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Groovy 语言学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Groovy 语言学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/JAVA基础(一)数据类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JAVA 学习（一）数据类型</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Context of Android 初解析" data-title="" data-url="http://nortonahu.github.io/2016/08/05/Context of Android 初解析/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

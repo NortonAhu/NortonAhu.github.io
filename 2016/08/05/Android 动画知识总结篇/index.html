@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android 动画知识总结篇 | WinterFell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="目录
+
+动画分类
+Drawable 动画
+Tween 动画
+Property 动画
+插值器和估值器原理
+参考文献
+
+动画分类在 Android 体系中提供给我们提供了两种动画框架：View Animation 和 Property Animation 视图动画和属性动画。其中属性动画是在 Android 3.0 之后才引入到 Android 框架中的，所以如果想兼容 3.0 之前的Android版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 动画知识总结篇">
+<meta property="og:url" content="http://nortonahu.github.io/2016/08/05/Android 动画知识总结篇/index.html">
+<meta property="og:site_name" content="WinterFell">
+<meta property="og:description" content="目录
+
+动画分类
+Drawable 动画
+Tween 动画
+Property 动画
+插值器和估值器原理
+参考文献
+
+动画分类在 Android 体系中提供给我们提供了两种动画框架：View Animation 和 Property Animation 视图动画和属性动画。其中属性动画是在 Android 3.0 之后才引入到 Android 框架中的，所以如果想兼容 3.0 之前的Android版">
+<meta property="og:image" content="http://nortonahu.github.io/image/property_animation_1.PNG">
+<meta property="og:image" content="http://nortonahu.github.io/image/propety_animation_2.PNG">
+<meta property="og:updated_time" content="2016-08-04T16:02:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 动画知识总结篇">
+<meta name="twitter:description" content="目录
+
+动画分类
+Drawable 动画
+Tween 动画
+Property 动画
+插值器和估值器原理
+参考文献
+
+动画分类在 Android 体系中提供给我们提供了两种动画框架：View Animation 和 Property Animation 视图动画和属性动画。其中属性动画是在 Android 3.0 之后才引入到 Android 框架中的，所以如果想兼容 3.0 之前的Android版">
+<meta name="twitter:image" content="http://nortonahu.github.io/image/property_animation_1.PNG">
+  
+    <link rel="alternative" href="/atom.xml" title="WinterFell" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hong Yu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Winter Is Coming</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/技术教程">技术教程</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+							<li><a href="/about/index.html">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hong Yu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/header_image.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hong Yu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Winter Is Coming</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/技术教程">技术教程</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+					<li><a href="/about/index.html">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/NortonAhu" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/yuhongpc/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/HongYuAhuCN" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android 动画知识总结篇" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/Android 动画知识总结篇/" class="article-date">
+  	<time datetime="2016-08-04T16:02:25.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 动画知识总结篇
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI/">UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动效/">动效</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术教程/">技术教程</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>目录</strong></p>
+<ul>
+<li>动画分类</li>
+<li>Drawable 动画</li>
+<li>Tween 动画</li>
+<li>Property 动画</li>
+<li>插值器和估值器原理</li>
+<li>参考文献</li>
+</ul>
+<h2 id="动画分类"><a href="#动画分类" class="headerlink" title="动画分类"></a>动画分类</h2><p>在 Android 体系中提供给我们提供了两种动画框架：View Animation 和 Property Animation 视图动画和属性动画。其中属性动画是在 Android 3.0 之后才引入到 Android 框架中的，所以如果想兼容 3.0 之前的Android版本需要添加第三方lib库。除了这两种动画外还有一种 Drawable 动画或者叫Frame Aniamtion，因为是对图片的切换造成动画的效果所以动画分类一般也可以不说它。</p>
+<a id="more"></a>
+<h2 id="Drawable-动画"><a href="#Drawable-动画" class="headerlink" title="Drawable 动画"></a>Drawable 动画</h2><p>Drawable Animation 实现的原理是顺序播放事先做好的图像，这种动画一种渐变动画。类似于老式的动画制作都是一张张画出来然后快速翻页就动起来了。要注意的是这种类型的动画认为是drawable，所以该动画的XML文件既不能放在anim也不能放在animator文件夹中，这两个文件夹的区别后面会提到的。</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?<span class="string">\&gt;</span></div><div class="line">&lt;!--android:oneshot 如果设置成<span class="literal">true</span>的话表示动画只显示一次,反之则不停的播放动画--<span class="string">\&gt;</span></div><div class="line">&lt;animation-list xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">android:oneshot=<span class="string">"false"</span><span class="string">\&gt;</span></div><div class="line">&lt;item android:drawable=<span class="string">"@drawable/rocket_fire1"</span> android:duration=<span class="string">"100"</span>/<span class="string">\&gt;</span></div><div class="line">&lt;item android:drawable=<span class="string">"@drawable/rocket_fire2"</span> android:duration=<span class="string">"100"</span>/<span class="string">\&gt;</span></div><div class="line">&lt;item android:drawable=<span class="string">"@drawable/rocket_fire3"</span> android:duration=<span class="string">"100"</span>/<span class="string">\&gt;</span></div><div class="line">&lt;/animation-list<span class="string">\&gt;</span></div></pre></td></tr></table></figure>
+<p>Java 代码调用：</p>
+ <figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> ImageView rockeFireImage;</div><div class="line"><span class="variable">@TargetApi</span>(Build.VERSION_CODES.JELLY_BEAN)</div><div class="line"><span class="variable">@Override</span></div><div class="line">protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">    super<span class="selector-class">.onCreate</span>(savedInstanceState);</div><div class="line">    setContentView(R<span class="selector-class">.layout</span><span class="selector-class">.activity_frame_animation</span>);</div><div class="line">    rockeFireImage = (ImageView)findViewById(R<span class="selector-class">.id</span><span class="selector-class">.imageview_rocket_fire</span>);</div><div class="line">    <span class="comment">// 使用 animationDrable来实现list动画</span></div><div class="line">    AnimationDrawable animationDrawable = (AnimationDrawable)getResources()<span class="selector-class">.getDrawable</span>(R.drawable.bg_animationlist_rock);</div><div class="line">    rockeFireImage<span class="selector-class">.setBackground</span>(animationDrawable);</div><div class="line">    animationDrawable<span class="selector-class">.start</span>();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 这类帧动画没有对动画的状态的监听需要自己手动 start 和 stop进行。</p>
+<p> 小结一下：<br>    这类动画简单，但是需要将所有的图片资源加载然后运行。值得注意的是之前看到一个 blog 说这类动画start不能放在oncreate中，主要是防止图片未加载成功，但是我这里放了也没啥问题！</p>
+<h2 id="Tween-动画"><a href="#Tween-动画" class="headerlink" title="Tween 动画"></a>Tween 动画</h2><p>通过对场景里的对象不断做图像变换(平移、缩放、旋转、透明度)产生动画效果，即是一种渐变动画。其中原理主要是对 view 做矩阵转换操作。补间动画是可以添加动画的侦听事件这样就比较好控制动画操作。这里如果使用XML方式来创建动画需要在res目录下建立一个anim文件夹放xml文件。下面介绍的是渐变动画的几个主要类型。</p>
+<p><em>Alpha Animation</em></p>
+<pre><code>透明度渐变动画，比如实现淡入淡出效果的动画用这种就比较合适，主要涉及到的参数有：
+
+    * Duration,动画时续时间；
+    * fromAlpha,动画的开始透明度；
+    * toAlpha,动画的最终透明度。
+例如下面的代码：
+\res\amin\fade_in.xml
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--淡入效果--&gt;</span></div><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">alpha</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:duration</span>=<span class="string">"500"</span></div><div class="line">    <span class="attr">android:fromAlpha</span>=<span class="string">"0.0"</span></div><div class="line">    <span class="attr">android:toAlpha</span>=<span class="string">"1.0"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">alpha</span>&gt;</span></div></pre></td></tr></table></figure>
+
+JAVA 调用代码：
+
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onFadeIn</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">    <span class="comment">// XMl 实现方式</span></div><div class="line">    <span class="comment">//AlphaAnimation alphaAnimation = (AlphaAnimation) AnimationUtils.loadAnimation(this, R.anim.fade_in);</span></div><div class="line">    <span class="comment">// 代码实现方式</span></div><div class="line">    AlphaAnimation alphaAnimation = <span class="keyword">new</span> AlphaAnimation(<span class="number">0.0</span>f,<span class="number">1.0</span>f);</div><div class="line">    <span class="comment">// 视图动画可以添加事件侦听</span></div><div class="line">    alphaAnimation.setAnimationListener(<span class="keyword">new</span> Animation.AnimationListener() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animation animation)</span> </span>&#123;</div><div class="line">            Toast.makeText(ViewAlphaAnimationActivity.<span class="keyword">this</span>, <span class="string">"onAnimationStart"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animation animation)</span> </span>&#123;</div><div class="line">            Toast.makeText(ViewAlphaAnimationActivity.<span class="keyword">this</span>, <span class="string">"onAnimationEnd"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animation animation)</span> </span>&#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    alphaAnimation.setDuration(<span class="number">500</span>);</div><div class="line">    view.startAnimation(alphaAnimation);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><p>最后在动画中增加了一个监听器用来监听动画的状态一边能够进行下一步的操作。</p>
+<p><em>Translation Animation</em></p>
+<p>位移坐标移动动画，支持 X，Y方向移动。关键参数有：</p>
+<ul>
+<li>duration；</li>
+<li>fromXDelta，起始位置的X坐标的偏移量；</li>
+<li>toXDelta，结束位置的X坐标的偏移量；</li>
+<li>fromYDelta 起始位置的Y坐标的偏移量；</li>
+<li>toYDelta 结束位置的Y坐标的偏移量。</li>
+</ul>
+<p>坐标的值可以有三种格式：</p>
+<ul>
+<li>从-100到100，以”%”结束，表示相对于View本身的百分比位置；</li>
+<li>如果以”%p”结束，表示相对于View的父View的百分比位置；</li>
+<li><p>如果没有任何后缀，表示相对于View本身具体的像素值。主要的属性如下：<br>xml：</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">translate</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:duration</span>=<span class="string">"1000"</span></div><div class="line">    <span class="attr">android:fromYDelta</span>=<span class="string">"0"</span></div><div class="line">    <span class="attr">android:toYDelta</span>=<span class="string">"50%p"</span></div><div class="line">    <span class="attr">android:fromXDelta</span>=<span class="string">"0"</span></div><div class="line">    <span class="attr">android:toXDelta</span>=<span class="string">"0"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">translate</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Java code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">moveLeft2Right</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">    Toast.makeText(ViewTranslateActivity.<span class="keyword">this</span>, <span class="string">"移动到控件中间"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    TranslateAnimation translateAnimation = (TranslateAnimation) AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.tanslate_left_right);</div><div class="line">    view.startAnimation(translateAnimation);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">moveLeft2RightParent</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">    Toast.makeText(ViewTranslateActivity.<span class="keyword">this</span>, <span class="string">"移动到屏幕中间"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    <span class="comment">// TranslateAnimation translateAnimation = (TranslateAnimation) AnimationUtils.loadAnimation(this, R.anim.translate_left_right_parent);</span></div><div class="line">    TranslateAnimation translateAnimation = <span class="keyword">new</span> TranslateAnimation(Animation.RELATIVE_TO_PARENT,</div><div class="line">            <span class="number">0f</span>, Animation.RELATIVE_TO_PARENT, <span class="number">0.5f</span>, Animation.RELATIVE_TO_PARENT, <span class="number">0f</span>, Animation.RELATIVE_TO_PARENT, <span class="number">0.5f</span>);</div><div class="line">    translateAnimation.setDuration(<span class="number">1000</span>);</div><div class="line">    view.startAnimation(translateAnimation);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">moveDown2Up</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">    Toast.makeText(ViewTranslateActivity.<span class="keyword">this</span>, <span class="string">"垂直移动"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    TranslateAnimation translateAnimation = (TranslateAnimation) AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.translate_dowan_up_parent);</div><div class="line">    view.startAnimation(translateAnimation);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从上面的代码可以看出来代码实现 Translate Animation 需要对坐标数据表明是什么类型主要有三种：<br>ABSOLUTE = 0;<br>RELATIVE_TO_SELF = 1;<br>RELATIVE_TO_PARENT = 2;</p>
+<p><em>Scale Animation</em></p>
+<p>表示简单的视图的缩放功能，参数有</p>
+<ul>
+<li>duration 动画从开始到结束持续的时长，单位为毫秒；</li>
+<li>fromXScale 动画开始时X坐标上的缩放尺寸；</li>
+<li>toXScale 动画结束时X坐标上的缩放尺寸；</li>
+<li>fromYScale 动画开始时Y坐标上的缩放尺寸；</li>
+<li>pivotX 缩放时的固定不变的X坐标，一般用百分比表示，0%表示左边缘，100%表示右边缘；</li>
+<li>pivotY 缩放时的固定不变的Y坐标，一般用百分比表示，0%表示顶部边缘，100%表示底部边缘。</li>
+</ul>
+<p>前四个属性，0.0表示缩放到没有，1.0表示正常无缩放，小于1.0表示收缩，大于1.0表示放大，后面的两个其实也可以课 translate 一样加上 ％p 的参数也是表示父类控件的比例。</p>
+<p>   例子：</p>
+   <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;scale xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line"><span class="symbol">android:</span>duration=<span class="string">"1000"</span></div><div class="line"><span class="symbol">android:</span>fromXScale=<span class="string">"1.0"</span></div><div class="line"><span class="symbol">android:</span>fromYScale=<span class="string">"1.0"</span></div><div class="line"><span class="symbol">android:</span>pivotX=<span class="string">"100%"</span></div><div class="line"><span class="symbol">android:</span>pivotY=<span class="string">"0"</span></div><div class="line"><span class="symbol">android:</span>toXScale=<span class="string">"1.5"</span></div><div class="line"><span class="symbol">android:</span>toYScale=<span class="string">"1.5"</span>&gt;</div><div class="line"></div><div class="line">&lt;/scale&gt;</div></pre></td></tr></table></figure>
+<p>   其中代码的实现和参数和scale类似这里不再重复叙述了。<br><em>Rotate Animation</em> </p>
+<p>旋转动画,参数有</p>
+<ul>
+<li>pivotX 缩放时的固定不变的X坐标，一般用百分比表示，0%表示左边缘，100%表示右边缘；</li>
+<li>pivotY 缩放时的固定不变的Y坐标，一般用百分比表示，0%表示顶部边缘，100%表示底部边缘；</li>
+<li>duration 动画从开始到结束持续的时长，单位为毫秒；</li>
+<li>fromDegrees 旋转开始的角度；</li>
+<li><p>toDegrees 旋转结束的角度。</p>
+<p>  具体实现可以参考之前几个动画介绍，这里举的例子是实现一个loading效果的转圈，<br>  分析转圈旋转角度360度，简单的来说就是让动画不停的旋转就可以了，但是Rotate Animation 存在卡顿的现象在最后一帧的时候会停下来然后再开始旋转，这里我们使用的是旋转359度并且增加了一个线性加速器来解决这个问题。代码如下：</p>
+<p>  xml：</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">rotate</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:duration</span>=<span class="string">"1000"</span></div><div class="line">    <span class="attr">android:fromDegrees</span>=<span class="string">"0"</span></div><div class="line">    <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></div><div class="line">    <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></div><div class="line">    <span class="attr">android:repeatCount</span>=<span class="string">"infinite"</span></div><div class="line">    <span class="attr">android:toDegrees</span>=<span class="string">"359"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">rotate</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>加上线性插值器：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoading</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        RotateAnimation rotateAnimation = (RotateAnimation) AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.loading_circle);</div><div class="line">        rotateAnimation.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</div><div class="line">        view.startAnimation(rotateAnimation);</div></pre></td></tr></table></figure>
+<p>小结一下：</p>
+<p>以上基本上就是我们要知道的视图动画几个效果了，是不是很简单。有点不知道你注意到没我们在 Android Studio 的 xml 文件中写android:duration 和 android.repeatCount 是没有代码提示但是你写上去是正确，这说明这两个属性是父类的属性，下面我们就介绍将这几种动画组合起来的 set。    </p>
+<p><em>set</em> </p>
+<p>我们在anim文件夹中创建动画时默认是创建 set ，我们 duration 和 repeatCount 等属性也是属于 set 里面的属性所以我们可以认为 set 是动画外面嵌套的层，通过 set 我们可以对动画进行组合。</p>
+<p>水平移动缩小的动画：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:duration</span>=<span class="string">"2000"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">translate</span></span></div><div class="line">        <span class="attr">android:fromXDelta</span>=<span class="string">"0"</span></div><div class="line">        <span class="attr">android:fromYDelta</span>=<span class="string">"0"</span></div><div class="line">        <span class="attr">android:toXDelta</span>=<span class="string">"100%p"</span></div><div class="line">        <span class="attr">android:toYDelta</span>=<span class="string">"0"</span> /&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">scale</span></span></div><div class="line">        <span class="attr">android:fromXScale</span>=<span class="string">"1.0"</span></div><div class="line">        <span class="attr">android:fromYScale</span>=<span class="string">"1.0"</span></div><div class="line">        <span class="attr">android:pivotX</span>=<span class="string">"100%"</span></div><div class="line">        <span class="attr">android:pivotY</span>=<span class="string">"100%"</span></div><div class="line">        <span class="attr">android:toXScale</span>=<span class="string">"0"</span></div><div class="line">        <span class="attr">android:toYScale</span>=<span class="string">"0"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>set 属性除了设置 duration 剩下的参数是：</p>
+<ul>
+<li>android:detachWallpaper 设置是否在壁纸上运行，只对设置了壁纸背景的窗口动画(window animation)有效。设为true，则动画只在窗口运行，壁纸背景保持不变;</li>
+<li>android:fillAfter 设置为true时，动画执行完后，View会停留在动画的最后一帧；默认为false；如果是动画集，需在<set>标签中设置该属性才有效;</set></li>
+<li>android:fillBefore 设置为true时，动画执行完后，View回到动画执行前的状态，默认即为true;</li>
+<li>android:fillEnabled 设置为true时，android:fillBefore的值才有效，否则android:fillBefore会被忽略;</li>
+<li>android:repeatCount 设置动画重复执行的次数，默认为0，即不重复；可设为-1或infinite，表示无限重复;</li>
+<li>android:repeatMode 设置动画重复执行的模式，可设为以下两个值其中之一：</li>
+<li>restart 动画重复执行时从起点开始，默认为该值;</li>
+<li>reverse 动画会反方向执行;</li>
+<li>android:startOffset 设置动画执行之前的等待时长，毫秒为单位；重复执行时，每次执行前同样也会等待一段时间;android:zAdjustment 表示被设置动画的内容在动画运行时在Z轴上的位置，取值为以下三个值之一：</li>
+<li>normal 默认值，保持内容在Z轴上的位置不变</li>
+<li>top 保持在Z周最上层;</li>
+<li>bottom 保持在Z轴最下层;</li>
+<li>android:interpolator 设置动画速率的变化，比如加速、减速、匀速等，需要指定Interpolator资源，后面再详细讲解。</li>
+<li><set>标签还有个android:shareInterpolator属性，设置为true时则可将interpolator应用到所有子元素中<br>以上基本就将渐变动画主要内容介绍，关于插值器属性动画也有后面会单独介绍的。</set></li>
+</ul>
+<p>小结：set 表示对 Tween Animation 做动画集操作。</p>
+<h2 id="Property-动画"><a href="#Property-动画" class="headerlink" title="Property 动画"></a>Property 动画</h2><p>属性动画是真正意义上对对象的属性进行操作。因此它和视图动画的区别有以下三个方面：</p>
+<ul>
+<li>API 不同属性动画是在 Android 3.0 后引入到 Android 框架中，所以在 3.0 之前是不可以使用的。</li>
+<li>属性动画是真正意义上的对对象的属性进行修改达到动画的效果的，而视图动画确实修改了 View 的绘制方法，最明显的不回改变 View 的点击区域；</li>
+<li>属性动画是对任何对象都可以操作的，但是视图动画操作的对象只能是 View。</li>
+</ul>
+<p>因此属性动画可以定义为在一定的时间内按照一定的规律来改变对象的属性的动画。</p>
+<p>从上面的属性动画的定义我们可以看出我们对对象的属性进行操作这就是说我们要对象提供对象的 get/set 方法，这也是对象使用属性动画的必要条件。</p>
+<blockquote>
+<ul>
+<li>object必须要提供setXxx方法，如果动画的时候没有传递初始值，那么还要提供getXxx方法，因为系统要去拿xxx属性的初始值（如果这条不满足，程序直接Crash）；</li>
+<li>sobject的setXxx对属性xxx所做的改变必须能够通过某种方法反映出来，比如会带来ui的改变啥的（如果这条不满足，动画无效果但不会Crash）</li>
+</ul>
+</blockquote>
+<p>这里引用参考 Blog 的一个例子：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line"><span class="attr">tools:context</span>=<span class="string">"com.bluecup.hongyu.androidanimation.property.PropertyAnimationActivity"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"@drawable/bg_rectangle_with_corner"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"属性动画必要条件"</span></div><div class="line">        <span class="attr">android:layout_margin</span>=<span class="string">"10dp"</span></div><div class="line">        <span class="attr">android:onClick</span>=<span class="string">"onZoomOut"</span></div><div class="line">        <span class="attr">android:textColor</span>=<span class="string">"@android:color/white"</span></div><div class="line">        <span class="attr">android:textSize</span>=<span class="string">"16sp"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>JAVA:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">public</span> <span class="selector-tag">void</span> <span class="selector-tag">onZoomOut</span>(View view) &#123;</div><div class="line">    ObjectAnimator<span class="selector-class">.ofInt</span>(view, <span class="string">"width"</span>,<span class="number">500</span>)<span class="selector-class">.setDuration</span>(<span class="number">1000</span>)<span class="selector-class">.start</span>();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实际上你点击的时候并没有什么效果原因是什么呢？ 解决问题的最好的方法就是深入查看 Button 的 width 的属性的 get/set 方法。查看 Button 源码可以看出它是继承 TextView。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Makes the TextView exactly this many pixels wide.</div><div class="line"> * You could do the same thing by specifying this number in the</div><div class="line"> * LayoutParams.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@see</span> #setMaxWidth(int)</div><div class="line"> * <span class="doctag">@see</span> #setMinWidth(int)</div><div class="line"> * <span class="doctag">@see</span> #getMinWidth()</div><div class="line"> * <span class="doctag">@see</span> #getMaxWidth()</div><div class="line"> *</div><div class="line"> * <span class="doctag">@attr</span> ref android.R.styleable#TextView_width</div><div class="line"> */</div><div class="line"><span class="meta">@android</span>.view.RemotableViewMethod</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setWidth</span><span class="params">(<span class="keyword">int</span> pixels)</span> </span>&#123;</div><div class="line">    mMaxWidth = mMinWidth = pixels;</div><div class="line">    mMaxWidthMode = mMinWidthMode = PIXELS;</div><div class="line"></div><div class="line">    requestLayout();</div><div class="line">    invalidate();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// View 中的方法</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Return the width of the your view.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@return</span> The width of your view, in pixels.</div><div class="line"> */</div><div class="line"><span class="meta">@ViewDebug</span>.ExportedProperty(category = <span class="string">"layout"</span>)</div><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="function"><span class="keyword">int</span> <span class="title">getWidth</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mRight - mLeft;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>TextView getWidth 没什么问题获取到的是控件的宽度，但是 setWidth 却不是控件的宽度可以看出来是对控件 width的属性进行设置，所以无法对 Button 进行属性动画。</p>
+<p>针对上面的出现的问题，网上也有三种解决方法：</p>
+<ul>
+<li>为视图添加 get／set方法但是你不一定有这个权限做；</li>
+<li>用一个类来包装对象，间接的提供get／set方法，比较推荐和上面的原理一样但避开了权限的问题；</li>
+<li>实现 ValueAnimator 侦听动画的过程，自己实现视图的属性的变化。</li>
+</ul>
+<p>第一种方法是根据属性动画实现的必要条件来处理的但是大多我们是没有这个权限的。第二条也是网上所以推荐的方法，那前面的 Button 的例子来说，我们可以对 Button 进行封装下：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> ViewWrapper &#123;</div><div class="line">        <span class="keyword">private</span> View targetView;</div><div class="line"></div><div class="line">        <span class="keyword">public</span> ViewWrapper(View targetView) &#123;</div><div class="line">            <span class="keyword">this</span>.targetView = targetView;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> setWidth(<span class="keyword">int</span> <span class="built_in">width</span>) &#123;</div><div class="line">            Log.d(TAG, <span class="string">"setWidth: "</span> + <span class="built_in">width</span>);</div><div class="line">            targetView.getLayoutParams().<span class="built_in">width</span> = <span class="built_in">width</span>;</div><div class="line">            targetView.requestLayout();         <span class="comment">// 视图属性变化需要重新调用下使之生效</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">public</span> <span class="keyword">int</span> getWidth() &#123;</div><div class="line">            Log.d(TAG, <span class="string">"ViewWrapper getWidth: "</span> + targetView.getWidth() + <span class="string">"|"</span> +targetView.getLayoutParams().<span class="built_in">width</span>);</div><div class="line"><span class="comment">//            return targetView.getWidth();</span></div><div class="line">            <span class="built_in">return</span> targetView.getLayoutParams().<span class="built_in">width</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>上面简单实现了一个视图的封装器类，从代码中我们也可以看出来一定要是对view的属性进行设置。有个值得注意的地方细心的可以看出我在封装器的getWidth 注释了一行代码，首先 targetView.getLayoutParams().width这句话只有在设置了view具体的宽度的时候才有数据，如果你使用的是wrapcontent的参数建议还是使用getwidth，getwidth两种情况返回的数据都是正确的。</p>
+<p>第三种解决方法例子是ValueAnimator 首先ValueAnimator不对view的属性就行设置而是监听动画的过程就是通过动画的变化监听，然后手动改变view的属性。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onZoomOut</span>(<span class="params">final View view</span>) </span>&#123;</div><div class="line"><span class="comment">//        ViewWrapper targetView = new ViewWrapper(view);</span></div><div class="line"><span class="comment">//        ObjectAnimator.ofInt(targetView, "width", 500).setDuration(5000).start();</span></div><div class="line">        ValueAnimator valueAnimator = ValueAnimator.ofInt(<span class="number">1</span>, <span class="number">100</span>);</div><div class="line">        valueAnimator.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line"></div><div class="line">            <span class="keyword">private</span> IntEvaluator intEvaluator = <span class="keyword">new</span> IntEvaluator(); <span class="comment">// 整型估值器这个后面会用到</span></div><div class="line"></div><div class="line">            @<span class="function">Override</span></div><div class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span>(<span class="params">ValueAnimator animation</span>) &#123;</div><div class="line">                <span class="keyword">int</span> <span class="keyword">value</span> = (Integer) animation.getAnimatedValue();</div><div class="line"></div><div class="line">                <span class="keyword">float</span> fration = <span class="keyword">value</span> / <span class="number">100</span>f;</div><div class="line">                Log.e(TAG, <span class="string">"onAnimationUpdate: value is "</span> + <span class="keyword">value</span> + <span class="string">";fration is "</span> + fration);</div><div class="line">                view.getLayoutParams().width = intEvaluator.evaluate(fration, view.getWidth(), <span class="number">500</span>);</div><div class="line">                view.requestLayout();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        valueAnimator.setDuration(<span class="number">5000</span>);</div><div class="line">        valueAnimator.start();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>这里需要一个估值器，估值器主要是估算每次变化该移动多少宽度。<br>小结：基础知识说到这里我们有很多概念和原理需要我们来解释了，不然后面就讲不下去了。其中所有的属性动画我这里都是用代码实现的，其实还是可以在 <em>／res/animator/</em> 文件夹里建立相应的文件类似于视图动画，注意的是视图动画是 <em>anim</em> 文件夹。</p>
+<h2 id="插值器和估值器原理"><a href="#插值器和估值器原理" class="headerlink" title="插值器和估值器原理"></a>插值器和估值器原理</h2><p>在介绍插值器和估值器的时候需要介绍下 google 官方文档中关于 Property Animation 的知识。<br>属性动画六个要素：</p>
+<ol>
+<li>duration：动画的持续时间，默认设置是300ms；</li>
+<li>TimeInterPloation:用于定义动画变化率的接口；</li>
+<li>TypeEvaluator:用于定义属性值计算的接口，系统自带的 int／float／color等类型</li>
+<li>AnimationSets:动画集合，可以设置顺序；</li>
+<li>Frame refrsh delay：用于定义动画的刷新频率，默认的刷新频率是10ms每帧，但是这个时间最终是由手机当时的CPU繁忙程度和系统性能决定的；</li>
+<li>repeat count and behavior：定义动画的重复次数和行为的（类似于视图动画中的model）。</li>
+</ol>
+<p>google 官方文档也提供了示意图进行说明：<br><img src="/image/property_animation_1.PNG" alt=""><br><img src="/image/propety_animation_2.PNG" alt=""><br>理解属性动画原理的几个步骤：<br>Step 1： 计算流失时间 fraction<br>    拿上面的动画例子里说，动画时间是40ms而每一帧动画消耗时间是10ms 也就是说第一帧流逝时间是 10／40=0.25（elapsed fraction）。</p>
+<p>Step 2: 计算插值器<br>    这里使用AccelerateDecelerateInterpolator</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> (<span class="keyword">float</span>)(Math.<span class="built_in">cos</span>((input + <span class="number">1</span>) * Math.PI) / <span class="number">2.0f</span>) + <span class="number">0.5f</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么插值器计算的结果cos(1+0.25)*PI/2.0 +  0.5 = 0.15</p>
+<p>Step 3:计算属性值(估值器)<br>这里使用IntEvaluator<br>public Integer evaluate(float fraction, Integer startValue, Integer endValue) {<br>        int startInt = startValue;<br>        return (int)(startInt + fraction * (endValue - startInt));<br>    }</p>
+<p>通过计算后得到 0 ＋ 40*0.15＝6<br>    最后得到6就是这一帧该移动的X方向的距离。</p>
+<pre><code>上面介绍的是主要是的实现过程，我们现在来分析几个重要步骤
+插值器
+本身是时间函数，定义了动画的变化规律（提前或者延迟默认执行的时间来达到相应的效果正如前面的介绍的那样加速减速效果）
+使用方法就是实现getInterpolation(float input)方法用来计算流失时间的插值器
+流失时间是［0，1］计算得到的插值时间&lt;0反方向直行，［0，1］预计方向直行，&gt;1 超出正方向执行。
+</code></pre><p>可以通过自定义不同的插值器实现出各种非常奇特的插值器出来。<br>小结：<br>a. 插值器是通过改变动画执行的时间点效果，提前或者延迟动画的执行；<br>b. 插值器只是针对当前动画的时间因子操作，并不对动画的轨迹进行操作。</p>
+<p>这些就是Step1 到Step2的过程结束。<br>    估值器<br>    估值器是用来决定属性的计算方式，最终是用反射机制来实现对属性的变化设置<br>    public interface TypeEvaluator<t> {<br>   public T evaluate(float fraction, T startValue, T endValue);<br>}<br>这个类是泛型的所以可以对属性的（get/set）值进行操作。<br>系统已经提供了 int、float、color的几种属性设置。</t></p>
+<p>基本模式都是Result ＝ x0+(x1-x-)*fraction;</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Android 样式开发（一） shape/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android 样式开发（一） shape
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/Android基础(一)Activity/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 基础（一）Activity</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android 动画知识总结篇" data-title="Android 动画知识总结篇" data-url="http://nortonahu.github.io/2016/08/05/Android 动画知识总结篇/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Hong Yu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
